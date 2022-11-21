@@ -1,21 +1,42 @@
-# freelancer-directory
+## freelancer-directory
 A full-stack freelancer directory 
 
 
-#DATABASE
+## DATABASE
 MONGODB
 
-#BACK-END
+## BACK-END
 NESTJS
 
-#FRONT-END
+## FRONT-END
 REACT
 
-#STYLE
+## STYLE
 TailwindCss
 
-#STATE MANAGEMENT
+## STATE MANAGEMENT
 Redux Tooltip
 
+
+
+## HOW TO RUN
+
+1- Run the server
+
+```
+cd server
+npm install
+
+npm run start:dev
+```
+2- Run the client
+
+
+```
+cd client
+npm install
+
+npm start
+```
 
 
