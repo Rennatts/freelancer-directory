@@ -45,6 +45,8 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
     member_role: "NOT_MEMBER",
   })
 
+  console.log("loginData", loginData)
+
   const validateFields = async (e: any) => {
     await FreelancerrRegisterSchema.isValid(loginData)
     .then((valid) => {
@@ -78,11 +80,8 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
 
 
   function handleInputChange(event: any) {
-    if(event.target.name === "style"){
-      setSelectedStyles([...selectedStyles, event.target.value.toLowerCase()]);
-    }
-
-    setLoginData({...loginData, [event.target.name]: event.target.value.toLowerCase()});
+    console.log("222", event.target.value)
+    setLoginData({...loginData, [event.target.name]: event.target.value});
   }
 
   function NextButton() {
@@ -135,7 +134,7 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
     <div className='flex items-center flex-center flex-col place-content-around p-20'>
       <div>
         <div className='flex flex-center items-center justify-center'>
-          <h2 className='p-9 text-xl underline underline-offset-8 decoration-teal-500'>Register here</h2>
+          <h2 className='p-9 text-xl underline underline-offset-8 decoration-teal-500'>Register heree</h2>
         </div>
         <ErrorModal mostrar={error}></ErrorModal>
         <SuccessModal mostrar={success}></SuccessModal>
@@ -321,9 +320,9 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
           {currIndex === 3 ? (
             <div className="mb-6">
               <div className="flex w-max mb-6 flex-col">
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Category</label>
+                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Categoria</label>
                 {category.map((item:any) => (
-                  <div className="flex items-center">
+                  <div className="flex items-center" key={item.value}>
                     <input id="default-radio-1" type="radio" name="category" value={item.value} onChange={(event)=> handleInputChange(event)} className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                     <label className="ml-2 text-sm font-medium text-black">{item.label}</label>
                   </div>

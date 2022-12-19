@@ -20,7 +20,7 @@ export function CityNotFound ({ size= 'md' }: ICityNotFoundProps) {
         <div className='py-40 flex justify-center flex-col items-center'>
             <div className='basis-1/4'>
                 <h1 className={clsx(
-                    'text-gray-100 font-bold font-sans',
+                    'text-black font-bold font-sans',
                     {
                         'text-lg': size === 'sm',
                         'text-xl': size === 'md',

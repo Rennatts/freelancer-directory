@@ -14,26 +14,26 @@ export class FreelancerService {
     ){}
 
 
-    async create(Freelancer: NewFreelancersDTO): Promise<Freelancer>  {
+    async create(freelancer: NewFreelancersDTO): Promise<Freelancer>  {
         const newFreelancer = new this.freelancerModel({
-            name: Freelancer.name.toLowerCase(),
-            surname: Freelancer.surname.toLowerCase(),
-            username: Freelancer.username.toLowerCase(),
-            email: Freelancer.email,
-            password: Freelancer.password,
-            profile_photo: Freelancer.profile_photo,
-            zip_code: Freelancer.zip_code,
-            address: Freelancer.address,
-            number: Freelancer.number,
-            city: Freelancer.city.toLowerCase(),
-            country: Freelancer.country.toLowerCase(),
-            phone_number: Freelancer.phone_number, 
-            instagram: Freelancer.instagram,
-            website: Freelancer.website,
-            professional_period: Freelancer.professional_period,
-            description: Freelancer.description,
-            category: Freelancer.category,
-            member_role: Freelancer.member_role,
+            name: freelancer.name.toLowerCase(),
+            surname: freelancer.surname.toLowerCase(),
+            username: freelancer.username.toLowerCase(),
+            email: freelancer.email,
+            password: freelancer.password,
+            profile_photo: freelancer.profile_photo,
+            zip_code: freelancer.zip_code,
+            address: freelancer.address,
+            number: freelancer.number,
+            city: freelancer.city.toLowerCase(),
+            country: freelancer.country.toLowerCase(),
+            phone_number: freelancer.phone_number, 
+            instagram: freelancer.instagram,
+            website: freelancer.website,
+            professional_period: freelancer.professional_period,
+            description: freelancer.description,
+            category: freelancer.category,
+            member_role: freelancer.member_role,
             created: Date.now(),
         })
 

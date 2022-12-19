@@ -11,7 +11,7 @@ import { UserRegister } from '../pages/Auth/UserRegister';
 import { FreelancerRegister } from '../pages/Auth/FreelancerRegister';
 import { RedirectionFreelancers } from '../pages/RedirectionFreelancers';
 import { FreelancerLogin } from '../pages/Auth/FreelancerLogin';
-import { isAuthenticated, isLogged } from './../auth';
+import { isAuthenticated, isLogged } from '../auth';
 import { UserContext } from '../UserContext';
 import ProtectedRoute from '../auth/ProtectedRoute';
 import { FreelancerProfile } from '../pages/Freelancer/FreelancerProfile';
