@@ -47,17 +47,6 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
 
   console.log("loginData", loginData)
 
-  const validateFields = async (e: any) => {
-    await FreelancerrRegisterSchema.isValid(loginData)
-    .then((valid) => {
-      setStatus({
-        isValid: valid,
-        message: 'Erro no formulário, revise os campos por favor',
-      });
-      return valid
-    });
-  }
-
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
@@ -75,8 +64,6 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
     })
     .catch((err) => setError(true));
   };
-
-
 
 
   function handleInputChange(event: any) {
@@ -134,7 +121,7 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
     <div className='flex items-center flex-center flex-col place-content-around p-20'>
       <div>
         <div className='flex flex-center items-center justify-center'>
-          <h2 className='p-9 text-xl underline underline-offset-8 decoration-teal-500'>Register heree</h2>
+          <h2 className='p-9 text-xl underline underline-offset-8 decoration-teal-500'>Register here</h2>
         </div>
         <ErrorModal mostrar={error}></ErrorModal>
         <SuccessModal mostrar={success}></SuccessModal>

@@ -48,7 +48,7 @@ export function FreelancerLogin (props: IFreelancerLoginProps) {
     <div className='flex items-center flex-center flex-col place-content-around p-20'>
       <div>
         <div className='flex flex-center items-center justify-center'>
-          <h2 className='p-9 text-xl underline underline-offset-8 decoration-teal-500'>Faça o Login</h2>
+          <h2 className='p-9 text-xl underline underline-offset-8 decoration-teal-500'>Login</h2>
         </div>
         <MessageModal mostrar={error}></MessageModal>
         <form>
@@ -80,7 +80,7 @@ export function FreelancerLogin (props: IFreelancerLoginProps) {
             {status.isValid === false ? <p>{status.message}</p> : "" }
 
             <button onClick={handleSubmit} className="w-full flex-shrink-0 bg-teal-500 hover:bg-teal-300 hover:border-bg-teal-300 hover:text-black hover:border-teal-300 text-md text-white py-1 px-5 rounded" type="button">
-              Entrar
+              Enter
             </button>
 
             <div onClick={()=> navigate(`/users/register`)} className="flex items-end flex-col mb-6 text-xs mt-6">
