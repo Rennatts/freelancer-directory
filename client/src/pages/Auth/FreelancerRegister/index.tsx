@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useNavigate } from "react-router-dom";
-import * as yup from 'yup';
 import { FreelancerrRegisterSchema } from '../Validations/UserValidation';
 import './index.css';
 import axios from 'axios';
@@ -71,7 +70,6 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
           navigate(`/freelancer/profile/${res.data.id}`)
         }, 10000)
       }
-      console.log("res", res);
     })
     .catch((err) => setError(true));
   };
@@ -85,14 +83,12 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
     }
 
     setLoginData({...loginData, [event.target.name]: event.target.value.toLowerCase()});
-
-    console.log("22222", loginData);
   }
 
   function NextButton() {
     return (
       <button onClick={() => setCurrentIndex(currIndex + 1)} className="w-full flex-shrink-0 bg-teal-500 hover:bg-teal-300 hover:border-bg-teal-300 hover:text-black hover:border-teal-300 text-md text-white py-1 px-5 rounded" type="button">
-        Próximo
+        Next
       </button>
     );
   }
@@ -101,10 +97,10 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
     return (
       <div className="flex flex-row space-x-3 w-full">
         <button onClick={() => setCurrentIndex(currIndex - 1)} className="flex-auto bg-teal-500 hover:bg-teal-300 hover:border-bg-teal-300 hover:text-black hover:border-teal-300 text-md text-white py-1 px-5 rounded" type="button">
-          Voltar
+          Back
         </button>
         <button onClick={() => setCurrentIndex(currIndex + 1)} className="flex-auto bg-teal-500 hover:bg-teal-300 hover:border-bg-teal-300 hover:text-black hover:border-teal-300 text-md text-white py-1 px-5 rounded" type="button">
-          Próximo
+          Next
         </button>
       </div>
     );
@@ -115,10 +111,10 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
     return (
       <div className="flex flex-row space-x-3 w-full">
         <button onClick={() => setCurrentIndex(currIndex - 1)} className="flex-auto bg-teal-500 hover:bg-teal-300 hover:border-bg-teal-300 hover:text-black hover:border-teal-300 text-md text-white py-1 px-5 rounded" type="button">
-          Voltar
+          Back
         </button>
         <button onClick={handleSubmit} className="flex-auto bg-teal-500 hover:bg-teal-300 hover:border-bg-teal-300 hover:text-black hover:border-teal-300 text-md text-white py-1 px-5 rounded" type="button">
-          Salvar
+          Save
         </button>
       </div>
     );
@@ -146,7 +142,7 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
         <div className="w-full mt-27 mb-20">
           <ul id="connecting_line" className='relative flex space-x-24 auto mt-5 w-full -z-1'>
             {
-              ["Nome", "Endereço", "Contato", "Carreira"].map((item, index) => (
+              ["Name", "Address", "Contact", "Career"].map((item, index) => (
                 <li data-title={item} className={`${currIndex >= index ? 'z-1 border-2 border-teal-500 before:text-black bg-teal-500 text-white grid rounded-full w-14 h-14 place-items-center before:content-[attr(data-title)] before:absolute before:text-xs before:-top-6 before:color-teal-500': 'bg-white z-1 border-2 border-black grid rounded-full w-14 h-14 place-items-center before:content-[attr(data-title)] before:absolute before:text-xs before:-top-6 before:color-teal-500'}`} key={item}>
                   {index}
                 </li>
@@ -179,7 +175,7 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
               </div>
               <div className="flex items-start flex-col mb-6">
                   <label className="block text-sm font-medium text-gray-900 dark:text-cyan-500">Username</label>
-                  <label className="block mb-2 text-xs text-black">*opcional</label>
+                  <label className="block mb-2 text-xs text-black">*optional</label>
                   <input               
                   id="input" 
                   name='username'
@@ -199,7 +195,7 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
               </div>
   
               <div className="flex items-start flex-col mb-6">
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Senha
+                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Password
                 </label>
                 <input               
                 id="input" 
@@ -211,7 +207,7 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
               </div>
   
               <div className="flex items-start flex-col mb-6">
-              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Confirme a Senha
+              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Confirm password
               </label>
               <input               
               id="input" 
@@ -220,7 +216,7 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
               onChange={(event)=> 
               event.target.value !== loginData.password? setStatus({
                   isValid: false,
-                  message: 'As senhas não são iguais',
+                  message: 'The passwords are not the same',
               }): setStatus({
                 isValid: true,
                 message: '',
@@ -289,7 +285,7 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
           {currIndex === 2 ? (
             <div className="mb-6">
               <div className="flex items-start flex-col mb-6">
-                  <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Telefone
+                  <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Phone number
                   </label>
                   <input               
                   id="input" 
@@ -325,7 +321,7 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
           {currIndex === 3 ? (
             <div className="mb-6">
               <div className="flex w-max mb-6 flex-col">
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Categoria</label>
+                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Category</label>
                 {category.map((item:any) => (
                   <div className="flex items-center">
                     <input id="default-radio-1" type="radio" name="category" value={item.value} onChange={(event)=> handleInputChange(event)} className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
@@ -334,7 +330,7 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
                 ))}
               </div>
               <div className="flex items-start flex-col mb-6">
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Anos de experiência</label>
+                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Years of experience</label>
                 <div className="relative inline-block text-left mb-8">
                   <div className="absolute -right-30 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button">
                     <div className="py-1" role="none">

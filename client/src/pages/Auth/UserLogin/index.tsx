@@ -1,17 +1,11 @@
 import axios from 'axios';
 import * as React from 'react';
 import { useNavigate } from "react-router-dom";
-
-import * as yup from 'yup';
 import { saveUserToLocalStorage } from '../../../auth';
 import MessageModal from '../../../components/ErrorModal';
-import { userLoginSchema } from '../Validations/UserValidation';
-
-
 
 export interface IUserLoginProps {
 }
-
 
 
 export function UserLogin (props: IUserLoginProps) {

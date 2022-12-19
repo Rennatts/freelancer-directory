@@ -1,7 +1,7 @@
 import * as React from 'react';
 import axios from 'axios';
 import './search.css';
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 import teamImage from './../../images/creative_team_re.svg';
 
 export interface ISearchProps {
@@ -42,7 +42,7 @@ export function SearchFreelancerByCity (props: ISearchProps) {
             name='selectedCity'
             value={selectedCity}
             onChange={(event)=> setSelectedCity((event.target.value))}
-            className="appearance-none bg-transparent w-full mr-3 py-1 px-3 focus:outline-none text-md" type="text" placeholder="Procure por cidade" aria-label="Full name"/>
+            className="appearance-none bg-transparent w-full mr-3 py-1 px-3 focus:outline-none text-md" type="text" placeholder="Search for city" aria-label="Full name"/>
             <button 
             onClick={handleSubmit}
             className="flex-shrink-0 bg-teal-500 hover:bg-teal-300 hover:border-bg-teal-300 hover:text-black hover:border-teal-300 text-md text-white py-1 px-5 rounded" type="button">

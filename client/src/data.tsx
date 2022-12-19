@@ -1,19 +1,19 @@
 export const experience = [
     {
       label: "experience",
-      category: "menos de 1 ano"
+      category: "less than 1 year"
     },
     {
       label: "experience",
-      category: "entre 5 e 10 anos"
+      category: "5 to 10 years"
     },
     {
       label: "experience",
-      category: "entre 10 e 15 anos"
+      category: "10 to 15 years"
     },
     {
       label: "experience",
-      category: "mais de 15 anos"
+      category: "more than 15 years"
     },
 ];
 

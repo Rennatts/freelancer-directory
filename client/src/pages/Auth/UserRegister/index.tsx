@@ -1,12 +1,9 @@
 import axios from 'axios';
 import * as React from 'react';
 import { useNavigate } from "react-router-dom";
-import * as yup from 'yup';
 import { saveUserToLocalStorage } from '../../../auth';
 import ErrorModal from '../../../components/ErrorModal';
-import MessageModal from '../../../components/ErrorModal';
 import SuccessModal from '../../../components/SuccessModal';
-import { userRegisterSchema } from '../Validations/UserValidation';
 
 
 export interface IUserLoginProps {
@@ -15,7 +12,6 @@ export interface IUserLoginProps {
 
 
 export function UserRegister (props: IUserLoginProps) {
-  const [isPasswordMatch, setisPasswordMatch] = React.useState<boolean>(false);
   const [error, setError] = React.useState<boolean>(false);
   const [success, setSuccess] = React.useState<boolean>(false);
   const [ status, setStatus ] = React.useState({
