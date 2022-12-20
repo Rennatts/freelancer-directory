@@ -15,7 +15,7 @@ import { isAuthenticated, isLogged } from '../auth';
 import { UserContext } from '../UserContext';
 import ProtectedRoute from '../auth/ProtectedRoute';
 import { FreelancerProfile } from '../pages/Freelancer/FreelancerProfile';
-
+import { EditFreelancerProfile } from '../pages/Freelancer/EditFreelancerProfile';
 
 
 function MainRouter(){
@@ -38,7 +38,7 @@ function MainRouter(){
                             <Route path="/freelancers/register" element={<FreelancerRegister/>}></Route>
                             <Route path="/freelancers" element={<RedirectionFreelancers/>}></Route>
                             <Route path="/freelancers/login" element={<FreelancerLogin/>}></Route>
-                            <Route path="/freelancer/profile/:freelancerId/edit" element={<FreelancerProfile/>}></Route>
+                            <Route path="/freelancer/profile/edit/:freelancerId" element={<EditFreelancerProfile/>}></Route>
                             {/* <Route
                                 path="/oi"
                                 element={

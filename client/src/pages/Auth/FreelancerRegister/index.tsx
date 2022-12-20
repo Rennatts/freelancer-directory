@@ -57,8 +57,8 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
         setSuccess(true)
         //redirecionar para o perfil criado do usuário
         setTimeout(() => {
-          navigate(`/freelancer/profile/${res.data.id}/editProfile`)
-        }, 10000)
+          navigate(`/freelancer/profile/edit/${res.data.id}`)
+        }, 3000)
       }
     })
     .catch((err) => setError(true));
