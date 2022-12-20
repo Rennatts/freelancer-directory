@@ -4,15 +4,16 @@ import { clsx } from 'clsx';
 import { Navigate, useNavigate } from 'react-router-dom';
 
 type Props = {
-    Freelancer: Freelancer;
+    freelancer: Freelancer;
     size?: 'sm' | 'md' | 'lg';
 }
 
-export default function InfoCard({Freelancer, size="lg"}: Props) {
+export default function InfoCard({freelancer, size="lg"}: Props) {
     const navigate = useNavigate();
+    console.log("freelancer", freelancer)
     
     return (
-        <div onClick={() => navigate(`/freelancer/profile/${Freelancer.id}`)} 
+        <div onClick={() => navigate(`/freelancer/profile/${freelancer.id}`)} 
         className={clsx('cursor-pointer border-2 border-teal-500 rounded-lg shadow-2xl',
         {
             'h-10': size === 'sm',
@@ -28,18 +29,7 @@ export default function InfoCard({Freelancer, size="lg"}: Props) {
                         'text-sm': size === 'md',
                         'text-md': size === 'lg',
                     })}
-                    >{Freelancer.name}</h1>
-                    <div className={clsx('mt-5', 
-                    {
-                        'text-xl': size === 'sm',
-                        'text-sm': size === 'lg', 
-                    })}>
-                    </div>
-                </div>
-                <div className="px-6 pt-4 pb-2">
-                    <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
-                    <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
-                    <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
+                    >{freelancer.name + freelancer.surname}</h1>
                 </div>
             </div>
         </div>

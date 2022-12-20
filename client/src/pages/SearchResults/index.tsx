@@ -14,7 +14,7 @@ export interface IFindProps {
 
 
 export function SearchResults ({name, size= 'lg'}: IFindProps) {
-  const [Freelancers, setFreelancers] = React.useState<Freelancer[]>([]);
+  const [freelancers, setFreelancers] = React.useState<Freelancer[]>([]);
   const [error, setError] = React.useState();
   const [isLoading, setIsLoading] = React.useState(false);
   let { selectedCity } = useParams();
@@ -41,8 +41,8 @@ export function SearchResults ({name, size= 'lg'}: IFindProps) {
         'lg:w-1024': size === 'lg',
       }
       )}>
-      {Freelancers.map((item: Freelancer) => (
-        <InfoCard key={item.id} Freelancer={item}></InfoCard>
+      {freelancers.map((item: Freelancer) => (
+        <InfoCard key={item.id} freelancer={item}></InfoCard>
       ))}
     </div>
   );

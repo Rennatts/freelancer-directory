@@ -21,7 +21,7 @@ const Header: React.FC<IMenuProps> = (props: IMenuProps) => {
 
 
     return(
-        <div className="flex items-center flex-center flex-row space-x-80 py-7">
+        <div className="flex items-center flex-center flex-row py-7 w-full place-content-around">
             <div className="cursor-pointer text-2xl ml-10">
                 <h1><Link to="/">LOGO</Link></h1>
             </div>

@@ -11,23 +11,25 @@ export interface ITFreelancerProfileProps {
 
 
 export function FreelancerProfile ({ size= 'lg'}: ITFreelancerProfileProps) {
-    const [Freelancer, setFreelancer] = React.useState<Freelancer>();
+    const [freelancer, setFreelancer] = React.useState<Freelancer>();
     const [isLoading, setIsLoading] = React.useState(false);
-    let { FreelancerId } = useParams();
+    let { freelancerId } = useParams();
+
+    console.log("freelancer", freelancer)
   
 
     React.useEffect(() => {
         const fetchPositions = async () => {
           setIsLoading(true);
-          await axios(`http://localhost:3000/api/freelancer/${FreelancerId}`)
+          await axios(`http://localhost:3000/api/freelancer/${freelancerId}`)
           .then((response) => setFreelancer(response.data))
         };
 
-        if(!Freelancer){
+        if(!freelancer){
             fetchPositions(); 
             setIsLoading(false)
         }
-    }, [Freelancer]);
+    }, [freelancer]);
 
 
     return (
@@ -39,9 +41,8 @@ export function FreelancerProfile ({ size= 'lg'}: ITFreelancerProfileProps) {
             'lg:w-1024': size === 'lg',
         }
         )}>
-            <p>{Freelancer?.name}</p>
-            <p>{Freelancer?.email}</p>
-            
+            <p>{freelancer?.name}</p>
+            <p>{freelancer?.email}</p> 
         </div>
     );
 }
