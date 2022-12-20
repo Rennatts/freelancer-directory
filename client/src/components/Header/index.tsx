@@ -43,8 +43,8 @@ const Header: React.FC<IMenuProps> = (props: IMenuProps) => {
             (
             <nav>
                 <ul className='cursor-pointer flex align-center flex-row text-md ml-6'>
-                    <li className='px-4 hover:text-teal-500 hover:underline underline-offset-8 text-xs flex items-center flex-center'>
-                        Welcome {context?.name}
+                    <li onClick={()=> navigate(`/freelancer/profile/${context?.id}`)} className='px-4 hover:text-teal-500 hover:underline underline-offset-8 text-xs flex items-center flex-center'>
+                        My Profile
                     </li>
                     <li onClick={()=> signout()} className='px-4 rounded bg-teal-500 text-white hover:text-black hover:bg-teal-300'>
                     SingOut</li>

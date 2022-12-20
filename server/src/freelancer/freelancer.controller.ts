@@ -24,7 +24,7 @@ export class FreelancerController {
 
     @UseGuards(JwtAuthGuard)
     @Put(':id')
-    @UsePipes(new ValidationPipe())
+    // @UsePipes(new ValidationPipe())
     async updateFreelancer(
       @Param('id') id: string,
       @Body() updateData: UpdateFrelancersDTO

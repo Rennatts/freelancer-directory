@@ -43,6 +43,7 @@ export function FreelancerProfile ({ size= 'lg'}: ITFreelancerProfileProps) {
         )}>
             <p>{freelancer?.name}</p>
             <p>{freelancer?.email}</p> 
+            <p>{freelancer?.description}</p> 
         </div>
     );
 }

@@ -1,3 +1,4 @@
+import { SchemaDescription } from "yup/lib/schema";
 import { Reviews } from "./Review";
 
 export interface Freelancer { 
@@ -11,6 +12,8 @@ export interface Freelancer {
     city: String;
     zip_code: String;
     member_role: String;
+    description?: String;
+    jobTitle?: SchemaDescription;
     createdAt: Date;
     updatedAt: Date;
 }

@@ -95,6 +95,7 @@ export class FreelancerService {
                     website: freelancer.website,
                     professional_period: freelancer.professional_period,
                     description: freelancer.description,
+                    jobTitle: freelancer.jobTitle,
                     category: freelancer.category,
                     member_role: freelancer.member_role,
                     updated: Date.now(),

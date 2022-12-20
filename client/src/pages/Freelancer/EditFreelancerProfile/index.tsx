@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Freelancer } from '../../../Interfaces/Freelancer';
 import { clsx } from 'clsx';
+import { UserContext } from '../../../UserContext';
 
 export interface IEditFreelancerProfileProps {
   size?: 'sm' | 'md' | 'lg';
@@ -22,8 +23,9 @@ export function EditFreelancerProfile ({ size= 'lg'}: IEditFreelancerProfileProp
     
     let { freelancerId } = useParams();
     const navigate = useNavigate();
+    const context = React.useContext(UserContext);
 
-    console.log("freelancer", freelancer)
+    console.log("context", context)
   
 
     React.useEffect(() => {
@@ -40,11 +42,19 @@ export function EditFreelancerProfile ({ size= 'lg'}: IEditFreelancerProfileProp
     }, [freelancer]);
     
     const handleSubmit = async (e: any) => {
+        console.log("userData", userData)
         e.preventDefault();
+
+        const config = {
+          headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${context?.token}`,
+          }
+        };
     
-        axios
-        .post(`http://localhost:3000/api/auth/signup_freelancer`, userData)
+        axios.put(`http://localhost:3000/api/freelancer/${freelancer?.id}`, userData, config)
         .then((res) => {
+          console.log("res", res)
     
           if(res.status === 201){
             setSuccess(true)
@@ -69,7 +79,7 @@ export function EditFreelancerProfile ({ size= 'lg'}: IEditFreelancerProfileProp
             </label>
             <input               
             id="input" 
-            name='name'
+            name='jobTitle'
             value={userData.jobTitle}
             onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" required>
             </input>
@@ -79,7 +89,7 @@ export function EditFreelancerProfile ({ size= 'lg'}: IEditFreelancerProfileProp
             </label>
             <textarea               
             id="input" 
-            name='name'
+            name='description'
             value={userData.description}
             onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" required>
             </textarea>
