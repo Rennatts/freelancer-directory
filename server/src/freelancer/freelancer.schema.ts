@@ -118,6 +118,7 @@ export interface Freelancer extends mongoose.Document {
   website: String;
   professional_period: String;
   description: String;
+  jobTitle: String;
   category: FreelancerCategory;
   member_role: FreelancerMember;
   hashedPassword: string;

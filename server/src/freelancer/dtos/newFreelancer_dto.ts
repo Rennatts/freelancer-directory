@@ -23,6 +23,7 @@ export class NewFreelancersDTO {
     website?: String;
     professional_period: String;
     description?: String;
+    jobTitle?: string;
     category: FreelancerCategory;
     member_role: FreelancerMember;
     createdAt: Date;

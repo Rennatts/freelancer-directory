@@ -32,6 +32,7 @@ export class FreelancerService {
             website: freelancer.website,
             professional_period: freelancer.professional_period,
             description: freelancer.description,
+            jobTitle: freelancer.jobTitle,
             category: freelancer.category,
             member_role: freelancer.member_role,
             created: Date.now(),
@@ -159,6 +160,8 @@ export class FreelancerService {
             number: freelancer.number,
             member_role: freelancer.member_role,
             reviews: freelancer.reviews,
+            description: freelancer.description,
+            jobTitle: freelancer.jobTitle,
             createdAt: freelancer.createdAt,
             updatedAt: freelancer.updatedAt
         }

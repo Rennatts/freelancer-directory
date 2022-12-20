@@ -8,7 +8,7 @@ import { CityNotFound } from '../components/CityNotFound';
 import { SearchResults } from '../pages/SearchResults';
 import { UserLogin } from '../pages/Auth/UserLogin';
 import { UserRegister } from '../pages/Auth/UserRegister';
-import { FreelancerRegister } from '../pages/Auth/FreelancerRegister';
+import { FreelancerRegister } from './../pages/Auth/FreelancerRegister';
 import { RedirectionFreelancers } from '../pages/RedirectionFreelancers';
 import { FreelancerLogin } from '../pages/Auth/FreelancerLogin';
 import { isAuthenticated, isLogged } from '../auth';
@@ -24,7 +24,7 @@ function MainRouter(){
    
     return (
         <div>
-            <UserContext.Provider value={{name: isAuthenticated().name, token: isAuthenticated().token}}>
+            <UserContext.Provider value={{name: isAuthenticated().name, userType:isAuthenticated().userType, id: isAuthenticated().id, token: isAuthenticated().token}}>
                 <Router>
                     <Header></Header>
                         <Routes>
@@ -38,6 +38,7 @@ function MainRouter(){
                             <Route path="/freelancers/register" element={<FreelancerRegister/>}></Route>
                             <Route path="/freelancers" element={<RedirectionFreelancers/>}></Route>
                             <Route path="/freelancers/login" element={<FreelancerLogin/>}></Route>
+                            <Route path="/freelancer/profile/:freelancerId/edit" element={<FreelancerProfile/>}></Route>
                             {/* <Route
                                 path="/oi"
                                 element={

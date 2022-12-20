@@ -2,6 +2,8 @@ import React from "react";
 
 interface Context {
     name: string;
+    id: string;
+    userType: string;
     token: string;
 }
 

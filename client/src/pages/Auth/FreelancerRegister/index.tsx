@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useNavigate } from "react-router-dom";
-import { FreelancerrRegisterSchema } from '../Validations/UserValidation';
 import './index.css';
 import axios from 'axios';
 import { experience, category } from '../../../data';
@@ -58,7 +57,7 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
         setSuccess(true)
         //redirecionar para o perfil criado do usuário
         setTimeout(() => {
-          navigate(`/freelancer/profile/${res.data.id}`)
+          navigate(`/freelancer/profile/${res.data.id}/editProfile`)
         }, 10000)
       }
     })

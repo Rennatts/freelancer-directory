@@ -81,7 +81,7 @@ export class AuthService {
 
         const nameToBeShown = user.username || user.name;
 
-        return {token: jwt, name: nameToBeShown, userType: Usertype.user};
+        return {token: jwt, name: nameToBeShown, id: user._id, userType: Usertype.user};
     }
 
 
@@ -126,7 +126,7 @@ export class AuthService {
             user
         })
 
-        return {token: jwt, name: user.name, userType: Usertype.Freelancer};
+        return {token: jwt, name: user.name, id: user._id, userType: Usertype.Freelancer};
     }
     
 }
