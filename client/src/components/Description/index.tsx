@@ -1,5 +1,9 @@
 import * as React from 'react';
 import './description.css';
+import photo01 from './../../images/001.jpg';
+import photo02 from './../../images/002.jpg';
+import photo03 from './../../images/003.jpg';
+
 
 export interface IDescriptionProps {
 }
@@ -7,22 +11,18 @@ export interface IDescriptionProps {
 
 export function Description (props: IDescriptionProps) {
   return (
-    <div className='mt-96'>
-      <div id="title" className='flex-auto content-center'>
-        <h1 className="text-3xl font-bold">
-          Hello world!
-        </h1>
+    <div className='photo_box'>
+      <div className='box_01'>
+        <img className='photo01' src={photo01} alt="photo01"></img>
       </div>
-      <div className='m-10 grid gap-4 grid-cols-3 max-w-7xl h-64'>
-        <div className='mr-5 basis-1/2 border-radius: 0.5rem outline outline-offset-2 outline-cyan-500'>
-          <p>oi</p>
-        </div>
-        <div className='mr-5 basis-1/2 border-radius: 0.5rem outline outline-offset-2 outline-cyan-500'>
-          <p>oi</p>
-        </div>
-        <div className='mr-5 basis-1/2 border-radius: 0.5rem outline outline-offset-2 outline-cyan-500'>
-          <p>oi</p>
-        </div>
+      <div className='box_02'>
+        <img className='photo02' src={photo02} alt="photo02"></img>
+      </div>
+      <div className='box_03'>
+        <img className='photo03' src={photo03} alt="photo03"></img>
+      </div>
+      <div className='description'>
+        <p>Find freelancers, make work contract, keep track of the work together, keep the communication on track</p>
       </div>
     </div>
   );
