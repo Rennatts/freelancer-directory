@@ -130,49 +130,6 @@ export class FreelancerService {
         });
     }
 
-    async createRating(id: string, rating: any): Promise<any>  {
-
-        let newRating = {
-            score: rating.score, 
-            postedBy: rating.userId,
-        };
-    
-        this.freelancerModel.findByIdAndUpdate(
-            id,
-            { $push: {rating: newRating }},
-            {new: true}
-        )
-        .sort({ createdAt: -1 })
-        .exec((err,result) => {
-            if(err){
-                return err;
-            } else {
-                return result;
-            }
-        });
-    }
-
-    async getAvgScore(id: string): Promise<any> {
-        const freelancer = await this.freelancerModel.findById(id);
-
-        let arrayOfScores = [];
-
-        freelancer.rating.forEach((item) =>  arrayOfScores.push(item.score));
-
-        const averageScore = arrayOfScores.reduce((a, b) => a + b, 0) / arrayOfScores.length;
-
-        return {"averageScore": averageScore};
-    }
-
-
-    async getScoreRanking(): Promise<FreelancerDetails[] | string> {
-
-        const allFreelancers = await this.freelancerModel.find();
-
-        if(!allFreelancers) throw HttpException;
-
-        return 'allFreelancers';
-    }
 
 
     async getFreelancerByCity(city: string): Promise<FreelancerDetails[]> {
@@ -201,7 +158,6 @@ export class FreelancerService {
             zip_code: freelancer.zip_code,
             number: freelancer.number,
             member_role: freelancer.member_role,
-            rating: freelancer.rating,
             reviews: freelancer.reviews,
             createdAt: freelancer.createdAt,
             updatedAt: freelancer.updatedAt

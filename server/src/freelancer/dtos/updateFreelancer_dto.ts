@@ -31,7 +31,6 @@ export class UpdateFrelancersDTO {
 
     description?: String;
 
-    rating: any[];
     reviews: createReviewDTO[];
 
     category: FreelancerCategory[] = [];

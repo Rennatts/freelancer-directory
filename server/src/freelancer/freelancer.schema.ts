@@ -1,6 +1,5 @@
 import * as mongoose from "mongoose"
 import { createReviewDTO } from "./dtos/createReview_dto";
-import { ratingDTO } from "./dtos/Rating_dto";
 import { FreelancerCategory } from "./interfaces/freelancerCategory_enum";
 import { FreelancerMember } from "./interfaces/FreelancerMember_enum";
 
@@ -63,14 +62,6 @@ export const FreelancerSchema = new mongoose.Schema(
       type: String,
       required: false,
     },
-    rating: [
-      {
-      score: Number,
-      postedBy: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-      },
-    }],
     reviews: [{
       reviewText: String, 
       score: Number,
@@ -120,7 +111,6 @@ export interface Freelancer extends mongoose.Document {
   address: String;
   number: String;
   city: String;
-  rating: ratingDTO[];
   reviews: createReviewDTO[];
   country: String;
   phone_number: String;

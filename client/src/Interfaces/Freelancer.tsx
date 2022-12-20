@@ -1,4 +1,3 @@
-import { Rating } from "./Rating";
 import { Reviews } from "./Review";
 
 export interface Freelancer { 
@@ -9,7 +8,6 @@ export interface Freelancer {
     email: string;
     profile_photo?: string;
     reviews?: Reviews[];
-    rating?: Rating[],
     city: String;
     zip_code: String;
     member_role: String;

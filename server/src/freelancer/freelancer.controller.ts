@@ -48,28 +48,6 @@ export class FreelancerController {
         return this.freelancerService.createReview(id, review);
     }
 
-    //@UseGuards(JwtAuthGuard)
-    @Put('rating/:id')
-    async createRating(
-        @Body() rating: any,
-        @Param('id') id: string,
-    ): Promise<any> {
-        return this.freelancerService.createRating(id, rating);
-    }
-
-    //@UseGuards(JwtAuthGuard)
-    @Get('avg_score/:id')
-    async getAvgScore(
-        @Param('id') id: string,
-    ): Promise<any> {
-        return this.freelancerService.getAvgScore(id);
-    }
-
-    //@UseGuards(JwtAuthGuard)
-    @Get('ranking')
-    async getScoreRanking(): Promise<any> {
-        return this.freelancerService.getScoreRanking();
-    }
 
     //@UseGuards(JwtAuthGuard)
     @Get('find_by_city/:city')
