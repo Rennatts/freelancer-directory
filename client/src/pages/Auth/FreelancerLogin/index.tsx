@@ -3,6 +3,7 @@ import * as React from 'react';
 import { useNavigate } from "react-router-dom";
 import { saveUserToLocalStorage } from '../../../auth';
 import MessageModal from '../../../components/ErrorModal';
+import { useEffect } from 'react';
 
 
 export interface IFreelancerLoginProps {
@@ -38,6 +39,13 @@ export function FreelancerLogin (props: IFreelancerLoginProps) {
     })
     .catch((err) => setError(true));
   };
+
+  useEffect(()=> {
+    if(error === true) setLoginData({email: "", password: ""});
+    setError(false)
+  },[error])
+
+  console.log("loginData", loginData)
 
 
   function handleInputChange(event: any) {

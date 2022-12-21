@@ -5,6 +5,8 @@ import { ExistingUserDTO } from 'src/user/dtos/existingUser_dto';
 import { NewUserDTO } from 'src/user/dtos/newUser_dto';
 import { AuthService } from './auth.service';
 import { JwtAuthGuard } from './guard/jwt-auth.guard';
+import { LocalAuthGuard } from './guard/local-auth.guard';
+import { LocalStrategy } from './guard/local.strategy';
 import { LoginReturn } from './interfaces/loginReturn.interface';
 
 @Controller('auth')
@@ -16,7 +18,7 @@ export class AuthController {
         return this.authService.registerUser(user);
     }
 
-    // @UseGuards(JwtAuthGuard)
+    @UseGuards(LocalAuthGuard)
     @Post('login_user')
     @HttpCode(HttpStatus.OK)
     loginUser(@Body() user: ExistingUserDTO): Promise<LoginReturn | string> {
@@ -35,9 +37,9 @@ export class AuthController {
     }
 
 
-    // @UseGuards(JwtAuthGuard)
+    // @UseGuards(LocalAuthGuard)
     @Post('login_freelancer')
-    @HttpCode(HttpStatus.OK)
+    @HttpCode(HttpStatus.FORBIDDEN)
     loginFreelancer(@Body() freelancer: ExistingUserDTO): Promise<LoginReturn | string> {
         return this.authService.loginFreelancer(freelancer);
     }

@@ -5,6 +5,7 @@ import { UpdateFrelancersDTO } from './dtos/updateFreelancer_dto';
 import { FreelancerDetails } from './interfaces/freelancer.interface';
 import { Freelancer } from './freelancer.schema';
 import { FreelancerService } from './freelancer.service';
+import { LocalAuthGuard } from 'src/auth/guard/local-auth.guard';
 
 @Controller('freelancer')
 export class FreelancerController {
@@ -16,13 +17,14 @@ export class FreelancerController {
     getFreelancer(@Param('id') id: string): Promise<any | null> {
         return this.freelancerService.findById(id);
     }
-
+    
+    @UseGuards(LocalAuthGuard)
     @Get()
     getAllFreelancers(): Promise<FreelancerDetails[] | string> {
         return this.freelancerService.findAllFreelancers();
     }
 
-    @UseGuards(JwtAuthGuard)
+    @UseGuards(LocalAuthGuard)
     @Put(':id')
     // @UsePipes(new ValidationPipe())
     async updateFreelancer(

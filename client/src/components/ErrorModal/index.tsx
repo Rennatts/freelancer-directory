@@ -33,13 +33,13 @@ const ErrorModal = ({mostrar}: IMessageModalProps) => {
                             <div className="w-full mt-27 mb-20 flex flex-col items-center flex-center mt-6">
                               <MdError color="red" size="60px"></MdError>
                               <h2 className="mt-6">ERRO</h2>
-                              <p className="mt-6">Algum problema aconteceu.</p>
-                              <p className="mt-2">Tente novamente mais tarde.</p>
+                              <p className="mt-6">E-mail or passwords is wrong.</p>
+                              <p className="mt-2">Try again</p>
                             </div>
                             <div className="flex justify-center items-center flex-center">
                               <button className="bg-teal-500 text-white active:bg-teal-300 font-bold px-6 py-3 rounded shadow hover:shadow-lg hover:bg-teal-300 hover:border-teal-300 hover:tex-black outline-none focus:outline-none mr-1 mb-1"
                                 type="button"
-                                onClick={() => setShowModal(false)}>Fechar
+                                onClick={() => setShowModal(false)}>Close
                               </button>
                             </div>
                         </div>

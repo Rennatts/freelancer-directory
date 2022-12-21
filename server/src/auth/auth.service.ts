@@ -65,6 +65,7 @@ export class AuthService {
     }
 
     async validateUser(email: string, password: string): Promise<LoginReturn | string> {
+        console.log("email----")
         const user = await this.userService.findByEmail(email);
         //if user does not exist '!!' transform the answer into a boolean
         const doesUserExists = !!user;
@@ -116,7 +117,7 @@ export class AuthService {
         //if user does not exist '!!' transform the answer into a boolean
         const doesUserExists = !!user;
 
-        if(!doesUserExists) return 'email not registered, please make a login';
+        if(!doesUserExists) throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);;
         
         const doesPasswordMatch = await  this.doesPasswordMatch(password, user.password);
 

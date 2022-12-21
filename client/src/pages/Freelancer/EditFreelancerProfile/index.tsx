@@ -25,7 +25,7 @@ export function EditFreelancerProfile ({ size= 'lg'}: IEditFreelancerProfileProp
     const navigate = useNavigate();
     const context = React.useContext(UserContext);
 
-    console.log("context", context)
+    console.log("context", context?.token)
   
 
     React.useEffect(() => {
@@ -42,13 +42,12 @@ export function EditFreelancerProfile ({ size= 'lg'}: IEditFreelancerProfileProp
     }, [freelancer]);
     
     const handleSubmit = async (e: any) => {
-        console.log("userData", userData)
         e.preventDefault();
 
         const config = {
           headers: {
               'Content-Type': 'application/json',
-              Authorization: `Bearer ${context?.token}`,
+              Authorization: `${context?.token}`,
           }
         };
     
@@ -60,14 +59,13 @@ export function EditFreelancerProfile ({ size= 'lg'}: IEditFreelancerProfileProp
             setSuccess(true)
             setTimeout(() => {
               navigate(`/freelancer/profile/${res.data.id}`)
-            }, 10000)
+            }, 3000)
           }
         })
         .catch((err) => setError(true));
     };
 
     function handleInputChange(event: any) {
-        console.log("222", event.target.value)
         setUserData({...userData, [event.target.name]: event.target.value});
     }
 
