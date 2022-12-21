@@ -30,7 +30,7 @@ export function FreelancerLogin (props: IFreelancerLoginProps) {
     .post(`http://localhost:3000/api/auth/login_freelancer`, loginData)
     .then((res) => {
       console.log("res", res)
-      if(res.status === 200){
+      if(res.status === 201){
         saveUserToLocalStorage(res.data);
         setTimeout(() => {
           navigate(`/`)
@@ -41,8 +41,10 @@ export function FreelancerLogin (props: IFreelancerLoginProps) {
   };
 
   useEffect(()=> {
-    if(error === true) setLoginData({email: "", password: ""});
-    setError(false)
+    if(error === true){
+      setLoginData({email: "", password: ""}) 
+      setError(false);
+    }
   },[error])
 
   console.log("loginData", loginData)

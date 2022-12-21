@@ -117,11 +117,11 @@ export class AuthService {
         //if user does not exist '!!' transform the answer into a boolean
         const doesUserExists = !!user;
 
-        if(!doesUserExists) throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);;
+        if(!doesUserExists) return 'email not registered, please make a login';
         
         const doesPasswordMatch = await  this.doesPasswordMatch(password, user.password);
 
-        if(!doesPasswordMatch) return 'wrong password, try again';
+        if(!doesPasswordMatch) throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);
 
         const jwt = await this.jwtService.signAsync({
             user

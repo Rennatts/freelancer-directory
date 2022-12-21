@@ -39,7 +39,8 @@ export class AuthController {
 
     // @UseGuards(LocalAuthGuard)
     @Post('login_freelancer')
-    @HttpCode(HttpStatus.FORBIDDEN)
+    // @HttpCode(HttpStatus.FORBIDDEN)
+    // @HttpCode(HttpStatus.OK)
     loginFreelancer(@Body() freelancer: ExistingUserDTO): Promise<LoginReturn | string> {
         return this.authService.loginFreelancer(freelancer);
     }
