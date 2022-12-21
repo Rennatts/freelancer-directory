@@ -13,6 +13,8 @@ export interface Freelancer {
     zip_code: String;
     member_role: String;
     description?: String;
+    instagram?: String;
+    website?: String;
     job_title?: String;
     createdAt: Date;
     updatedAt: Date;
