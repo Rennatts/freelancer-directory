@@ -60,7 +60,7 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
         saveUserToLocalStorage(res.data);
         setTimeout(() => {
           navigate(`/freelancer/profile/edit/${res.data.id}`)
-        }, 3000)
+        }, 2000)
       }
     })
     .catch((err) => setError(true));

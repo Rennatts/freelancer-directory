@@ -39,7 +39,7 @@ export function FreelancerProfile ({ size= 'lg'}: ITFreelancerProfileProps) {
     return (
         <div className="bg-teal-300 place-content-around p-20 ml-80 mr-80">
             <div className="flex items-start flex-start flex-col">
-                {/* <h1>{freelancer?.job_title}</h1>  */}
+                <h1>{freelancer?.job_title}</h1> 
                 <h1>{freelancer?.description}</h1> 
                 <p>{freelancer?.name}</p>
                 <p>{freelancer?.email}</p> 

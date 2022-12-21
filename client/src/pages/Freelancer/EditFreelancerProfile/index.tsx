@@ -17,7 +17,7 @@ export function EditFreelancerProfile ({ size= 'lg'}: IEditFreelancerProfileProp
     const [success, setSuccess] = React.useState<boolean>(false);
     const [error, setError] = React.useState<boolean>(false);
     const [ userData, setUserData] = React.useState({
-        jobTitle: "",
+        job_title: "",
         description: ""
     })
     
@@ -40,6 +40,8 @@ export function EditFreelancerProfile ({ size= 'lg'}: IEditFreelancerProfileProp
             setIsLoading(false)
         }
     }, [freelancer]);
+
+
     
     const handleSubmit = async (e: any) => {
         e.preventDefault();
@@ -55,11 +57,11 @@ export function EditFreelancerProfile ({ size= 'lg'}: IEditFreelancerProfileProp
         .then((res) => {
           console.log("res", res)
     
-          if(res.status === 201){
+          if(res.status === 200){
             setSuccess(true)
             setTimeout(() => {
-              navigate(`/freelancer/profile/${res.data.id}`)
-            }, 3000)
+              navigate(`/freelancer/profile/${freelancer?.id}`)
+            }, 1000)
           }
         })
         .catch((err) => setError(true));
@@ -77,8 +79,8 @@ export function EditFreelancerProfile ({ size= 'lg'}: IEditFreelancerProfileProp
             </label>
             <input               
             id="input" 
-            name='jobTitle'
-            value={userData.jobTitle}
+            name='job_title'
+            value={userData.job_title}
             onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" required>
             </input>
         </div>

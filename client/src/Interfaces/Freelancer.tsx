@@ -13,7 +13,7 @@ export interface Freelancer {
     zip_code: String;
     member_role: String;
     description?: String;
-    job_title?: SchemaDescription;
+    job_title?: String;
     createdAt: Date;
     updatedAt: Date;
 }
