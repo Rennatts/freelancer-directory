@@ -35,7 +35,7 @@ export class UpdateFrelancersDTO {
 
     category: FreelancerCategory[] = [];
 
-    jobTitle?: String;
+    job_title?: String;
 
     member_role: FreelancerMember;
     createdAt: Date;

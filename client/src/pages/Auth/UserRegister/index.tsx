@@ -44,7 +44,7 @@ export function UserRegister (props: IUserLoginProps) {
     .then((res) => {
       if(res.status === 201){
         setSuccess(true)
-        saveUserToLocalStorage(res.data.token);
+        saveUserToLocalStorage(res.data);
         setTimeout(() => {
           navigate(`/`)
         }, 4000)

@@ -37,7 +37,7 @@ export class AuthService {
 
     //Methods for user
 
-    async registerUser(user: Readonly<NewUserDTO>): Promise<{token: string, id: string} | HttpException> {
+    async registerUser(user: Readonly<NewUserDTO>): Promise<LoginReturn | HttpException> {
         const { name, surname, email, password } = user;
 
         const existingUser = await this.userService.findByEmail(user.email);
@@ -51,7 +51,7 @@ export class AuthService {
             newUser
         })
 
-        return {token: jwt, id: newUser._id};
+        return {token: jwt, id: newUser._id, name: newUser.name, userType: Usertype.user};
     }
 
     async loginUser(user: ExistingUserDTO,): Promise<LoginReturn  | string> {
@@ -86,24 +86,24 @@ export class AuthService {
     }
 
 
-    async registerFreelancer(Freelancer: NewFreelancersDTO): Promise<{token: string, id: string} | string> {
-        const { password } = Freelancer;
+    async registerFreelancer(freelancer: NewFreelancersDTO): Promise<LoginReturn | string> {
+        const { password } = freelancer;
 
-        const existingFreelancer = await this.FreelancerService.findByEmail(Freelancer.email)
+        const existingFreelancer = await this.FreelancerService.findByEmail(freelancer.email)
 
-        if(existingFreelancer) return 'an user with this e-mail already registered';
+        if(existingFreelancer) throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);;
 
         const hashedPassword = await this.hashPassword(password);
 
-        Freelancer.password = hashedPassword;
+        freelancer.password = hashedPassword;
 
-        const newFreelancer = await this.FreelancerService.create(Freelancer);
+        const newFreelancer = await this.FreelancerService.create(freelancer);
 
         const jwt = await this.jwtService.signAsync({
             newFreelancer
         })
 
-        return {token: jwt, id: newFreelancer._id};
+        return {token: jwt, id: newFreelancer._id, name: newFreelancer.name, userType: Usertype.Freelancer};
     }
 
     async loginFreelancer(user: LoginFreelancerDTO,): Promise<LoginReturn | string> {
@@ -126,6 +126,8 @@ export class AuthService {
         const jwt = await this.jwtService.signAsync({
             user
         })
+
+        console.log("user.name", user.name)
 
         return {token: jwt, name: user.name, id: user._id, userType: Usertype.Freelancer};
     }

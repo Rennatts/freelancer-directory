@@ -32,7 +32,7 @@ export class FreelancerService {
             website: freelancer.website,
             professional_period: freelancer.professional_period,
             description: freelancer.description,
-            jobTitle: freelancer.jobTitle,
+            job_title: freelancer.job_title,
             category: freelancer.category,
             member_role: freelancer.member_role,
             created: Date.now(),
@@ -46,11 +46,11 @@ export class FreelancerService {
     }
 
     async findById(id: string): Promise<any | null> {
-        const Freelancer = await this.freelancerModel.findById(id);
+        const freelancer = await this.freelancerModel.findById(id);
 
-        if(!Freelancer) return null;
+        if(!freelancer) return null;
 
-        return this._getFreelancerDetails(Freelancer);
+        return this._getFreelancerDetails(freelancer);
     }
 
     async findAllFreelancers(): Promise<FreelancerDetails[] | string> {
@@ -78,6 +78,7 @@ export class FreelancerService {
     }
 
     async updateFreelancer(id: string, freelancer: UpdateFrelancersDTO ): Promise<any | string>  {
+        console.log("freelancer", freelancer)
         this.freelancerModel.findByIdAndUpdate(id, 
             {$set: 
                 {
@@ -95,7 +96,7 @@ export class FreelancerService {
                     website: freelancer.website,
                     professional_period: freelancer.professional_period,
                     description: freelancer.description,
-                    jobTitle: freelancer.jobTitle,
+                    job_title: freelancer.job_title,
                     category: freelancer.category,
                     member_role: freelancer.member_role,
                     updated: Date.now(),
@@ -105,6 +106,7 @@ export class FreelancerService {
                     if(err) {
                         return ({error: err});
                     }else{
+                        console.log("user", user)
                         return user;
                     }
                 }
@@ -162,7 +164,7 @@ export class FreelancerService {
             member_role: freelancer.member_role,
             reviews: freelancer.reviews,
             description: freelancer.description,
-            jobTitle: freelancer.jobTitle,
+            job_title: freelancer.job_title,
             createdAt: freelancer.createdAt,
             updatedAt: freelancer.updatedAt
         }

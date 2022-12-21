@@ -62,6 +62,10 @@ export const FreelancerSchema = new mongoose.Schema(
       type: String,
       required: false,
     },
+    job_title: {
+      type: String,
+      required: false,
+    },
     reviews: [{
       reviewText: String, 
       score: Number,
@@ -118,7 +122,7 @@ export interface Freelancer extends mongoose.Document {
   website: String;
   professional_period: String;
   description: String;
-  jobTitle: String;
+  job_title: String;
   category: FreelancerCategory;
   member_role: FreelancerMember;
   hashedPassword: string;

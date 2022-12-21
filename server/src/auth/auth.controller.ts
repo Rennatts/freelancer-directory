@@ -14,7 +14,7 @@ export class AuthController {
     constructor(private authService: AuthService) {}
 
     @Post('signup_user')
-    signupUser(@Body() user: NewUserDTO): Promise<{token: string} | HttpException>{
+    signupUser(@Body() user: NewUserDTO): Promise<LoginReturn | HttpException>{
         return this.authService.registerUser(user);
     }
 
@@ -32,12 +32,12 @@ export class AuthController {
     }
 
     @Post('signup_freelancer')
-    signupFreelancer(@Body() freelancer: NewFreelancersDTO): Promise<{token: string, id: string} | string> {
+    signupFreelancer(@Body() freelancer: NewFreelancersDTO): Promise<LoginReturn | string> {
         return this.authService.registerFreelancer(freelancer);
     }
 
 
-    // @UseGuards(LocalAuthGuard)
+    // @UseGuards(JwtAuthGuard)
     @Post('login_freelancer')
     // @HttpCode(HttpStatus.FORBIDDEN)
     // @HttpCode(HttpStatus.OK)

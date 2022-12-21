@@ -21,8 +21,6 @@ import { EditFreelancerProfile } from '../pages/Freelancer/EditFreelancerProfile
 function MainRouter(){
     const jwt = isLogged();
     console.log("JWT",  isAuthenticated());
-
-    console.log("ssss", isAuthenticated().name)
    
     return (
         <div>

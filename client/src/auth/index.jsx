@@ -1,8 +1,6 @@
 import axios from "axios";
-import { useNavigate } from 'react-router-dom'
 
 export const saveUserToLocalStorage = (jwt) => {
-    console.log("jwt", jwt)
     localStorage.setItem("jwt", JSON.stringify(jwt));
 }
 

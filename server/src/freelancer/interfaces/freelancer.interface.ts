@@ -13,8 +13,8 @@ export class FreelancerDetails {
     zip_code: String;
     number: String;
     member_role: String;
-    description: String;
-    jobTitle: String;
+    description?: String;
+    job_title?: String;
     createdAt: Date;
     updatedAt: Date;
 }

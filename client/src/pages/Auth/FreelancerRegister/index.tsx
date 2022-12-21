@@ -5,6 +5,7 @@ import axios from 'axios';
 import { experience, category } from '../../../data';
 import ErrorModal from '../../../components/ErrorModal';
 import SuccessModal from '../../../components/SuccessModal';
+import { saveUserToLocalStorage } from '../../../auth';
 
 
 
@@ -55,7 +56,8 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
 
       if(res.status === 201){
         setSuccess(true)
-        //redirecionar para o perfil criado do usuário
+        console.log(res.data)
+        saveUserToLocalStorage(res.data);
         setTimeout(() => {
           navigate(`/freelancer/profile/edit/${res.data.id}`)
         }, 3000)
@@ -66,7 +68,6 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
 
 
   function handleInputChange(event: any) {
-    console.log("222", event.target.value)
     setLoginData({...loginData, [event.target.name]: event.target.value});
   }
 

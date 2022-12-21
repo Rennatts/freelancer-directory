@@ -19,6 +19,8 @@ const Header: React.FC<IMenuProps> = (props: IMenuProps) => {
         navigate('/');
     }
 
+    console.log("context?.id", context)
+
 
     return(
         <div className="flex items-center flex-center flex-row py-7 w-full place-content-around">

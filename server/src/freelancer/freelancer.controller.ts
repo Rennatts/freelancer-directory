@@ -18,13 +18,13 @@ export class FreelancerController {
         return this.freelancerService.findById(id);
     }
     
-    @UseGuards(LocalAuthGuard)
+    // @UseGuards(LocalAuthGuard)
     @Get()
     getAllFreelancers(): Promise<FreelancerDetails[] | string> {
         return this.freelancerService.findAllFreelancers();
     }
 
-    @UseGuards(LocalAuthGuard)
+    // @UseGuards(LocalAuthGuard)
     @Put(':id')
     // @UsePipes(new ValidationPipe())
     async updateFreelancer(
