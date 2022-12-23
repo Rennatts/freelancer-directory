@@ -307,7 +307,7 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
           {currIndex === 3 ? (
             <div className="mb-6">
               <div className="flex items-start flex-col mb-6">
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Service type</label>
+                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Service Type</label>
                 <div className='grid grid-rows-2 grid-flow-col gap-6'>
                   {serviceType.map((item)=> (
                     <div className="flex w-full flex-row items-center" key={item.value}>

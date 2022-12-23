@@ -46,10 +46,6 @@ export const serviceType = [
     value: "voice_over"
   },
   {
-    label: "glitch",
-    value: "minimalista"
-  },
-  {
     label: "video editor",
     value: "video_editor"
   },
@@ -60,10 +56,6 @@ export const serviceType = [
   {
     label: "SEO",
     value: "seo"
-  },
-  {
-    label: "digital marketing",
-    value: "digital_marketing"
   },
   {
     label: "illustration",
@@ -80,5 +72,9 @@ export const serviceType = [
   {
     label: "UX/UI",
     value: "ux_ui"
+  },
+  {
+    label: "photographer",
+    value: "photographer"
   },
 ]

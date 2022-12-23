@@ -14,7 +14,7 @@ export interface Freelancer {
     description?: String;
     instagram?: String;
     website?: String;
-    service_type?: Array<String>;
+    service_type: Array<String>;
     job_title?: String;
     createdAt: Date;
     updatedAt: Date;
