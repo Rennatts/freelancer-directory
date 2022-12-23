@@ -14,6 +14,9 @@ export class FreelancerDetails {
     number: String;
     member_role: String;
     description?: String;
+    service_type?: String[];
+    instagram?: String;
+    website?: String;
     job_title?: String;
     createdAt: Date;
     updatedAt: Date;

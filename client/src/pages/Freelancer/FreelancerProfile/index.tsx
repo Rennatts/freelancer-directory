@@ -8,6 +8,7 @@ import { UserContext } from '../../../UserContext';
 import ProfilePhoto from './../../../images/profilePhoto.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot, faUserPen } from "@fortawesome/free-solid-svg-icons";
+import { serviceType } from '../../../data';
 
 export interface ITFreelancerProfileProps {
   size?: 'sm' | 'md' | 'lg';
@@ -36,7 +37,9 @@ export function FreelancerProfile ({ size= 'lg'}: ITFreelancerProfileProps) {
             fetchPositions(); 
             setIsLoading(false)
         }
+
     }, [freelancer]);
+
 
 
     return (
@@ -59,6 +62,10 @@ export function FreelancerProfile ({ size= 'lg'}: ITFreelancerProfileProps) {
                 <div className='w-full flex align-center justify-center mt-8 mb-8'>
                     <h1>{freelancer?.description}</h1> 
                 </div>
+                <ul className='grid grid-cols-4 gap-4'>
+                    {freelancer?.service_type?.map((item: any)=> 
+                    <li className="pl-1 pb-1 pt-1 pr-1 rounded bg-teal-500 text-white">{item}</li>)}
+                </ul>
                 <div>
                     <p>Contact Info</p>
                    <p>{freelancer?.email}</p> 
@@ -69,7 +76,7 @@ export function FreelancerProfile ({ size= 'lg'}: ITFreelancerProfileProps) {
 
             {context?.id === freelancer?.id ? 
             (
-                <div className='mt-12'>
+                <div className='mt-12 w-full flex justify-items-end'>
                     <button onClick={() => navigate(`/freelancer/profile/edit/${freelancer?.id}`)} className="text-teal-500 background-transparent font-bold uppercase px-3 py-1 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
                        <FontAwesomeIcon className="mr-2" icon={faUserPen} />Edit Profile
                     </button>

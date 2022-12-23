@@ -31,6 +31,7 @@ export class FreelancerService {
             instagram: freelancer.instagram,
             website: freelancer.website,
             professional_period: freelancer.professional_period,
+            service_type: freelancer.service_type,
             description: freelancer.description,
             job_title: freelancer.job_title,
             category: freelancer.category,
@@ -49,6 +50,8 @@ export class FreelancerService {
         const freelancer = await this.freelancerModel.findById(id);
 
         if(!freelancer) return null;
+
+        console.log("freelancer", freelancer)
 
         return this._getFreelancerDetails(freelancer);
     }
@@ -78,7 +81,7 @@ export class FreelancerService {
     }
 
     async updateFreelancer(id: string, freelancer: UpdateFrelancersDTO ): Promise<any | string>  {
-        console.log("freelancer", freelancer)
+        //console.log("freelancer", freelancer)
         this.freelancerModel.findByIdAndUpdate(id, 
             {$set: 
                 {
@@ -94,6 +97,7 @@ export class FreelancerService {
                     phone_number: freelancer.phone_number, 
                     instagram: freelancer.instagram,
                     website: freelancer.website,
+                    service_type: freelancer.service_type,
                     professional_period: freelancer.professional_period,
                     description: freelancer.description,
                     job_title: freelancer.job_title,
@@ -104,6 +108,7 @@ export class FreelancerService {
                 {new: true},
                 function(err, user){
                     if(err) {
+                        console.log("err", err)
                         return ({error: err});
                     }else{
                         console.log("user", user)
@@ -148,6 +153,7 @@ export class FreelancerService {
 
         return sameCityDetails;
     }
+
     
 
     _getFreelancerDetails(freelancer: Freelancer): FreelancerDetails {
@@ -164,6 +170,9 @@ export class FreelancerService {
             member_role: freelancer.member_role,
             reviews: freelancer.reviews,
             description: freelancer.description,
+            service_type: freelancer.service_type,
+            instagram: freelancer.instagram,
+            website: freelancer.website,
             job_title: freelancer.job_title,
             createdAt: freelancer.createdAt,
             updatedAt: freelancer.updatedAt

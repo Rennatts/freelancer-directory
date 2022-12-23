@@ -19,11 +19,12 @@ export class NewFreelancersDTO {
     city: String;
     country: String;
     phone_number: String;
+    service_type: String;
     instagram?: String;
     website?: String;
     professional_period: String;
     description?: String;
-    job_title?: string;
+    job_title?: String;
     category: FreelancerCategory;
     member_role: FreelancerMember;
     createdAt: Date;

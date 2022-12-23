@@ -87,6 +87,10 @@ export const FreelancerSchema = new mongoose.Schema(
       default: FreelancerCategory.professional,
       required: false,
     },
+    service_type: {
+      type: Array,
+      required: false,
+    },
     password: {
       type: String,
       required: true,
@@ -124,6 +128,7 @@ export interface Freelancer extends mongoose.Document {
   description: String;
   job_title: String;
   category: FreelancerCategory;
+  service_type: String[];
   member_role: FreelancerMember;
   hashedPassword: string;
   createdAt: Date,

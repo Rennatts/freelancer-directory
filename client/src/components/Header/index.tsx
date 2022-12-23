@@ -36,7 +36,10 @@ const Header: React.FC<IMenuProps> = (props: IMenuProps) => {
                         <NavLink to="/ola">ola</NavLink>
                     </li>
                     <li className='px-4 hover:text-teal-500 hover:underline underline-offset-8'>
-                        <NavLink to="/hello">hello</NavLink>
+                        <NavLink to="/hello">About us</NavLink>
+                    </li>
+                    <li className='px-4 hover:text-teal-500 hover:underline underline-offset-8'>
+                        <NavLink to="/hello">Q&A</NavLink>
                     </li>
                 </ul>
             </nav>

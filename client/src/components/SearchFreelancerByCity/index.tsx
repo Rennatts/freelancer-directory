@@ -17,7 +17,6 @@ export function SearchFreelancerByCity (props: ISearchProps) {
     const fetchPositions = async () => {
       setIsLoading(true);
       const response: any = await axios(`http://localhost:3000/api/freelancer/find_by_city/${selectedCity}`);
-      console.log(isLoading)
 
       response.data.length === 0 ? navigate(`/city/city_not_found`,  { state: selectedCity }) : navigate(`/city/${selectedCity}`);
 

@@ -22,10 +22,12 @@ export class UpdateFrelancersDTO {
     country: String;
 
     phone_number: String;
+    
+    service_type?: String[];
 
     instagram?: String;
 
-    website?: String;
+    website?: String[];
 
     professional_period: String;
 

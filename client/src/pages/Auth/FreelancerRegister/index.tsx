@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useNavigate } from "react-router-dom";
 import './index.css';
 import axios from 'axios';
-import { experience, category } from '../../../data';
+import { experience, category, serviceType } from '../../../data';
 import ErrorModal from '../../../components/ErrorModal';
 import SuccessModal from '../../../components/SuccessModal';
 import { saveUserToLocalStorage } from '../../../auth';
@@ -306,6 +306,17 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
           
           {currIndex === 3 ? (
             <div className="mb-6">
+              <div className="flex items-start flex-col mb-6">
+                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Service type</label>
+                <div className='grid grid-rows-2 grid-flow-col gap-6'>
+                  {serviceType.map((item)=> (
+                    <div className="flex w-full flex-row items-center" key={item.value}>
+                      <input id="checked-checkbox" type="checkbox" name="style" value={item.value} onChange={(event)=> handleInputChange(event)} className="w-4 h-4 text-teal-500 bg-gray-100 rounded border-gray-300 focus:ring-teal-500 dark:focus:ring-teal-500 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                      <label className="ml-2 text-sm font-medium text-black dark:text-black">{item.value}</label>
+                    </div>
+                  ))}
+                </div>
+              </div>
               <div className="flex w-max mb-6 flex-col">
                 <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Categoria</label>
                 {category.map((item:any) => (

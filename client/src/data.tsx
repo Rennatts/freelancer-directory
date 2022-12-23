@@ -29,3 +29,56 @@ export const category = [
       value: "APPRENTICE"
     },
 ]
+
+
+
+export const serviceType = [
+  {
+    label: "logo design",
+    value: "logo_design"
+  },
+  {
+    label: "wordpress",
+    value: "wordpress"
+  },
+  {
+    label: "voice over",
+    value: "voice_over"
+  },
+  {
+    label: "glitch",
+    value: "minimalista"
+  },
+  {
+    label: "video editor",
+    value: "video_editor"
+  },
+  {
+    label: "digital marketing",
+    value: "digital_marketing"
+  },
+  {
+    label: "SEO",
+    value: "seo"
+  },
+  {
+    label: "digital marketing",
+    value: "digital_marketing"
+  },
+  {
+    label: "illustration",
+    value: "illustration"
+  },
+  {
+    label: "developer",
+    value: "developer"
+  },
+  {
+    label: "copywriting",
+    value: "copywriting"
+  },
+  {
+    label: "UX/UI",
+    value: "ux_ui"
+  },
+]
