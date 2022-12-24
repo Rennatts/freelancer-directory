@@ -47,9 +47,11 @@ export function Explore (props: IExploreProps) {
           <FontAwesomeIcon className='text-2xl cursor-pointer text-gray-500' icon={faCircleChevronLeft}></FontAwesomeIcon>
         </button>
         {servicesToBeShown?.map((item) => 
-          <div className="w-42 h-72 ml-2" key={item.value}>
-            <p>{item.label}</p>
+          <div className="w-42 h-72 ml-2 cursor-pointer hover:opacity-60 transition duration-300 ease-in-out" key={item.value}>
             <img className="w-full h-full" src={item.url} alt="img"/>
+            <div className='flex align-center justify-center w-full bg-gray-100'>
+               <p className='uppercase'>{item.label}</p>
+            </div>
           </div>
         )}
         <button onClick={handleRightClick} className='flex align-center justify-center mt-32 ml-2'>
