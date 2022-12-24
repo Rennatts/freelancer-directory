@@ -36,7 +36,7 @@ export const serviceType = [
   {
     label: "logo design",
     value: "logo_design",
-    url: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.unicesumar.edu.br%2Fblog%2Ffaculdade-de-design%2F&psig=AOvVaw1JgpOGulfF4D5jd00LE7wr&ust=1671914543233000&source=images&cd=vfe&ved=0CA0QjRxqFwoTCKig_ZbNkPwCFQAAAAAdAAAAABAD",
+    url: "https://www.freelogoservices.com/blog/wp-content/uploads/Trade-show-display-image2.jpg",
   },
   {
     label: "wordpress",

@@ -6,6 +6,9 @@
       "dom.iterable",
       "esnext"
     ],
+    "types": [
+      "vite/client",
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -22,5 +25,6 @@
   },
   "include": [
     "src"
-  ]
+  ],
+  "exclude": ["**/*.stories.ts"]
 }
