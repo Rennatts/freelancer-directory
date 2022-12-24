@@ -13,7 +13,7 @@ export class ReviewService {
 
 
     async createReview(review: createReviewDTO, freelancer: any): Promise<any | null> {
-        if(this.reviewAlreadyExists(review.userId, freelancer.id)){
+        if(this.reviewAlreadyExists(review.userId, freelancer._id)){
    
         }
         const newReview = new this.reviewModel({

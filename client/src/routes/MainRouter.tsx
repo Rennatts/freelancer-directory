@@ -34,7 +34,7 @@ function MainRouter(){
                             <Route path="/city/:selectedCity" element={<CitySearchResults/>}></Route>
                             <Route path="/city/city_not_found" element={<CityNotFound/>}></Route>
                             <Route path="/service/service_not_found" element={<ServiceNotFound/>}></Route>
-                            <Route path="/city/:selectedService" element={<ServiceSearchResults/>}></Route>
+                            <Route path="/service/:selectedService" element={<ServiceSearchResults/>}></Route>
                             <Route path="/freelancer/profile/:freelancerId" element={<FreelancerProfile/>}></Route>
                             <Route path="*" element={<ErrorPage/>}></Route>
                             <Route path="/users/login" element={<UserLogin/>}></Route>

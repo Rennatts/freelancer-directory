@@ -2,7 +2,7 @@ import { Review } from "./review.interface";
 
 
 export class FreelancerDetails {
-    id: string;
+    _id: string;
     name: string;
     surname: string;
     username?: string;

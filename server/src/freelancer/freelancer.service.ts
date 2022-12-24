@@ -152,11 +152,18 @@ export class FreelancerService {
     async getFreelancerByServiceType(serviceInput: string): Promise<FreelancerDetails[]>{
         const allFreelancers = await this.freelancerModel.find();
 
-        const filteredResult = []
+        const splitedServiceInput = serviceInput.split("_").join(" ")
 
-        filteredResult.push(allFreelancers.filter((item) => {
-            return (item.service_type.indexOf(serviceInput) >= 0);
-        }));
+        // const filteredResult = []
+
+        // filteredResult.push(allFreelancers.filter((item) => {
+        //     return (item.service_type.indexOf(splitedServiceInput) >= 0);
+        // }));
+
+        const filteredResult = allFreelancers.filter((item) => {
+            return (item.service_type.indexOf(splitedServiceInput) >= 0);
+        });
+
 
         return filteredResult;
     }
@@ -164,8 +171,9 @@ export class FreelancerService {
     
 
     _getFreelancerDetails(freelancer: Freelancer): FreelancerDetails {
+        console.log("freelancer", freelancer)
         return {
-            id: freelancer._id,
+            _id: freelancer._id,
             name: freelancer.name,
             surname: freelancer.surname,
             username: freelancer.username,

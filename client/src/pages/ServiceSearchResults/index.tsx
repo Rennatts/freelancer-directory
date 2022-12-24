@@ -23,6 +23,7 @@ export function ServiceSearchResults ({name, size= 'lg'}: IServiceSearchResultsP
   console.log("selectedService", selectedService)
   
   React.useEffect(() => {
+
     const fetchPositions = async () => {
       setIsLoading(true);
       const response: any = await axios(`http://localhost:3000/api/freelancer/find_by_service/${selectedService}`);
@@ -32,6 +33,8 @@ export function ServiceSearchResults ({name, size= 'lg'}: IServiceSearchResultsP
     fetchPositions();
     setIsLoading(false)
   }, [isLoading]);
+
+  console.log("freelancers", freelancers)
 
 
   return (
@@ -44,7 +47,7 @@ export function ServiceSearchResults ({name, size= 'lg'}: IServiceSearchResultsP
       }
       )}>
       {freelancers.map((item: Freelancer) => (
-        <InfoCard key={item.id} freelancer={item}></InfoCard>
+        <InfoCard key={item._id} freelancer={item}></InfoCard>
       ))}
     </div>
   );

@@ -44,7 +44,7 @@ export function CitySearchResults ({name, size= 'lg'}: ICitySearchResultsProps) 
       }
       )}>
       {freelancers.map((item: Freelancer) => (
-        <InfoCard key={item.id} freelancer={item}></InfoCard>
+        <InfoCard key={item._id} freelancer={item}></InfoCard>
       ))}
     </div>
   );

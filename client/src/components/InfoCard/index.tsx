@@ -10,10 +10,10 @@ type Props = {
 
 export default function InfoCard({freelancer, size="lg"}: Props) {
     const navigate = useNavigate();
-    console.log("freelancer", freelancer)
+    console.log("freelancerww", freelancer)
     
     return (
-        <div onClick={() => navigate(`/freelancer/profile/${freelancer.id}`)} 
+        <div onClick={() => navigate(`/freelancer/profile/${freelancer._id}`)} 
         className={clsx('cursor-pointer border-2 border-teal-500 rounded-lg shadow-2xl',
         {
             'h-10': size === 'sm',

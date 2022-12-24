@@ -1,7 +1,7 @@
 import { Reviews } from "./Review";
 
 export interface Freelancer { 
-    id: string;
+    _id: string;
     name: string;
     surname: string;
     username?: string;
