@@ -15,7 +15,6 @@ export interface IServiceSearchResultsProps {
 
 export function ServiceSearchResults ({name, size= 'lg'}: IServiceSearchResultsProps) {
   const [freelancers, setFreelancers] = React.useState<Freelancer[]>([]);
-  const [error, setError] = React.useState();
   const [isLoading, setIsLoading] = React.useState(false);
   let { selectedService } = useParams();
   const navigate = useNavigate();

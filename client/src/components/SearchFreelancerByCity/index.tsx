@@ -26,7 +26,7 @@ export function SearchFreelancerByCity (props: ISearchProps) {
 
   
   return (
-    <div className="h-80 py-52 flex items-center flex-center flex-col place-content-around mt-16">
+    <div className="h-80 py-52 flex items-center flex-center flex-col place-content-around mt-16 mb-64">
       <div className="w-full flex flex-center items-center justify-center flex-col">
         <p className='w-90 text-2xl mb-2 flex flex-center items-center justify-center'>Find a freelancer</p>
         <p className="w-80 text-md text-gray-500">Some nice description about the plataform</p>
@@ -41,7 +41,7 @@ export function SearchFreelancerByCity (props: ISearchProps) {
             name='selectedCity'
             value={selectedCity}
             onChange={(event)=> setSelectedCity((event.target.value))}
-            className="appearance-none bg-transparent w-full mr-3 py-1 px-3 focus:outline-none text-md" type="text" placeholder="Search for city" aria-label="Full name"/>
+            className="appearance-none bg-transparent w-full mr-3 py-1 px-3 focus:outline-none text-md" type="text" placeholder="Search by city" aria-label="Full name"/>
             <button 
             onClick={handleSubmit}
             className="flex-shrink-0 bg-teal-500 hover:bg-teal-300 hover:border-bg-teal-300 hover:text-black hover:border-teal-300 text-md text-white py-1 px-5 rounded" type="button">

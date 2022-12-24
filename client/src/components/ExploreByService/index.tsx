@@ -7,7 +7,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 
-export interface IExploreProps {
+export interface IExploreByServiceProps {
 }
 
 interface IServiceType {
@@ -18,7 +18,7 @@ interface IServiceType {
 
 
 
-export function Explore (props: IExploreProps) {
+export function ExploreByService (props: IExploreByServiceProps) {
   const [data, setData] = React.useState<IServiceType[]>()
   const [servicesToBeShown, setServicesToBeShown] = React.useState<IServiceType[]>()
   const [isLoading, setIsLoading] = React.useState<boolean>();
@@ -55,7 +55,10 @@ export function Explore (props: IExploreProps) {
   console.log("servicesToBeShown", servicesToBeShown);
 
   return (
-    <div className='mb-56'>
+    <div className='mb-24 mt-22'>
+      <div className='flex align-center justify-center flex-row mb-8'>
+        <span className='text-gray-500 text-xl'>Search by Service Category</span>
+      </div>
       <div className='flex align-center flex-row ml-8 mr-8'>
         <button onClick={handleLeftClick} className='flex align-center justify-center mt-32 mr-2'>
           <FontAwesomeIcon className='text-2xl cursor-pointer text-gray-500' icon={faCircleChevronLeft}></FontAwesomeIcon>

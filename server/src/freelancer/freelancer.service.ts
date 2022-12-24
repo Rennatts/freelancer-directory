@@ -154,12 +154,6 @@ export class FreelancerService {
 
         const splitedServiceInput = serviceInput.split("_").join(" ")
 
-        // const filteredResult = []
-
-        // filteredResult.push(allFreelancers.filter((item) => {
-        //     return (item.service_type.indexOf(splitedServiceInput) >= 0);
-        // }));
-
         const filteredResult = allFreelancers.filter((item) => {
             return (item.service_type.indexOf(splitedServiceInput) >= 0);
         });
@@ -171,7 +165,6 @@ export class FreelancerService {
     
 
     _getFreelancerDetails(freelancer: Freelancer): FreelancerDetails {
-        console.log("freelancer", freelancer)
         return {
             _id: freelancer._id,
             name: freelancer.name,
