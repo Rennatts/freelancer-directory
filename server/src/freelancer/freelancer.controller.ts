@@ -58,4 +58,13 @@ export class FreelancerController {
     ): Promise<FreelancerDetails[]> {
         return this.freelancerService.getFreelancerByCity(city);
     }
+
+
+    //@UseGuards(JwtAuthGuard)
+    @Get('find_by_service/:serviceInput')
+    async getFreelancerByServiceType(
+        @Param('serviceInput') serviceInput: string
+    ): Promise<FreelancerDetails[]>{
+        return this.freelancerService.getFreelancerByServiceType(serviceInput);
+    }
 }

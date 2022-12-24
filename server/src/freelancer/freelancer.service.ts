@@ -7,6 +7,7 @@ import { FreelancerDetails } from './interfaces/freelancer.interface';
 import { Freelancer} from './freelancer.schema';
 import { UpdateFrelancersDTO } from './dtos/updateFreelancer_dto';
 
+
 @Injectable()
 export class FreelancerService {
     constructor(
@@ -138,7 +139,6 @@ export class FreelancerService {
 
     async getFreelancerByCity(city: string): Promise<FreelancerDetails[]> {
         const allFreelancers = await this.freelancerModel.find();
-        console.log("allFreelancers", allFreelancers)
 
         const sameCityDetails = []
 
@@ -147,6 +147,18 @@ export class FreelancerService {
         ).forEach((art) => sameCityDetails.push(this._getFreelancerDetails(art)))
 
         return sameCityDetails;
+    }
+
+    async getFreelancerByServiceType(serviceInput: string): Promise<FreelancerDetails[]>{
+        const allFreelancers = await this.freelancerModel.find();
+
+        const filteredResult = []
+
+        filteredResult.push(allFreelancers.filter((item) => {
+            return (item.service_type.indexOf(serviceInput) >= 0);
+        }));
+
+        return filteredResult;
     }
 
     

@@ -6,24 +6,26 @@ import { Freelancer } from '../../Interfaces/Freelancer';
 import { clsx } from 'clsx';
 import InfoCard from '../../components/InfoCard';
 
-export interface IFindProps {
+export interface IServiceSearchResultsProps {
   name?: string;
   size?: 'sm' | 'md' | 'lg';
 }
 
 
 
-export function SearchResults ({name, size= 'lg'}: IFindProps) {
+export function ServiceSearchResults ({name, size= 'lg'}: IServiceSearchResultsProps) {
   const [freelancers, setFreelancers] = React.useState<Freelancer[]>([]);
   const [error, setError] = React.useState();
   const [isLoading, setIsLoading] = React.useState(false);
-  let { selectedCity } = useParams();
+  let { selectedService } = useParams();
   const navigate = useNavigate();
+
+  console.log("selectedService", selectedService)
   
   React.useEffect(() => {
     const fetchPositions = async () => {
       setIsLoading(true);
-      const response: any = await axios(`http://localhost:3000/api/freelancer/find_by_city/${selectedCity}`);
+      const response: any = await axios(`http://localhost:3000/api/freelancer/find_by_service/${selectedService}`);
       setFreelancers(response.data);
 
     };
