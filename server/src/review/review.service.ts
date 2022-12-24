@@ -41,6 +41,4 @@ export class ReviewService {
             console.log("review", review)
         })
     }
-
-
 }

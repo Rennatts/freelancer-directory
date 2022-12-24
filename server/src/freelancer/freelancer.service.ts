@@ -51,8 +51,6 @@ export class FreelancerService {
 
         if(!freelancer) return null;
 
-        console.log("freelancer", freelancer)
-
         return this._getFreelancerDetails(freelancer);
     }
 
@@ -81,7 +79,6 @@ export class FreelancerService {
     }
 
     async updateFreelancer(id: string, freelancer: UpdateFrelancersDTO ): Promise<any | string>  {
-        //console.log("freelancer", freelancer)
         this.freelancerModel.findByIdAndUpdate(id, 
             {$set: 
                 {
@@ -108,10 +105,8 @@ export class FreelancerService {
                 {new: true},
                 function(err, user){
                     if(err) {
-                        console.log("err", err)
                         return ({error: err});
                     }else{
-                        console.log("user", user)
                         return user;
                     }
                 }

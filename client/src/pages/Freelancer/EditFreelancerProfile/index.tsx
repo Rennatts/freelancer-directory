@@ -56,7 +56,6 @@ export function EditFreelancerProfile ({ size= 'lg'}: IEditFreelancerProfileProp
 
     const handleSubmit = (e: any) => {
         e.preventDefault();
-        console.log("hiiiiiiiiiii")
         const config = {
           headers: {
               'Content-Type': 'application/json',

@@ -47,8 +47,6 @@ export function FreelancerLogin (props: IFreelancerLoginProps) {
     }
   },[error])
 
-  console.log("loginData", loginData)
-
 
   function handleInputChange(event: any) {
     setLoginData({...loginData, [event.target.name]: event.target.value});

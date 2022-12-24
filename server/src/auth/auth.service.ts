@@ -65,7 +65,6 @@ export class AuthService {
     }
 
     async validateUser(email: string, password: string): Promise<LoginReturn | string> {
-        console.log("email----")
         const user = await this.userService.findByEmail(email);
         //if user does not exist '!!' transform the answer into a boolean
         const doesUserExists = !!user;
@@ -126,8 +125,6 @@ export class AuthService {
         const jwt = await this.jwtService.signAsync({
             user
         })
-
-        console.log("user.name", user.name)
 
         return {token: jwt, name: user.name, id: user._id, userType: Usertype.Freelancer};
     }

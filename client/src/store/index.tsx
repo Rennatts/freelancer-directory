@@ -3,13 +3,13 @@ import { createStore } from "easy-peasy";
 
 export interface IStore {
     name: string;
-    país: string;
+    country: string;
 }
 
 
 const store = createStore<IStore>({
-    name: 'Renata machado',
-    país: 'Brazil'
+    name: 'ooo',
+    country: 'ooo'
 })
 
 

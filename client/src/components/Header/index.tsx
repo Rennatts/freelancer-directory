@@ -14,13 +14,8 @@ const Header: React.FC<IMenuProps> = (props: IMenuProps) => {
     const context = useContext(UserContext);
     const navigate = useNavigate()
 
-    function handleSingout() {
-        signout();
-        navigate('/');
-    }
-
-    console.log("context?.id", context)
-
+    console.log("context", context)
+    console.log("isAuthenticated", isAuthenticated())
 
     return(
         <div className="flex items-center flex-center flex-row py-7 w-full place-content-around">
@@ -48,10 +43,10 @@ const Header: React.FC<IMenuProps> = (props: IMenuProps) => {
             (
             <nav>
                 <ul className='cursor-pointer flex align-center flex-row text-md ml-6'>
-                    <li onClick={()=> navigate(`/freelancer/profile/${context?.id}`)} className='px-4 hover:text-teal-500 hover:underline underline-offset-8 text-xs flex items-center flex-center'>
+                    <li onClick={()=> navigate(`/freelancer/profile/${isAuthenticated().id}`)} className='px-4 hover:text-teal-500 hover:underline underline-offset-8 text-xs flex items-center flex-center'>
                         My Profile
                     </li>
-                    <li onClick={()=> signout()} className='px-4 rounded bg-teal-500 text-white hover:text-black hover:bg-teal-300'>
+                    <li onClick={()=> signout(()=> navigate('/'))} className='px-4 rounded bg-teal-500 text-white hover:text-black hover:bg-teal-300'>
                     SingOut</li>
                 </ul>
             </nav>

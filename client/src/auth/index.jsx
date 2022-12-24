@@ -43,17 +43,18 @@ export const isAuthenticated = () => {
 
 
 export const signout = (next) => {
-    //const navigate = useNavigate()
 
     if(typeof window !== "undefined"){
         localStorage.removeItem("jwt")
     } 
+    next()
+
     return axios.get(`http://localhost:3000/api/auth/logout_user`)
     .then(res => {
         console.log("res", res)
-        //navigate('/')
     })
     .catch(err => console.log("err", err))
 
 };
+
 
