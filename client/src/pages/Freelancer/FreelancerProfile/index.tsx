@@ -98,7 +98,7 @@ export function FreelancerProfile ({ size= 'lg'}: ITFreelancerProfileProps) {
                             onStarClick={(e: any)=> onStarClick(e)}
                             />
                         </div>
-                        <span>Average score {rating}</span>
+                        <span>Average score {rating.toFixed(2)}</span>
                         <br/>
                     </div>
                     <div className='w-full flex align-center justify-center mt-8 mb-8'>

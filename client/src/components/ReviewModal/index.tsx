@@ -34,7 +34,6 @@ const ReviewModal = ({show, userId}: IMessageModalProps) => {
 
 
   function handleReviewSubmit(){
-
     const ratingData = {
       userId: userId,
       score: rating,
@@ -55,15 +54,14 @@ const ReviewModal = ({show, userId}: IMessageModalProps) => {
 
     axios.put(`http://localhost:3000/api/freelancer/review/${freelancerId}`, newReview)
     .then((res) => {
-      console.log("res", res)
       if(res.status === 200){
         setSuccess(true)
-        setTimeout(() => {
-          setShowModal(false)
-        }, 1000)
       }
     })
     .catch((err) => setError(true));
+
+    setShowModal(false)
+    window.location.reload();
 
   }
 
@@ -79,7 +77,7 @@ const ReviewModal = ({show, userId}: IMessageModalProps) => {
                             <FontAwesomeIcon icon={faXmark}></FontAwesomeIcon>
                           </div>
                             <div className="w-full mt-27 mb-20 flex flex-col items-center flex-center mt-6">
-                              <h2 className="mt-6">Create Review</h2>
+                              <h2 className="mt-6 text-xl text-teal-500">Create Review</h2>
                               <div className='text-xl mt-6'>
                                 <StarRatingComponent 
                                 name="rate1" 
