@@ -1,4 +1,6 @@
 export interface Reviews {
+    createdAt: Date,
+    postedBy: string;
     reviewText: string;
-    userId: string;
+    _id: string;
 }
