@@ -9,18 +9,35 @@ import { faLocationDot, faUserPen, faSquarePen } from "@fortawesome/free-solid-s
 import StarRatingComponent from 'react-star-rating-component';
 import { Freelancer } from '../../Interfaces/Freelancer';
 import { UserContext } from '../../UserContext';
-import { Reviews } from '../../Interfaces/Review';
+import { AllReviewsPerFreelancer } from '../../Interfaces/NewReview';
 
 export interface IReviewListProps {
     size?: 'sm' | 'md' | 'lg';
-    reviews?: Reviews[];
 }
 
 
-export function ReviewList ({ size= 'lg', reviews}: IReviewListProps) {
+export function ReviewList ({ size= 'lg',}: IReviewListProps) {
+    const [reviews, setReviews] = React.useState<AllReviewsPerFreelancer>();
     let { freelancerId } = useParams() as any;
+    const [isLoading, setIsLoading] = React.useState(false);
+    const [success, setSuccess] = React.useState<boolean>(false);
     const navigate = useNavigate();
     const context = React.useContext(UserContext);
+
+
+    React.useEffect(() => {
+        const fetchPositions = async () => {
+          setIsLoading(true);
+          await axios(`http://localhost:3000/api/freelancer/reviews/${freelancerId}`)
+          .then((response) => setReviews(response.data))
+        };
+
+        if(!reviews){
+            fetchPositions(); 
+            setIsLoading(false)
+        }
+
+    }, [reviews]);
 
     console.log("reviews", reviews)
   
@@ -28,10 +45,10 @@ export function ReviewList ({ size= 'lg', reviews}: IReviewListProps) {
     return (
         <div className="border-t mt-10">
             <div className="flex items-start flex-start flex-col">
-                {reviews?.map((item) => 
+                {reviews?.reviews.map((item) => 
                     <div key={item._id} className='w-full flex align-center justify-center mt-8 mb-8'>
                         <h1>{item?.reviewText}</h1> 
-                        <p>{item?.postedBy}</p>
+                        <p>{item?.postedBy.name}</p>
                     </div>
                 )}
             </div>

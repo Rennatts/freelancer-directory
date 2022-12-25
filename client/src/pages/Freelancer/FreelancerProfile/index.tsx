@@ -133,7 +133,7 @@ export function FreelancerProfile ({ size= 'lg'}: ITFreelancerProfileProps) {
                     </div>
                 )}
                 <ReviewModal show={openModal} userId={context?.id}></ReviewModal>
-                <ReviewList reviews={freelancer?.reviews}></ReviewList>
+                <ReviewList></ReviewList>
             </div>
         </>
 
