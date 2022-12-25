@@ -55,7 +55,6 @@ export function FreelancerProfile ({ size= 'lg'}: ITFreelancerProfileProps) {
     }, [freelancer]);
 
     function onStarClick(e: any) {
-        //setRating(e)
         const ratingData = {
             userId: context?.id,
             score: e
