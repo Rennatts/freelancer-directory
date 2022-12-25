@@ -121,13 +121,13 @@ export function FreelancerProfile ({ size= 'lg'}: ITFreelancerProfileProps) {
                 {context?.id === freelancer?._id ? 
                 (
                     <div className='mt-12 w-full flex justify-items-end'>
-                        <button onClick={() => navigate(`/freelancer/profile/edit/${freelancer?._id}`)} className="text-teal-500 background-transparent font-bold uppercase px-3 py-1 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+                        <button onClick={() => navigate(`/freelancer/profile/edit/${freelancer?._id}`)} className="text-gray-50 background-transparent font-bold uppercase px-3 py-1 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
                         <FontAwesomeIcon className="mr-2" icon={faUserPen} />Edit Profile
                         </button>
                     </div>
                 ): (
                     <div className='mt-12 w-full flex justify-items-end'>
-                        <button onClick={()=> setOpenModal(true)} className="text-teal-500 background-transparent font-bold uppercase px-3 py-1 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+                        <button onClick={()=> setOpenModal(true)} className="text-gray-500 background-transparent font-bold uppercase px-3 py-1 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
                         <FontAwesomeIcon className="mr-2" icon={faSquarePen} />Create Review
                         </button>
                     </div>

@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, Req, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Req, Res, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
 import { JwtAuthGuard } from 'src/auth/guard/jwt-auth.guard';
 import { createReviewDTO } from './dtos/createReview_dto';
 import { UpdateFrelancersDTO } from './dtos/updateFreelancer_dto';
@@ -6,6 +6,7 @@ import { FreelancerDetails } from './interfaces/freelancer.interface';
 import { Freelancer } from './freelancer.schema';
 import { FreelancerService } from './freelancer.service';
 import { LocalAuthGuard } from 'src/auth/guard/local-auth.guard';
+import { Review } from './dtos/Review.interface';
 
 @Controller('freelancer')
 export class FreelancerController {
@@ -49,6 +50,33 @@ export class FreelancerController {
     ): Promise<any> {
         return this.freelancerService.createReview(id, review);
     }
+
+    //@UseGuards(JwtAuthGuard)
+    @Put('rating/:id')
+    async createRating(
+        @Body() rating: any,
+        @Param('id') id: string,
+    ): Promise<any> {
+        return this.freelancerService.createRating(id, rating);
+    }
+
+    //@UseGuards(JwtAuthGuard)
+    @Get('avg_score/:id')
+    async getAvgScore(
+        @Param('id') id: string,
+    ): Promise<any> {
+        return this.freelancerService.getAvgScore(id);
+    }
+
+    //@UseGuards(JwtAuthGuard)
+    @Get('reviews/:id')
+    async getReviews(
+        @Param('id') id: string,
+        @Res() res: Response,
+    ){
+        return this.freelancerService.getAllTheReviews(id, res);
+    }
+    
 
 
     //@UseGuards(JwtAuthGuard)

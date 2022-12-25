@@ -6,6 +6,7 @@ import { NewFreelancersDTO } from './dtos/newFreelancer_dto';
 import { FreelancerDetails } from './interfaces/freelancer.interface';
 import { Freelancer} from './freelancer.schema';
 import { UpdateFrelancersDTO } from './dtos/updateFreelancer_dto';
+import { Review } from './dtos/Review.interface';
 
 
 @Injectable()
@@ -68,6 +69,23 @@ export class FreelancerService {
         ));
 
         return FreelancersSelectedDetails;
+    }
+
+    async getAllTheReviews(id: string, res: any) {
+        const allReviews = [];
+
+        this.freelancerModel.findById(id)
+        .select("_id reviews")
+        .populate('reviews.postedBy', "_id name surname")
+        .sort({ created: -1 })
+        .exec((err, reviews)=> {
+            if(err) {
+                return res.status(400).json({
+                    error: err
+                });
+            }
+            res.json(reviews);
+        });
     }
 
     async delete(id: string): Promise<boolean | string> {

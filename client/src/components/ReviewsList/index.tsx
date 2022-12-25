@@ -44,10 +44,13 @@ export function ReviewList ({ size= 'lg',}: IReviewListProps) {
 
     return (
         <div className="border-t mt-10">
+            <div className='flex align-center justify-center'>
+               <span className='mt-12 text-md text-teal-500'>Reviews</span>
+            </div>
             <div className="flex items-start flex-start flex-col">
                 {reviews?.reviews.map((item) => 
-                    <div key={item._id} className='w-full flex align-center justify-center mt-8 mb-8'>
-                        <h1>{item?.reviewText}</h1> 
+                    <div key={item._id} className='w-full flex flex-col justify-items-start mt-8 mb-8'>
+                        <p>{item?.reviewText}</p> 
                         <p>{item?.postedBy.name}</p>
                     </div>
                 )}
