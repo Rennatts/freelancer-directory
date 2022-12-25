@@ -16,42 +16,14 @@ export interface IReviewListProps {
     reviews?: Reviews[];
 }
 
-// interface IReview { 
-//     createdAt: Date,
-//     postedBy: string;
-//     reviewText: string;
-//     _id: string;
-// }
-
 
 export function ReviewList ({ size= 'lg', reviews}: IReviewListProps) {
-    const [freelancer, setFreelancer] = React.useState<Freelancer>();
-    const [rating, setRating] = React.useState<number>(0);
-    const [isLoading, setIsLoading] = React.useState(false);
-    const [success, setSuccess] = React.useState<boolean>(false);
-    const [openModal, setOpenModal] = React.useState<boolean>(false);
-    const [error, setError] = React.useState<boolean>(false);
     let { freelancerId } = useParams() as any;
     const navigate = useNavigate();
     const context = React.useContext(UserContext);
 
     console.log("reviews", reviews)
   
-
-    React.useEffect(() => {
-        const fetchPositions = async () => {
-          setIsLoading(true);
-          await axios(`http://localhost:3000/api/freelancer/${freelancerId}`)
-          .then((response) => setFreelancer(response.data))
-        };
-
-
-        if(!freelancer){
-            fetchPositions(); 
-            setIsLoading(false)
-        }
-
-    }, [freelancer]);
 
     return (
         <div className="border-t mt-10">
