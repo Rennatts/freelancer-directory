@@ -9,6 +9,8 @@ import ProfilePhoto from './../../../images/profilePhoto.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot, faUserPen } from "@fortawesome/free-solid-svg-icons";
 import { serviceType } from '../../../data';
+import StarRatingComponent from 'react-star-rating-component';
+import ReviewModal from '../../../components/ReviewModal';
 
 export interface ITFreelancerProfileProps {
   size?: 'sm' | 'md' | 'lg';
@@ -18,7 +20,11 @@ export interface ITFreelancerProfileProps {
 
 export function FreelancerProfile ({ size= 'lg'}: ITFreelancerProfileProps) {
     const [freelancer, setFreelancer] = React.useState<Freelancer>();
+    const [rating, setRating] = React.useState<number>(0);
     const [isLoading, setIsLoading] = React.useState(false);
+    const [success, setSuccess] = React.useState<boolean>(false);
+    const [openModal, setOpenModal] = React.useState<boolean>(false);
+    const [error, setError] = React.useState<boolean>(false);
     let { freelancerId } = useParams() as any;
     const navigate = useNavigate();
     const context = React.useContext(UserContext);
@@ -40,6 +46,25 @@ export function FreelancerProfile ({ size= 'lg'}: ITFreelancerProfileProps) {
 
     }, [freelancer]);
 
+    function onStarClick(e: any) {
+        //setRating(e)
+        const ratingData = {
+            userId: context?.id,
+            score: e
+        }
+
+        axios.put(`http://localhost:3000/api/review/${freelancerId}`, ratingData)
+        .then((res) => {
+          if(res.status === 200){
+            setSuccess(true)
+            setTimeout(() => {
+                setOpenModal(false)
+            }, 1000)
+          }
+        })
+        .catch((err) => setError(true));
+    }
+
 
 
     return (
@@ -57,6 +82,14 @@ export function FreelancerProfile ({ size= 'lg'}: ITFreelancerProfileProps) {
                     <p className='mt-2'>Member since
                         <Moment className="ml-2" format="YYYY/MM/DD">{freelancer?.createdAt}</Moment>
                     </p>
+                    <div className='text-xl mt-6'>
+                        <StarRatingComponent 
+                        name="rate1" 
+                        starCount={5}
+                        value={rating}
+                        onStarClick={(e: any)=> onStarClick(e)}
+                        />
+                    </div>
                     <br/>
                 </div>
                 <div className='w-full flex align-center justify-center mt-8 mb-8'>
@@ -83,7 +116,14 @@ export function FreelancerProfile ({ size= 'lg'}: ITFreelancerProfileProps) {
                        <FontAwesomeIcon className="mr-2" icon={faUserPen} />Edit Profile
                     </button>
                 </div>
-            ): null }
+            ): (
+                <div className='mt-12 w-full flex justify-items-end'>
+                    <button onClick={()=> setOpenModal(true)} className="text-teal-500 background-transparent font-bold uppercase px-3 py-1 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+                       <FontAwesomeIcon className="mr-2" icon={faUserPen} />Create Review
+                    </button>
+                </div>
+            )}
+            <ReviewModal show={openModal} userId={context?.id}></ReviewModal>
         </div>
     );
 }
