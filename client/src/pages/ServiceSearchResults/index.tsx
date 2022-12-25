@@ -18,8 +18,6 @@ export function ServiceSearchResults ({name, size= 'lg'}: IServiceSearchResultsP
   const [isLoading, setIsLoading] = React.useState(false);
   let { selectedService } = useParams();
   const navigate = useNavigate();
-
-  console.log("selectedService", selectedService)
   
   React.useEffect(() => {
 

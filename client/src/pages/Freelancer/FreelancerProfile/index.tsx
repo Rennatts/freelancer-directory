@@ -7,7 +7,7 @@ import Moment from 'react-moment';
 import { UserContext } from '../../../UserContext';
 import ProfilePhoto from './../../../images/profilePhoto.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLocationDot, faUserPen } from "@fortawesome/free-solid-svg-icons";
+import { faLocationDot, faUserPen, faSquarePen } from "@fortawesome/free-solid-svg-icons";
 import { serviceType } from '../../../data';
 import StarRatingComponent from 'react-star-rating-component';
 import ReviewModal from '../../../components/ReviewModal';
@@ -39,8 +39,16 @@ export function FreelancerProfile ({ size= 'lg'}: ITFreelancerProfileProps) {
           .then((response) => setFreelancer(response.data))
         };
 
+        const fetchAvgRating = async () => {
+            setIsLoading(true);
+            await axios(`http://localhost:3000/api/freelancer/avg_score/${freelancerId}`)
+            .then((response) => setRating(response.data.averageScore))
+        };
+
+
         if(!freelancer){
             fetchPositions(); 
+            fetchAvgRating();
             setIsLoading(false)
         }
 
@@ -65,7 +73,7 @@ export function FreelancerProfile ({ size= 'lg'}: ITFreelancerProfileProps) {
         .catch((err) => setError(true));
     }
 
-
+    console.log("-----", context?.id)
 
     return (
         <div className="place-content-around p-20  mt-2 ml-80 mr-80 shadow-2xl">
@@ -90,6 +98,7 @@ export function FreelancerProfile ({ size= 'lg'}: ITFreelancerProfileProps) {
                         onStarClick={(e: any)=> onStarClick(e)}
                         />
                     </div>
+                    <span>Average score {rating}</span>
                     <br/>
                 </div>
                 <div className='w-full flex align-center justify-center mt-8 mb-8'>
@@ -119,7 +128,7 @@ export function FreelancerProfile ({ size= 'lg'}: ITFreelancerProfileProps) {
             ): (
                 <div className='mt-12 w-full flex justify-items-end'>
                     <button onClick={()=> setOpenModal(true)} className="text-teal-500 background-transparent font-bold uppercase px-3 py-1 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
-                       <FontAwesomeIcon className="mr-2" icon={faUserPen} />Create Review
+                       <FontAwesomeIcon className="mr-2" icon={faSquarePen} />Create Review
                     </button>
                 </div>
             )}

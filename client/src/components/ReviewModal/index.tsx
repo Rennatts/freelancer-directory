@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { MdError } from "react-icons/md";
 import StarRatingComponent from 'react-star-rating-component';
 import axios from "axios";
+import { UserContext } from "../../UserContext";
 
 interface IMessageModalProps {
   show: boolean,
@@ -22,7 +23,7 @@ const ReviewModal = ({show, userId}: IMessageModalProps) => {
 
   let { freelancerId } = useParams() as any;
 
-  console.log("freelancerId", freelancerId)
+  const context = React.useContext(UserContext);
 
   const navigate = useNavigate();
 
@@ -32,21 +33,30 @@ const ReviewModal = ({show, userId}: IMessageModalProps) => {
     }
   },[show])
 
+  console.log("userId", userId)
+
+  console.log("freelancerId", freelancerId)
+
   function handleInputChange(event: any) {
     console.log("event.target.value", event.target.value)
     
     setReview({...review, [event.target.name]: event.target.value});
   }
 
-  function onStarClick(e: any) {
-    //setRating(e)
+  function onStarClick(rating: any) {
+    console.log("rating", rating)
+    setRating(rating)
+
     const ratingData = {
-        userId: userId,
-        score: e
+      userId: userId,
+      score: rating,
     }
 
-    axios.put(`http://localhost:3000/api/review/${freelancerId}`, ratingData)
+    console.log("ratingData", ratingData)
+
+    axios.put(`http://localhost:3000/api/rating/${freelancerId}`, ratingData)
     .then((res) => {
+      console.log("res", res)
       if(res.status === 200){
         setSuccess(true)
         setTimeout(() => {
@@ -72,7 +82,7 @@ const ReviewModal = ({show, userId}: IMessageModalProps) => {
                                 name="rate1" 
                                 starCount={5}
                                 value={rating}
-                                onStarClick={(e: any)=> onStarClick(e)}
+                                onStarClick={(rating: any)=> onStarClick(rating)}
                                 />
                               </div>
                               <div className="flex items-start flex-col mb-6">
