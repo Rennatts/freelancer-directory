@@ -1,3 +1,4 @@
+import { Rating } from "./rating.interface";
 import { Review } from "./review.interface";
 
 
@@ -8,6 +9,7 @@ export class FreelancerDetails {
     username?: string;
     email: string;
     profile_photo?: String;
+    rating?: Rating[];
     reviews?: Review[];
     city: String;
     zip_code: String;

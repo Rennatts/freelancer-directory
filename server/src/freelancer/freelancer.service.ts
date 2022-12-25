@@ -135,6 +135,40 @@ export class FreelancerService {
         });
     }
 
+    async createRating(id: string, rating: any): Promise<any>  {
+
+        let newRating = {
+            score: rating.score, 
+            postedBy: rating.userId,
+        };
+    
+        this.freelancerModel.findByIdAndUpdate(
+            id,
+            { $push: {rating: newRating }},
+            {new: true}
+        )
+        .sort({ createdAt: -1 })
+        .exec((err,result) => {
+            if(err){
+                return err;
+            } else {
+                return result;
+            }
+        });
+    }
+
+    async getAvgScore(id: string): Promise<any> {
+        const tattooArtist = await this.freelancerModel.findById(id);
+
+        let arrayOfScores = [];
+
+        tattooArtist.rating.forEach((item) =>  arrayOfScores.push(item.score));
+
+        const averageScore = arrayOfScores.reduce((a, b) => a + b, 0) / arrayOfScores.length;
+
+        return {"averageScore": averageScore};
+    }
+
 
 
     async getFreelancerByCity(city: string): Promise<FreelancerDetails[]> {
@@ -176,6 +210,7 @@ export class FreelancerService {
             zip_code: freelancer.zip_code,
             number: freelancer.number,
             member_role: freelancer.member_role,
+            rating: freelancer.rating,
             reviews: freelancer.reviews,
             description: freelancer.description,
             service_type: freelancer.service_type,
