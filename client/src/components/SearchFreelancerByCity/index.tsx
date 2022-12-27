@@ -1,8 +1,9 @@
 import * as React from 'react';
-import axios from 'axios';
 import './search.css';
+
 import {useNavigate } from "react-router-dom";
 import teamImage from './../../images/creative_team_re.svg';
+import axios from 'axios';
 
 export interface ISearchProps {
 }
@@ -10,12 +11,10 @@ export interface ISearchProps {
 export function SearchFreelancerByCity (props: ISearchProps) {
   const [selectedCity, setSelectedCity] = React.useState("");
   const [FreelancerBySelectedCity, setFreelancerBySelectedCity] = React.useState([]);
-  const [isLoading, setIsLoading] = React.useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = (event: any) => {
     const fetchPositions = async () => {
-      setIsLoading(true);
       const response: any = await axios(`http://localhost:3000/api/freelancer/find_by_city/${selectedCity}`);
 
       response.data.length === 0 ? navigate(`/city/city_not_found`,  { state: selectedCity }) : navigate(`/city/${selectedCity}`);
