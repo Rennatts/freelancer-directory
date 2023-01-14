@@ -2,7 +2,7 @@ import { Description, SearchFreelancerByCity, ExploreByService } from './../../c
 
 
 
-export default function Home() {
+export function Home() {
 
   return (
     <div className="jubotron">

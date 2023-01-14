@@ -1,20 +1,22 @@
 import {Route, BrowserRouter as Router, Routes} from 'react-router-dom';
-import Home from '../pages/Home';
-import ErrorPage from '../pages/Error';
 import { CityNotFound, Footer, Header } from './../components';
-import { CitySearchResults } from '../pages/CitySearchResults';
-import { UserLogin } from '../pages/Auth/UserLogin';
-import { UserRegister } from '../pages/Auth/UserRegister';
-import { FreelancerRegister } from './../pages/Auth/FreelancerRegister';
-import { RedirectionFreelancers } from '../pages/RedirectionFreelancers';
-import { FreelancerLogin } from '../pages/Auth/FreelancerLogin';
 import { isAuthenticated } from '../auth';
 import { UserContext } from '../UserContext';
 import ProtectedRoute from '../auth/ProtectedRoute';
-import { FreelancerProfile } from '../pages/Freelancer/FreelancerProfile';
-import { EditFreelancerProfile } from '../pages/Freelancer/EditFreelancerProfile';
 import { ServiceNotFound } from '../components/ServiceNotFound';
-import { ServiceSearchResults } from '../pages/ServiceSearchResults';
+import { 
+    CitySearchResults, 
+    EditFreelancerProfile, 
+    ErrorPage, 
+    FreelancerLogin, 
+    FreelancerProfile, 
+    FreelancerRegister, 
+    Home, 
+    RedirectionFreelancers, 
+    ServiceSearchResults, 
+    UserLogin, 
+    UserRegister 
+} from '../pages';
 
 
 function MainRouter(){

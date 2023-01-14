@@ -1,0 +1,11 @@
+export { FreelancerLogin } from './Auth/FreelancerLogin'
+export { FreelancerRegister } from './Auth/FreelancerRegister'
+export { UserLogin } from './Auth/UserLogin';
+export { UserRegister } from './Auth/UserRegister';
+export { CitySearchResults } from './CitySearchResults'
+export { ErrorPage } from './ErrorPage';  
+export { EditFreelancerProfile } from './Freelancer/EditFreelancerProfile';
+export { FreelancerProfile } from './Freelancer/FreelancerProfile/';
+export { Home } from './Home';
+export { RedirectionFreelancers } from './RedirectionFreelancers';
+export { ServiceSearchResults } from './ServiceSearchResults';
