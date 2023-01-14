@@ -18,6 +18,7 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
   const [error, setError] = React.useState<any>();
   const [success, setSuccess] = React.useState<boolean>(false);
   const [selectedStyles, setSelectedStyles] = React.useState<string[]>([]);
+  const [confirmPassword, setConfirmPassword] = React.useState("");
   const [ status, setStatus ] = React.useState({
     isValid: false,
     message: "",
@@ -188,8 +189,18 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
                 name='password'
                 value={loginData.password}
                 type="password"
-                onChange={(event)=> handleInputChange(event)} className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" placeholder="***" required>
+                onChange={(event)=> {
+                handleInputChange(event);
+                event.target.value !== loginData.password && confirmPassword !== "" ? setStatus({
+                  isValid: false,
+                  message: 'Passwords do not match',
+                }): setStatus({
+                  isValid: true,
+                  message: '',
+                })}}
+                className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" placeholder="***" required>
                 </input>
+                {status.isValid === false ? <p className='text-xs text-red'>{status.message}</p> : "" }
               </div>
   
               <div className="flex items-start flex-col mb-6">
@@ -199,14 +210,16 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
               id="input" 
               name='confirmPassword'
               type="password"
-              onChange={(event)=> 
+              onChange={(event)=> {
+              setConfirmPassword(event.target.value);
               event.target.value !== loginData.password? setStatus({
                   isValid: false,
                   message: 'The passwords are not the same',
               }): setStatus({
                 isValid: true,
                 message: '',
-                })} className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" placeholder="***" required>
+                })}}
+              className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" placeholder="***" required>
               </input>
               {status.isValid === false ? <p className='text-xs text-red'>{status.message}</p> : "" }
             </div>
