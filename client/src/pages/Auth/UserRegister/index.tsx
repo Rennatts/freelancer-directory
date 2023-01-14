@@ -3,6 +3,7 @@ import * as React from 'react';
 import { useNavigate } from "react-router-dom";
 import { saveUserToLocalStorage } from '../../../auth';
 import { ErrorModal, SuccessModal } from '../../../components';
+import { useState } from 'react';
 
 
 export interface IUserLoginProps {
@@ -13,6 +14,7 @@ export interface IUserLoginProps {
 export function UserRegister (props: IUserLoginProps) {
   const [error, setError] = React.useState<any>();
   const [success, setSuccess] = React.useState<boolean>(false);
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [ status, setStatus ] = React.useState({
     isValid: false,
     message: "",
@@ -41,6 +43,7 @@ export function UserRegister (props: IUserLoginProps) {
     axios
     .post(`http://localhost:3000/api/auth/signup_user`, loginData)
     .then((res) => {
+      console.log("res", res)
       if(res.status === 201){
         setSuccess(true)
         saveUserToLocalStorage(res.data);
@@ -49,9 +52,9 @@ export function UserRegister (props: IUserLoginProps) {
         }, 4000)
       }
     })
-    .catch((err) => setError(true));
+    .catch((err) => {console.log("error", err); setError(true)});
 
-    console.log("error", error)
+    //console.log("error", error)
   };
 
 
@@ -71,7 +74,7 @@ export function UserRegister (props: IUserLoginProps) {
         <form onSubmit={handleSubmit}>
           <div className="mb-6">
             <div className="flex items-start flex-col mb-6">
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Nome
+                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Name
                 </label>
                 <input               
                 id="input" 
@@ -81,7 +84,7 @@ export function UserRegister (props: IUserLoginProps) {
                 </input>
             </div>
             <div className="flex items-start flex-col mb-6">
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Nome
+                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Surname
                 </label>
                 <input               
                 id="input" 
@@ -109,32 +112,44 @@ export function UserRegister (props: IUserLoginProps) {
               name='password'
               value={loginData.password}
               type="password"
-              onChange={(event)=> handleInputChange(event)} className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" placeholder="***" required>
+              onChange={(event)=> {
+              handleInputChange(event);
+              event.target.value !== loginData.password && confirmPassword !== "" ? setStatus({
+                isValid: false,
+                message: 'Passwords do not match',
+              }): setStatus({
+                isValid: true,
+                message: '',
+              })}}
+              className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" placeholder="***" required>
               </input>
+              {status.isValid === false ? <p className='text-xs text-red'>{status.message}</p> : "" }
             </div>
 
             <div className="flex items-start flex-col mb-6">
-              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Confirme a Senha
+              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Confirm password
               </label>
               <input               
               id="input" 
               name='confirmPassword'
               type="password"
-              onChange={(event)=> 
+              onChange={(event)=> {
+              setConfirmPassword(event.target.value);
               event.target.value !== loginData.password? setStatus({
-                  isValid: false,
-                  message: 'Passwords do not match',
+                isValid: false,
+                message: 'Passwords do not match',
               }): setStatus({
                 isValid: true,
                 message: '',
-                })} className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" placeholder="***" required>
+              })}}
+              className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" placeholder="***" required>
               </input>
               {status.isValid === false ? <p className='text-xs text-red'>{status.message}</p> : "" }
             </div>
 
 
             <button onClick={handleSubmit} className="w-full flex-shrink-0 bg-teal-500 hover:bg-teal-300 hover:border-bg-teal-300 hover:text-black hover:border-teal-300 text-md text-white py-1 px-5 rounded" type="button">
-              Salvar
+              Save
             </button>
 
             <div onClick={()=> navigate(`/users/register`)} className="flex items-end flex-col mb-6 text-xs mt-6">
