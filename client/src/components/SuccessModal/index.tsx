@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { GrStatusGood } from "react-icons/gr";
 
-interface IMessageModalProps {
+interface ISuccessModalProps {
   mostrar: boolean,
 }
 
 
-const SuccessModal = ({mostrar}: IMessageModalProps) => {
+export const SuccessModal = ({mostrar}: ISuccessModalProps) => {
   const [showModal, setShowModal] = useState(false);
   const [ status, setStatus ] = React.useState({
     isValid: false,
@@ -50,5 +50,3 @@ const SuccessModal = ({mostrar}: IMessageModalProps) => {
     </>
   );
 };
-
-export default SuccessModal;

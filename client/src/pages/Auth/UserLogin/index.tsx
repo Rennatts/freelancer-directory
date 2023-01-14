@@ -2,7 +2,7 @@ import axios from 'axios';
 import * as React from 'react';
 import { useNavigate } from "react-router-dom";
 import { saveUserToLocalStorage } from '../../../auth';
-import MessageModal from '../../../components/ErrorModal';
+import { ErrorModal } from '../../../components';
 
 export interface IUserLoginProps {
 }
@@ -47,7 +47,7 @@ export function UserLogin (props: IUserLoginProps) {
         <div className='flex flex-center items-center justify-center'>
           <h2 className='p-9 text-xl underline underline-offset-8 decoration-teal-500'>Login</h2>
         </div>
-        <MessageModal mostrar={error}></MessageModal>
+        <ErrorModal mostrar={error}/>
         <form>
           <div className="mb-6">
             <div className="flex items-start flex-col mb-6">

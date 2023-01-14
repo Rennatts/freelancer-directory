@@ -7,13 +7,13 @@ import { UserContext } from "../../UserContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
-interface IMessageModalProps {
+interface IReviewModalProps {
   show: boolean,
   userId?: string;
 }
 
 
-const ReviewModal = ({show, userId}: IMessageModalProps) => {
+export const ReviewModal = ({show, userId}: IReviewModalProps) => {
   const [showModal, setShowModal] = useState(false);
   const [rating, setRating] = React.useState<number>(0);
   const [success, setSuccess] = React.useState<boolean>(false);
@@ -112,5 +112,3 @@ const ReviewModal = ({show, userId}: IMessageModalProps) => {
     </>
   );
 };
-
-export default ReviewModal;

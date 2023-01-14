@@ -1,5 +1,4 @@
-import * as React from 'react';
-import './description.css';
+
 
 export interface IButtonProps {
 }

@@ -5,12 +5,12 @@ import { isAuthenticated, signout } from '../../auth';
 import { UserContext } from '../../UserContext';
 
 interface IMenuProps {
-    //currentUser: {name: string, token: string}
+
 }
 
 
 
-const Header: React.FC<IMenuProps> = (props: IMenuProps) => {
+export const Header: React.FC<IMenuProps> = (props: IMenuProps) => {
     const context = useContext(UserContext);
     const navigate = useNavigate()
 
@@ -68,5 +68,3 @@ const Header: React.FC<IMenuProps> = (props: IMenuProps) => {
         </div> 
     );
 };
-
-export default Header; 

@@ -1,17 +1,14 @@
-import React, {useEffect} from 'react';
 import {Route, BrowserRouter as Router, Routes} from 'react-router-dom';
-import Header from '../components/Header';
 import Home from '../pages/Home';
-import { Footer } from '../components/Footer';
 import ErrorPage from '../pages/Error';
-import { CityNotFound } from '../components/CityNotFound';
+import { CityNotFound, Footer, Header } from './../components';
 import { CitySearchResults } from '../pages/CitySearchResults';
 import { UserLogin } from '../pages/Auth/UserLogin';
 import { UserRegister } from '../pages/Auth/UserRegister';
 import { FreelancerRegister } from './../pages/Auth/FreelancerRegister';
 import { RedirectionFreelancers } from '../pages/RedirectionFreelancers';
 import { FreelancerLogin } from '../pages/Auth/FreelancerLogin';
-import { isAuthenticated, isLogged } from '../auth';
+import { isAuthenticated } from '../auth';
 import { UserContext } from '../UserContext';
 import ProtectedRoute from '../auth/ProtectedRoute';
 import { FreelancerProfile } from '../pages/Freelancer/FreelancerProfile';
@@ -21,7 +18,6 @@ import { ServiceSearchResults } from '../pages/ServiceSearchResults';
 
 
 function MainRouter(){
-    const jwt = isLogged();
     console.log("JWT",  isAuthenticated());
    
     return (

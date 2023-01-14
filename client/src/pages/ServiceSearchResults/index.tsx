@@ -1,23 +1,21 @@
 import * as React from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 import { Freelancer } from '../../Interfaces/Freelancer';
 import { clsx } from 'clsx';
-import InfoCard from '../../components/InfoCard';
+import { InfoCard } from '../../components';
 
 export interface IServiceSearchResultsProps {
-  name?: string;
   size?: 'sm' | 'md' | 'lg';
 }
 
 
 
-export function ServiceSearchResults ({name, size= 'lg'}: IServiceSearchResultsProps) {
+export function ServiceSearchResults ({size= 'lg'}: IServiceSearchResultsProps) {
   const [freelancers, setFreelancers] = React.useState<Freelancer[]>([]);
   const [isLoading, setIsLoading] = React.useState(false);
   let { selectedService } = useParams();
-  const navigate = useNavigate();
   
   React.useEffect(() => {
 
@@ -29,7 +27,7 @@ export function ServiceSearchResults ({name, size= 'lg'}: IServiceSearchResultsP
     };
     fetchPositions();
     setIsLoading(false)
-  }, [isLoading]);
+  }, [isLoading, selectedService]);
 
   console.log("freelancers", freelancers)
 

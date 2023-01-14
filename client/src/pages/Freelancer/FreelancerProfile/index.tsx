@@ -2,16 +2,13 @@ import * as React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Freelancer } from '../../../Interfaces/Freelancer';
-import { clsx } from 'clsx';
 import Moment from 'react-moment';
 import { UserContext } from '../../../UserContext';
 import ProfilePhoto from './../../../images/profilePhoto.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot, faUserPen, faSquarePen } from "@fortawesome/free-solid-svg-icons";
-import { serviceType } from '../../../data';
 import StarRatingComponent from 'react-star-rating-component';
-import ReviewModal from '../../../components/ReviewModal';
-import { ReviewList } from '../../../components/ReviewsList';
+import { ReviewList, ReviewModal } from './../../../components';
 
 export interface ITFreelancerProfileProps {
   size?: 'sm' | 'md' | 'lg';
@@ -22,8 +19,6 @@ export interface ITFreelancerProfileProps {
 export function FreelancerProfile ({ size= 'lg'}: ITFreelancerProfileProps) {
     const [freelancer, setFreelancer] = React.useState<Freelancer>();
     const [rating, setRating] = React.useState<number>(0);
-    const [isLoading, setIsLoading] = React.useState(false);
-    const [success, setSuccess] = React.useState<boolean>(false);
     const [openModal, setOpenModal] = React.useState<boolean>(false);
     const [error, setError] = React.useState<boolean>(false);
     let { freelancerId } = useParams() as any;
@@ -35,13 +30,11 @@ export function FreelancerProfile ({ size= 'lg'}: ITFreelancerProfileProps) {
 
     React.useEffect(() => {
         const fetchPositions = async () => {
-          setIsLoading(true);
           await axios(`http://localhost:3000/api/freelancer/${freelancerId}`)
           .then((response) => setFreelancer(response.data))
         };
 
         const fetchAvgRating = async () => {
-            setIsLoading(true);
             await axios(`http://localhost:3000/api/freelancer/avg_score/${freelancerId}`)
             .then((response) => setRating(response.data.averageScore))
         };
@@ -50,7 +43,6 @@ export function FreelancerProfile ({ size= 'lg'}: ITFreelancerProfileProps) {
         if(!freelancer){
             fetchPositions(); 
             fetchAvgRating();
-            setIsLoading(false)
         }
 
     }, [freelancer]);
@@ -64,7 +56,6 @@ export function FreelancerProfile ({ size= 'lg'}: ITFreelancerProfileProps) {
         axios.put(`http://localhost:3000/api/review/${freelancerId}`, ratingData)
         .then((res) => {
           if(res.status === 200){
-            setSuccess(true)
             setTimeout(() => {
                 setOpenModal(false)
             }, 1000)

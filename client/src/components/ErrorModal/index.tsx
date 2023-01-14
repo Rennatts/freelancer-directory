@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { MdError } from "react-icons/md";
 
-interface IMessageModalProps {
+interface IErrorModalProps {
   mostrar: boolean,
 }
 
 
-const ErrorModal = ({mostrar}: IMessageModalProps) => {
+export const ErrorModal = ({mostrar}: IErrorModalProps) => {
   const [showModal, setShowModal] = useState(false);
   const [ status, setStatus ] = React.useState({
     isValid: false,
@@ -51,5 +51,3 @@ const ErrorModal = ({mostrar}: IMessageModalProps) => {
     </>
   );
 };
-
-export default ErrorModal;

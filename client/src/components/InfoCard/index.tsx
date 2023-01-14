@@ -1,14 +1,13 @@
-import React from 'react'
 import { Freelancer } from '../../Interfaces/Freelancer'
 import { clsx } from 'clsx';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {
     freelancer: Freelancer;
     size?: 'sm' | 'md' | 'lg';
 }
 
-export default function InfoCard({freelancer, size="lg"}: Props) {
+export function InfoCard({freelancer, size="lg"}: Props) {
     const navigate = useNavigate();
     console.log("freelancerww", freelancer)
     

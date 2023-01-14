@@ -2,8 +2,7 @@ import axios from 'axios';
 import * as React from 'react';
 import { useNavigate } from "react-router-dom";
 import { saveUserToLocalStorage } from '../../../auth';
-import ErrorModal from '../../../components/ErrorModal';
-import SuccessModal from '../../../components/SuccessModal';
+import { ErrorModal, SuccessModal } from '../../../components';
 
 
 export interface IUserLoginProps {

@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import { Freelancer } from '../../Interfaces/Freelancer';
 import { clsx } from 'clsx';
-import InfoCard from '../../components/InfoCard';
+import { InfoCard } from '../../components';
 
 export interface ICitySearchResultsProps {
   name?: string;

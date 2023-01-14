@@ -3,9 +3,8 @@ import { useNavigate } from "react-router-dom";
 import './index.css';
 import axios from 'axios';
 import { experience, category, serviceType } from '../../../data';
-import ErrorModal from '../../../components/ErrorModal';
-import SuccessModal from '../../../components/SuccessModal';
 import { saveUserToLocalStorage } from '../../../auth';
+import { ErrorModal, SuccessModal } from '../../../components';
 
 
 

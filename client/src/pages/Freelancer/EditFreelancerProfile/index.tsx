@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import { Freelancer } from '../../../Interfaces/Freelancer';
-import { clsx } from 'clsx';
 import { UserContext } from '../../../UserContext';
 import { serviceType } from '../../../data';
 
