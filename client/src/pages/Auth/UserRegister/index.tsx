@@ -11,7 +11,7 @@ export interface IUserLoginProps {
 
 
 export function UserRegister (props: IUserLoginProps) {
-  const [error, setError] = React.useState<boolean>(false);
+  const [error, setError] = React.useState<any>();
   const [success, setSuccess] = React.useState<boolean>(false);
   const [ status, setStatus ] = React.useState({
     isValid: false,
@@ -50,14 +50,10 @@ export function UserRegister (props: IUserLoginProps) {
       }
     })
     .catch((err) => setError(true));
+
+    console.log("error", error)
   };
 
-  // function checkIfPasswordsMatch(event: any): boolean {
-  //   if(loginData.password !== loginData.confirmPassword){
-  //     return true
-  //   }
-  //   return false
-  // }
 
 
   function handleInputChange(event: any) {
@@ -70,7 +66,7 @@ export function UserRegister (props: IUserLoginProps) {
         <div className='flex flex-center items-center justify-center'>
           <h2 className='p-9 text-xl underline underline-offset-8 decoration-teal-500'>Register here</h2>
         </div>
-        <ErrorModal mostrar={error}></ErrorModal>
+        <ErrorModal mostrar={error} errorMessage="Check all the required fields and try again"></ErrorModal>
         <SuccessModal mostrar={success}></SuccessModal>
         <form onSubmit={handleSubmit}>
           <div className="mb-6">

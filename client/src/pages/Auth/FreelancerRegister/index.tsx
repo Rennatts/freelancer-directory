@@ -15,7 +15,7 @@ export interface IFreelancerRegisterProps {
 
 export function FreelancerRegister (props: IFreelancerRegisterProps) {
   const [currIndex, setCurrentIndex] = React.useState<number>(0);
-  const [error, setError] = React.useState<boolean>(false);
+  const [error, setError] = React.useState<any>();
   const [success, setSuccess] = React.useState<boolean>(false);
   const [selectedStyles, setSelectedStyles] = React.useState<string[]>([]);
   const [ status, setStatus ] = React.useState({
@@ -63,6 +63,7 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
       }
     })
     .catch((err) => setError(true));
+    console.log("error", error)
   };
 
 
@@ -122,7 +123,7 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
         <div className='flex flex-center items-center justify-center'>
           <h2 className='p-9 text-xl underline underline-offset-8 decoration-teal-500'>Register here</h2>
         </div>
-        <ErrorModal mostrar={error}></ErrorModal>
+        <ErrorModal mostrar={error} errorMessage="Check all the required fields and try again"></ErrorModal>
         <SuccessModal mostrar={success}></SuccessModal>
         <div className="w-full mt-27 mb-20">
           <ul id="connecting_line" className='relative flex space-x-24 auto mt-5 w-full -z-1'>

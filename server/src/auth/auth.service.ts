@@ -3,11 +3,9 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 
 import * as bcrypt from 'bcrypt';
 import { NewUserDTO } from 'src/user/dtos/newUser_dto';
-import { UserDetails } from 'src/user/interface/user.interface';
 import { ExistingUserDTO } from 'src/user/dtos/existingUser_dto';
 import { JwtService } from '@nestjs/jwt';
 import { NewFreelancersDTO } from 'src/Freelancer/dtos/newFreelancer_dto';
-import { FreelancerDetails } from 'src/Freelancer/interfaces/freelancer.interface';
 import { LoginFreelancerDTO } from 'src/Freelancer/dtos/loginFreelancer_dto';
 import { Usertype } from './enum/userTypes';
 import { LoginReturn } from './interfaces/loginReturn.interface';
@@ -23,9 +21,6 @@ export class AuthService {
         private jwtService: JwtService,
     ) { }
 
-
-    //methods for all
-
     async hashPassword(password: string): Promise<string> {
         const saltOrRounds = 12;
         return bcrypt.hash(password, saltOrRounds);
@@ -34,8 +29,6 @@ export class AuthService {
     async doesPasswordMatch(password: string, hashedPassword: string): Promise<boolean> {
         return bcrypt.compare(password, hashedPassword)
     }
-
-    //Methods for user
 
     async registerUser(user: Readonly<NewUserDTO>): Promise<LoginReturn | HttpException> {
         const { name, surname, email, password } = user;
@@ -55,6 +48,7 @@ export class AuthService {
     }
 
     async loginUser(user: ExistingUserDTO,): Promise<LoginReturn  | string> {
+        console.log("ekmail", user)
         const { email, password } = user;
 
         return this.validateUser(email, password);
@@ -65,11 +59,12 @@ export class AuthService {
     }
 
     async validateUser(email: string, password: string): Promise<LoginReturn | string> {
+        console.log("ekmail", email)
         const user = await this.userService.findByEmail(email);
         //if user does not exist '!!' transform the answer into a boolean
         const doesUserExists = !!user;
 
-        if(!doesUserExists) return 'email not registered, please make a login';
+        if(!doesUserExists) return 'email not registered';
         
         const doesPasswordMatch = await  this.doesPasswordMatch(password, user.password);
 

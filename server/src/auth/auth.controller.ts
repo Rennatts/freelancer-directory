@@ -18,9 +18,9 @@ export class AuthController {
         return this.authService.registerUser(user);
     }
 
-    @UseGuards(LocalAuthGuard)
+    // @UseGuards(LocalAuthGuard)
     @Post('login_user')
-    @HttpCode(HttpStatus.OK)
+    // @HttpCode(HttpStatus.OK)
     loginUser(@Body() user: ExistingUserDTO): Promise<LoginReturn | string> {
         return this.authService.loginUser(user);
     }

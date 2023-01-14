@@ -9,10 +9,22 @@ import { ErrorModal } from '../../../components';
 export interface IFreelancerLoginProps {
 }
 
+interface Error {
+  existError: boolean,
+  errorMessage: any;
+}
+
+interface ErrorCategory {
+  [status: string]: string
+}
 
 
 export function FreelancerLogin (props: IFreelancerLoginProps) {
-  const [error, setError] = React.useState<boolean>(false);
+  const [error, setError] = React.useState<Error>({
+    existError: false,
+    errorMessage: "",
+  });
+
   const [ status, setStatus ] = React.useState({
     isValid: false,
     message: "",
@@ -29,7 +41,9 @@ export function FreelancerLogin (props: IFreelancerLoginProps) {
     axios
     .post(`http://localhost:3000/api/auth/login_freelancer`, loginData)
     .then((res) => {
-      console.log("res", res)
+      if(res.status !== 200){
+        setError({errorMessage: handleErrorMessage(res.data), existError: true})
+      }
       if(res.status === 201){
         saveUserToLocalStorage(res.data);
         setTimeout(() => {
@@ -37,13 +51,22 @@ export function FreelancerLogin (props: IFreelancerLoginProps) {
         }, 1000)
       }
     })
-    .catch((err) => setError(true));
+    .catch((err) => {setError({errorMessage: handleErrorMessage(err.response.statusText), existError: true})});
   };
 
+  function handleErrorMessage(status: string | number) {
+    const keyActionMap: ErrorCategory = { 
+      "Unauthorized": 'user not registered',
+      "wrong password, try again": "wrong password, try again",
+      "email not registered": "email not registered"
+    }
+    return keyActionMap[status]
+  }
+
   useEffect(()=> {
-    if(error === true){
+    if(error.existError === true){
       setLoginData({email: "", password: ""}) 
-      setError(false);
+      setError({...error, existError: true})
     }
   },[error])
 
@@ -58,7 +81,7 @@ export function FreelancerLogin (props: IFreelancerLoginProps) {
         <div className='flex flex-center items-center justify-center'>
           <h2 className='p-9 text-xl underline underline-offset-8 decoration-teal-500'>Login</h2>
         </div>
-        <ErrorModal mostrar={error}/>
+        <ErrorModal mostrar={error.existError} errorMessage={error.errorMessage}/>
         <form>
           <div className="mb-6">
             <div className="flex items-start flex-col mb-6">

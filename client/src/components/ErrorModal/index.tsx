@@ -4,10 +4,11 @@ import { MdError } from "react-icons/md";
 
 interface IErrorModalProps {
   mostrar: boolean,
+  errorMessage: string,
 }
 
 
-export const ErrorModal = ({mostrar}: IErrorModalProps) => {
+export const ErrorModal = ({mostrar, errorMessage}: IErrorModalProps) => {
   const [showModal, setShowModal] = useState(false);
   const [ status, setStatus ] = React.useState({
     isValid: false,
@@ -33,8 +34,7 @@ export const ErrorModal = ({mostrar}: IErrorModalProps) => {
                             <div className="w-full mt-27 mb-20 flex flex-col items-center flex-center mt-6">
                               <MdError color="red" size="60px"></MdError>
                               <h2 className="mt-6">ERRO</h2>
-                              <p className="mt-6">E-mail or passwords is wrong.</p>
-                              <p className="mt-2">Try again</p>
+                              <p className="mt-6">{errorMessage}</p>
                             </div>
                             <div className="flex justify-center items-center flex-center">
                               <button className="bg-teal-500 text-white active:bg-teal-300 font-bold px-6 py-3 rounded shadow hover:shadow-lg hover:bg-teal-300 hover:border-teal-300 hover:tex-black outline-none focus:outline-none mr-1 mb-1"
