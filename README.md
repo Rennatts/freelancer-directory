@@ -39,4 +39,5 @@ npm install
 npm start
 ```
 
-
+### To see the swagges
+http://localhost:3000/api

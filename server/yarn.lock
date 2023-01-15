@@ -678,7 +678,7 @@
     "webpack" "5.73.0"
     "webpack-node-externals" "3.0.0"
 
-"@nestjs/common@^8.0.0 || ^9.0.0", "@nestjs/common@^9.0.0":
+"@nestjs/common@^7.0.8 || ^8.0.0 || ^9.0.0", "@nestjs/common@^8.0.0 || ^9.0.0", "@nestjs/common@^9.0.0":
   "integrity" "sha512-oYLIcOal3QOwcqt6goXovRNg8ZkalyOMjH0oYYzfJLrait6P7c6nAeWHu4qFDThY7GoZHEanLgji1qlqVEW09g=="
   "resolved" "https://registry.npmjs.org/@nestjs/common/-/common-9.0.11.tgz"
   "version" "9.0.11"
@@ -707,6 +707,11 @@
   dependencies:
     "@types/jsonwebtoken" "8.5.8"
     "jsonwebtoken" "8.5.1"
+
+"@nestjs/mapped-types@1.2.0":
+  "integrity" "sha512-NTFwPZkQWsArQH8QSyFWGZvJ08gR+R4TofglqZoihn/vU+ktHEJjMqsIsADwb7XD97DhiD+TVv5ac+jG33BHrg=="
+  "resolved" "https://registry.npmjs.org/@nestjs/mapped-types/-/mapped-types-1.2.0.tgz"
+  "version" "1.2.0"
 
 "@nestjs/mongoose@^9.2.0":
   "integrity" "sha512-fC33b8nwR7C3y6hlTyKjiHQVU57SFOd3Dwa6alWj3BOhK5bHt8Ld6qOK2G35/XXPHjtSIk3LIKEqwyK5xGcmBA=="
@@ -739,6 +744,17 @@
     "fs-extra" "10.1.0"
     "jsonc-parser" "3.0.0"
     "pluralize" "8.0.0"
+
+"@nestjs/swagger@^6.1.4":
+  "integrity" "sha512-kE8VjR+NaoKqxg8XqM/YYfALScPh4AcoR8Wywga8/OxHsTHY+MKxqvTpWp7IhCUWSA6xT8nQUpcC9Rt7C+r7Hw=="
+  "resolved" "https://registry.npmjs.org/@nestjs/swagger/-/swagger-6.1.4.tgz"
+  "version" "6.1.4"
+  dependencies:
+    "@nestjs/mapped-types" "1.2.0"
+    "js-yaml" "4.1.0"
+    "lodash" "4.17.21"
+    "path-to-regexp" "3.2.0"
+    "swagger-ui-dist" "4.15.5"
 
 "@nestjs/testing@^9.0.0":
   "integrity" "sha512-tT+yj3av7ZJb9Cy09C4+FoUULvzUntf81g5eK5shRVeQ35RWqr7E5Uq77B7ePUF2Er/TictVZk43d7rKq1ClNA=="
@@ -1939,12 +1955,12 @@
   "resolved" "https://registry.npmjs.org/cjs-module-lexer/-/cjs-module-lexer-1.2.2.tgz"
   "version" "1.2.2"
 
-"class-transformer@*", "class-transformer@^0.5.1":
+"class-transformer@*", "class-transformer@^0.2.0 || ^0.3.0 || ^0.4.0 || ^0.5.0", "class-transformer@^0.5.1":
   "integrity" "sha512-SQa1Ws6hUbfC98vKGxZH3KFY0Y1lm5Zm0SY8XX9zbK7FJCyVEac3ATW0RIpwzW+oOfmHE5PMPufDG9hCfoEOMw=="
   "resolved" "https://registry.npmjs.org/class-transformer/-/class-transformer-0.5.1.tgz"
   "version" "0.5.1"
 
-"class-validator@*", "class-validator@^0.13.2":
+"class-validator@*", "class-validator@^0.11.1 || ^0.12.0 || ^0.13.0", "class-validator@^0.13.2":
   "integrity" "sha512-yBUcQy07FPlGzUjoLuUfIOXzgynnQPPruyK1Ge2B74k9ROwnle1E+NxLWnUv5OLU8hA/qL5leAE9XnXq3byaBw=="
   "resolved" "https://registry.npmjs.org/class-validator/-/class-validator-0.13.2.tgz"
   "version" "0.13.2"
@@ -2120,7 +2136,7 @@
     "readable-stream" "^2.2.2"
     "typedarray" "^0.0.6"
 
-"concurrently@^7.5.0":
+"concurrently@^7.4.0":
   "integrity" "sha512-5E3mwiS+i2JYBzr5BpXkFxOnleZTMsG+WnE/dCG4/P+oiVXrbmrBwJ2ozn4SxwB2EZDrKR568X+puVohxz3/Mg=="
   "resolved" "https://registry.npmjs.org/concurrently/-/concurrently-7.5.0.tgz"
   "version" "7.5.0"
@@ -4173,7 +4189,7 @@
     "argparse" "^1.0.7"
     "esprima" "^4.0.0"
 
-"js-yaml@^4.1.0":
+"js-yaml@^4.1.0", "js-yaml@4.1.0":
   "integrity" "sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA=="
   "resolved" "https://registry.npmjs.org/js-yaml/-/js-yaml-4.1.0.tgz"
   "version" "4.1.0"
@@ -4463,7 +4479,7 @@
   "resolved" "https://registry.npmjs.org/lodash.uniq/-/lodash.uniq-4.5.0.tgz"
   "version" "4.5.0"
 
-"lodash@^4.17.15", "lodash@^4.17.19", "lodash@^4.17.21", "lodash@~4.17.4":
+"lodash@^4.17.15", "lodash@^4.17.19", "lodash@^4.17.21", "lodash@~4.17.4", "lodash@4.17.21":
   "integrity" "sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg=="
   "resolved" "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz"
   "version" "4.17.21"
@@ -6280,6 +6296,11 @@
   "integrity" "sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w=="
   "resolved" "https://registry.npmjs.org/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz"
   "version" "1.0.0"
+
+"swagger-ui-dist@4.15.5":
+  "integrity" "sha512-V3eIa28lwB6gg7/wfNvAbjwJYmDXy1Jo1POjyTzlB6wPcHiGlRxq39TSjYGVjQrUSAzpv+a7nzp7mDxgNy57xA=="
+  "resolved" "https://registry.npmjs.org/swagger-ui-dist/-/swagger-ui-dist-4.15.5.tgz"
+  "version" "4.15.5"
 
 "swig-templates@2.0.3":
   "integrity" "sha512-QojPTuZWdpznSZWZDB63/grsZuDwT/7geMeGlftbJXDoYBIZEnTcKvz4iwYDv3SwfPX9/B4RtGRSXNnm3S2wwg=="
