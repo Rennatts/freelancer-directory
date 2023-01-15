@@ -40,24 +40,26 @@ export function UserLogin (props: IUserLoginProps) {
     axios
     .post(`http://localhost:3000/api/auth/login_user`, loginData)
     .then((res) => {
-      if(res.status !== 200){
+      console.log("res", res)
+      if(res.status !== 201){
         setError({errorMessage: handleErrorMessage(res.data), existError: true})
       }
-      if(res.status === 200){
+      if(res.status === 201){
         saveUserToLocalStorage(res.data);
         setTimeout(() => {
           navigate(`/`)
         }, 1000)
       }
     })
-    .catch((err) => {setError({errorMessage: handleErrorMessage(err.response.statusText), existError: true})});
+    .catch((err) => {console.log("err", err.response.data.message); setError({errorMessage: handleErrorMessage(err.response.data.message), existError: true})});
   };
 
   function handleErrorMessage(status: string | number) {
     const keyActionMap: ErrorCategory = { 
       "Unauthorized": 'user not registered',
       "wrong password, try again": "wrong password, try again",
-      "email not registered": "email not registered"
+      "email not registered": "email not registered",
+      "e-mail already registered": "e-mail already registered",
     }
     return keyActionMap[status]
   }

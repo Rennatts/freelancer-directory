@@ -1,5 +1,5 @@
 import { Freelancer } from 'src/Freelancer/Freelancer.schema';
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { BadRequestException, HttpException, HttpStatus, Injectable } from '@nestjs/common';
 
 import * as bcrypt from 'bcrypt';
 import { NewUserDTO } from 'src/user/dtos/newUser_dto';
@@ -34,7 +34,7 @@ export class AuthService {
         const { name, surname, email, password } = user;
 
         const existingUser = await this.userService.findByEmail(user.email);
-        if(existingUser) return new HttpException('Not acceptable', HttpStatus.NOT_ACCEPTABLE);
+        if(existingUser) throw new HttpException('e-mail already registered', HttpStatus.NOT_ACCEPTABLE);
 
         const hashedPassword = await this.hashPassword(password);
 
@@ -48,7 +48,6 @@ export class AuthService {
     }
 
     async loginUser(user: ExistingUserDTO,): Promise<LoginReturn  | string> {
-        console.log("ekmail", user)
         const { email, password } = user;
 
         return this.validateUser(email, password);
@@ -64,7 +63,7 @@ export class AuthService {
         //if user does not exist '!!' transform the answer into a boolean
         const doesUserExists = !!user;
 
-        if(!doesUserExists) return 'email not registered';
+        if(!doesUserExists) throw new HttpException('email not registered', HttpStatus.FORBIDDEN);
         
         const doesPasswordMatch = await  this.doesPasswordMatch(password, user.password);
 
@@ -85,7 +84,7 @@ export class AuthService {
 
         const existingFreelancer = await this.FreelancerService.findByEmail(freelancer.email)
 
-        if(existingFreelancer) throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);;
+        if(existingFreelancer) throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);
 
         const hashedPassword = await this.hashPassword(password);
 

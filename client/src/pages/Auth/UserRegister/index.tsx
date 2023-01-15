@@ -9,12 +9,25 @@ import { useState } from 'react';
 export interface IUserLoginProps {
 }
 
+interface Error {
+  existError: boolean,
+  errorMessage: any;
+}
+
+interface ErrorCategory {
+  [status: string]: string
+}
+
 
 
 export function UserRegister (props: IUserLoginProps) {
-  const [error, setError] = React.useState<any>();
   const [success, setSuccess] = React.useState<boolean>(false);
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = React.useState<Error>({
+    existError: false,
+    errorMessage: "",
+  });
+
   const [ status, setStatus ] = React.useState({
     isValid: false,
     message: "",
@@ -52,10 +65,17 @@ export function UserRegister (props: IUserLoginProps) {
         }, 4000)
       }
     })
-    .catch((err) => {console.log("error", err); setError(true)});
-
-    //console.log("error", error)
+    .catch((err) => {setError({errorMessage: handleErrorMessage(err.response.data.message), existError: true})});
   };
+
+  function handleErrorMessage(status: string | number) {
+    const keyActionMap: ErrorCategory = { 
+      "Unauthorized": 'user not registered',
+      "wrong password, try again": "wrong password, try again",
+      "e-mail already registered": "e-mail already registered"
+    }
+    return keyActionMap[status]
+  }
 
 
 
@@ -69,7 +89,7 @@ export function UserRegister (props: IUserLoginProps) {
         <div className='flex flex-center items-center justify-center'>
           <h2 className='p-9 text-xl underline underline-offset-8 decoration-teal-500'>Register here</h2>
         </div>
-        <ErrorModal mostrar={error} errorMessage="Check all the required fields and try again"></ErrorModal>
+        <ErrorModal mostrar={error.existError} errorMessage={error.errorMessage}></ErrorModal>
         <SuccessModal mostrar={success}></SuccessModal>
         <form onSubmit={handleSubmit}>
           <div className="mb-6">
