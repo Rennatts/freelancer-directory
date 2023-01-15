@@ -9,3 +9,4 @@ export { FreelancerProfile } from './Freelancer/FreelancerProfile/';
 export { Home } from './Home';
 export { RedirectionFreelancers } from './RedirectionFreelancers';
 export { ServiceSearchResults } from './ServiceSearchResults';
+export { UserProfile } from './User/UserProfile'
