@@ -79,12 +79,12 @@ export class AuthService {
     }
 
 
-    async registerFreelancer(freelancer: NewFreelancersDTO): Promise<LoginReturn | string> {
+    async registerFreelancer(freelancer: NewFreelancersDTO): Promise<LoginReturn | HttpException> {
         const { password } = freelancer;
 
         const existingFreelancer = await this.FreelancerService.findByEmail(freelancer.email)
 
-        if(existingFreelancer) throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);
+        if(existingFreelancer) throw new HttpException('e-mail already registered', HttpStatus.NOT_ACCEPTABLE);
 
         const hashedPassword = await this.hashPassword(password);
 
@@ -99,18 +99,18 @@ export class AuthService {
         return {token: jwt, id: newFreelancer._id, name: newFreelancer.name, userType: Usertype.Freelancer};
     }
 
-    async loginFreelancer(user: LoginFreelancerDTO,): Promise<LoginReturn | string> {
+    async loginFreelancer(user: LoginFreelancerDTO,): Promise<LoginReturn | HttpException> {
         const { email, password } = user;
 
         return this.validateFreelancer(email, password)
     }
 
-    async validateFreelancer(email: string, password: string): Promise<LoginReturn | string> {
+    async validateFreelancer(email: string, password: string): Promise<LoginReturn | HttpException> {
         const user = await this.FreelancerService.findByEmail(email);
         //if user does not exist '!!' transform the answer into a boolean
         const doesUserExists = !!user;
 
-        if(!doesUserExists) return 'email not registered, please make a login';
+        if(!doesUserExists) throw new HttpException('e-mail not registered', HttpStatus.NOT_ACCEPTABLE);
         
         const doesPasswordMatch = await  this.doesPasswordMatch(password, user.password);
 

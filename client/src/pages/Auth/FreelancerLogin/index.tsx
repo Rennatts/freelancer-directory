@@ -51,14 +51,14 @@ export function FreelancerLogin (props: IFreelancerLoginProps) {
         }, 1000)
       }
     })
-    .catch((err) => {setError({errorMessage: handleErrorMessage(err.response.statusText), existError: true})});
+    .catch((err) => {setError({errorMessage: handleErrorMessage(err.response.data.message), existError: true})});
   };
 
   function handleErrorMessage(status: string | number) {
     const keyActionMap: ErrorCategory = { 
       "Unauthorized": 'user not registered',
       "wrong password, try again": "wrong password, try again",
-      "email not registered": "email not registered"
+      "e-mail not registered": "e-mail not registered"
     }
     return keyActionMap[status]
   }

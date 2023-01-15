@@ -32,7 +32,7 @@ export class AuthController {
     }
 
     @Post('signup_freelancer')
-    signupFreelancer(@Body() freelancer: NewFreelancersDTO): Promise<LoginReturn | string> {
+    signupFreelancer(@Body() freelancer: NewFreelancersDTO): Promise<LoginReturn | HttpException> {
         return this.authService.registerFreelancer(freelancer);
     }
 
@@ -41,7 +41,7 @@ export class AuthController {
     @Post('login_freelancer')
     // @HttpCode(HttpStatus.FORBIDDEN)
     // @HttpCode(HttpStatus.OK)
-    loginFreelancer(@Body() freelancer: ExistingUserDTO): Promise<LoginReturn | string> {
+    loginFreelancer(@Body() freelancer: ExistingUserDTO): Promise<LoginReturn | HttpException> {
         return this.authService.loginFreelancer(freelancer);
     }
 }

@@ -11,11 +11,22 @@ import { ErrorModal, SuccessModal } from '../../../components';
 export interface IFreelancerRegisterProps {
 }
 
+interface Error {
+  existError: boolean,
+  errorMessage: any;
+}
+
+interface ErrorCategory {
+  [status: string]: string
+}
 
 
 export function FreelancerRegister (props: IFreelancerRegisterProps) {
   const [currIndex, setCurrentIndex] = React.useState<number>(0);
-  const [error, setError] = React.useState<any>();
+  const [error, setError] = React.useState<Error>({
+    existError: false,
+    errorMessage: "",
+  });
   const [success, setSuccess] = React.useState<boolean>(false);
   const [selectedStyles, setSelectedStyles] = React.useState<string[]>([]);
   const [confirmPassword, setConfirmPassword] = React.useState("");
@@ -53,7 +64,6 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
     axios
     .post(`http://localhost:3000/api/auth/signup_freelancer`, loginData)
     .then((res) => {
-
       if(res.status === 201){
         setSuccess(true)
         console.log(res.data)
@@ -63,9 +73,17 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
         }, 2000)
       }
     })
-    .catch((err) => setError(true));
-    console.log("error", error)
+    .catch((err) => {setError({errorMessage: handleErrorMessage(err.response.data.message), existError: true})});
   };
+
+  function handleErrorMessage(status: string | number) {
+    const keyActionMap: ErrorCategory = { 
+      "Unauthorized": 'user not registered',
+      "wrong password, try again": "wrong password, try again",
+      "e-mail already registered": "e-mail already registered"
+    }
+    return keyActionMap[status]
+  }
 
 
   function handleInputChange(event: any) {
@@ -124,7 +142,7 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
         <div className='flex flex-center items-center justify-center'>
           <h2 className='p-9 text-xl underline underline-offset-8 decoration-teal-500'>Register here</h2>
         </div>
-        <ErrorModal mostrar={error} errorMessage="Check all the required fields and try again"></ErrorModal>
+        <ErrorModal mostrar={error.existError} errorMessage={error.errorMessage}/>
         <SuccessModal mostrar={success}></SuccessModal>
         <div className="w-full mt-27 mb-20">
           <ul id="connecting_line" className='relative flex space-x-24 auto mt-5 w-full -z-1'>
