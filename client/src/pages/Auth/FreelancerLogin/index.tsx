@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { saveUserToLocalStorage } from '../../../auth';
 import { useEffect } from 'react';
 import { ErrorModal } from '../../../components';
+import { handleErrorMessage } from '../../../utils/errorMessage';
 
 
 export interface IFreelancerLoginProps {
@@ -13,11 +14,6 @@ interface Error {
   existError: boolean,
   errorMessage: any;
 }
-
-interface ErrorCategory {
-  [status: string]: string
-}
-
 
 export function FreelancerLogin (props: IFreelancerLoginProps) {
   const [error, setError] = React.useState<Error>({
@@ -54,14 +50,6 @@ export function FreelancerLogin (props: IFreelancerLoginProps) {
     .catch((err) => {setError({errorMessage: handleErrorMessage(err.response.data.message), existError: true})});
   };
 
-  function handleErrorMessage(status: string | number) {
-    const keyActionMap: ErrorCategory = { 
-      "Unauthorized": 'user not registered',
-      "wrong password, try again": "wrong password, try again",
-      "e-mail not registered": "e-mail not registered"
-    }
-    return keyActionMap[status]
-  }
 
   useEffect(()=> {
     if(error.existError === true){

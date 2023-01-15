@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { saveUserToLocalStorage } from '../../../auth';
 import { ErrorModal, SuccessModal } from '../../../components';
 import { useState } from 'react';
+import { handleErrorMessage } from '../../../utils/errorMessage';
 
 
 export interface IUserLoginProps {
@@ -13,12 +14,6 @@ interface Error {
   existError: boolean,
   errorMessage: any;
 }
-
-interface ErrorCategory {
-  [status: string]: string
-}
-
-
 
 export function UserRegister (props: IUserLoginProps) {
   const [success, setSuccess] = React.useState<boolean>(false);
@@ -67,16 +62,6 @@ export function UserRegister (props: IUserLoginProps) {
     })
     .catch((err) => {setError({errorMessage: handleErrorMessage(err.response.data.message), existError: true})});
   };
-
-  function handleErrorMessage(status: string | number) {
-    const keyActionMap: ErrorCategory = { 
-      "Unauthorized": 'user not registered',
-      "wrong password, try again": "wrong password, try again",
-      "e-mail already registered": "e-mail already registered"
-    }
-    return keyActionMap[status]
-  }
-
 
 
   function handleInputChange(event: any) {

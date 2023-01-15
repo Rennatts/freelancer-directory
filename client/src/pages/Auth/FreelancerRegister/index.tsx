@@ -5,6 +5,7 @@ import axios from 'axios';
 import { experience, category, serviceType } from '../../../data';
 import { saveUserToLocalStorage } from '../../../auth';
 import { ErrorModal, SuccessModal } from '../../../components';
+import { handleErrorMessage } from '../../../utils/errorMessage';
 
 
 
@@ -14,10 +15,6 @@ export interface IFreelancerRegisterProps {
 interface Error {
   existError: boolean,
   errorMessage: any;
-}
-
-interface ErrorCategory {
-  [status: string]: string
 }
 
 
@@ -76,14 +73,6 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
     .catch((err) => {setError({errorMessage: handleErrorMessage(err.response.data.message), existError: true})});
   };
 
-  function handleErrorMessage(status: string | number) {
-    const keyActionMap: ErrorCategory = { 
-      "Unauthorized": 'user not registered',
-      "wrong password, try again": "wrong password, try again",
-      "e-mail already registered": "e-mail already registered"
-    }
-    return keyActionMap[status]
-  }
 
 
   function handleInputChange(event: any) {

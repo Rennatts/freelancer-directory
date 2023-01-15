@@ -3,6 +3,7 @@ import * as React from 'react';
 import { useNavigate } from "react-router-dom";
 import { saveUserToLocalStorage } from '../../../auth';
 import { ErrorModal } from '../../../components';
+import { handleErrorMessage } from '../../../utils/errorMessage';
 
 export interface IUserLoginProps {
 }
@@ -11,11 +12,6 @@ interface Error {
   existError: boolean,
   errorMessage: any;
 }
-
-interface ErrorCategory {
-  [status: string]: string
-}
-
 
 export function UserLogin (props: IUserLoginProps) {
   const [error, setError] = React.useState<Error>({
@@ -54,15 +50,6 @@ export function UserLogin (props: IUserLoginProps) {
     .catch((err) => {console.log("err", err.response.data.message); setError({errorMessage: handleErrorMessage(err.response.data.message), existError: true})});
   };
 
-  function handleErrorMessage(status: string | number) {
-    const keyActionMap: ErrorCategory = { 
-      "Unauthorized": 'user not registered',
-      "wrong password, try again": "wrong password, try again",
-      "email not registered": "email not registered",
-      "e-mail already registered": "e-mail already registered",
-    }
-    return keyActionMap[status]
-  }
 
   function handleInputChange(event: any) {
     setLoginData({...loginData, [event.target.name]: event.target.value});
