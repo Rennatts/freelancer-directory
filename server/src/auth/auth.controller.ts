@@ -1,5 +1,6 @@
 import { Body, Controller, Get, HttpCode, HttpException, HttpStatus, Post, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
+import { ApiBody } from '@nestjs/swagger';
 import { NewFreelancersDTO } from 'src/Freelancer/dtos/newFreelancer_dto';
 import { ExistingUserDTO } from 'src/user/dtos/existingUser_dto';
 import { NewUserDTO } from 'src/user/dtos/newUser_dto';
