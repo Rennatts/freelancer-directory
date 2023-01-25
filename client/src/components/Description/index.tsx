@@ -6,6 +6,7 @@ import photo03 from './../../images/003.jpg';
 
 
 export interface IDescriptionProps {
+  
 }
 
 

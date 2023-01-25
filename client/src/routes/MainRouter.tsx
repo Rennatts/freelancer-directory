@@ -1,5 +1,5 @@
 import {Route, BrowserRouter as Router, Routes} from 'react-router-dom';
-import { CityNotFound, Footer, Header } from './../components';
+import { CityNotFound, Footer, Header, NewHeader } from './../components';
 import { isAuthenticated } from '../auth';
 import { UserContext } from '../UserContext';
 import ProtectedRoute from '../auth/ProtectedRoute';
@@ -16,7 +16,7 @@ import {
     ServiceSearchResults, 
     UserLogin, 
     UserProfile, 
-    UserRegister 
+    UserRegister,
 } from '../pages';
 
 
@@ -27,7 +27,7 @@ function MainRouter(){
         <div>
             <UserContext.Provider value={{name: isAuthenticated().name, userType:isAuthenticated().userType, id: isAuthenticated().id, token: isAuthenticated().token}}>
                 <Router>
-                    <Header/>
+                    <NewHeader/>
                         <Routes>
                             <Route path="/" element={<Home/>}/>
                             <Route path="/city/:selectedCity" element={<CitySearchResults/>}/>

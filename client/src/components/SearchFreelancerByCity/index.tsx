@@ -28,16 +28,16 @@ export function SearchFreelancerByCity ({ size= 'sm' }: ISearchProps) {
   
   return (
     <div className={clsx(
-      'flex items-center align-center flex-center flex-col place-content-around',
+      'flex flex-wrap items-center align-center flex-center flex-col place-content-around',
       {
         '': size === 'sm',
       }
     )}>
-      <div className={clsx("w-full flex flex-center items-center justify-center flex-col", 
+      <div className={clsx("w-full flex flex-wrap flex-center items-center justify-center flex-col", 
       {
 
       })}>
-        <p className={clsx('w-90 mb-2 flex flex-center items-center justify-center', 
+        <p className={clsx('w-90 mb-2 flex flex-wrap flex-center items-center justify-center', 
         {
           'text-xl': size === 'sm',
         })}>Find a freelancer</p>
@@ -79,7 +79,10 @@ export function SearchFreelancerByCity ({ size= 'sm' }: ISearchProps) {
           </div>
         </form>
       </div>
-      <div className="object-cover h-48 w-96 mt-12">
+      <div className={clsx("object-cover", 
+      {
+        'h-92 w-72 mt-12 mb-24': size === 'sm',
+      })}>
         <img src={teamImage}></img>
       </div>
     </div>
