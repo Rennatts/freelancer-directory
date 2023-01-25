@@ -29,12 +29,10 @@ export const NewHeader: React.FC<IMenuProps> = ({ size= 'sm' }: IMenuProps) => {
 
     let FreelancerLinks = [
       {name: "My Profile", link:`/freelancer/profile/${isAuthenticated().id}`},
-      {name: "SingOut", link: "/"},
     ];
 
     let UserLinks = [
       {name: "My Profile", link:`/user/profile/${isAuthenticated().id}`},
-      {name: "SingOut", link: "/"},
     ];
 
     let NotLoggedInLinks = [
@@ -63,7 +61,7 @@ export const NewHeader: React.FC<IMenuProps> = ({ size= 'sm' }: IMenuProps) => {
               </li>
             ))
           }
-          <Button>CLIQUE</Button>
+         <Button onClick={()=> navigate('/')}>Sign out</Button>
         </ul>
       );
     }
@@ -79,7 +77,7 @@ export const NewHeader: React.FC<IMenuProps> = ({ size= 'sm' }: IMenuProps) => {
               </li>
             ))
           }
-          <Button>CLIQUE</Button>
+          <Button onClick={()=> navigate('/')}>Sign out</Button>
         </ul>
       );
     }
@@ -103,7 +101,7 @@ export const NewHeader: React.FC<IMenuProps> = ({ size= 'sm' }: IMenuProps) => {
     return(
       <div className='shadow-md w-full fixed top-0 left-0'>
         <div className='md:flex items-center justify-between bg-white py-4 md:px-10 px-7'>
-          <div className='font-bold text-xl cursor-pointer flex items-center text-gray-800'>
+          <div onClick={()=> navigate('/')}  className='font-bold text-xl cursor-pointer flex items-center text-gray-800'>
             <span className='text-3xl text-indigo-600 mr-1 pt-2'>
               <FontAwesomeIcon className='text-xl cursor-pointer text-gray-500' icon={faCubes}/>
             </span>
