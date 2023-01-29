@@ -127,14 +127,14 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
 
   return (
     <div className='flex items-center flex-center flex-col place-content-around p-20'>
-      <div>
+      <div className='md:pr-64 md:pl-64 md:w-full w-64'>
         <div className='flex flex-center items-center justify-center'>
           <h2 className='p-9 text-xl underline underline-offset-8 decoration-teal-500'>Register here</h2>
         </div>
         <ErrorModal mostrar={error.existError} errorMessage={error.errorMessage}/>
         <SuccessModal mostrar={success}></SuccessModal>
         <div className="w-full mt-27 mb-20">
-          <ul id="connecting_line" className='relative flex space-x-24 auto mt-5 w-full -z-1'>
+          <ul id="connecting_line" className='relative flex md:space-x-24 space-x-5 auto mt-5 w-full -z-1'>
             {
               ["Name", "Address", "Contact", "Career"].map((item, index) => (
                 <li data-title={item} className={`${currIndex >= index ? 'z-1 border-2 border-teal-500 before:text-black bg-teal-500 text-white grid rounded-full w-14 h-14 place-items-center before:content-[attr(data-title)] before:absolute before:text-xs before:-top-6 before:color-teal-500': 'bg-white z-1 border-2 border-black grid rounded-full w-14 h-14 place-items-center before:content-[attr(data-title)] before:absolute before:text-xs before:-top-6 before:color-teal-500'}`} key={item}>
@@ -151,7 +151,6 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
                   <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Nome
                   </label>
                   <input               
-                  id="input" 
                   name='name'
                   value={loginData.name}
                   onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" required>
@@ -161,7 +160,6 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
                   <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Surname
                   </label>
                   <input               
-                  id="input" 
                   name='surname'
                   value={loginData.surname}
                   onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" required>
@@ -171,7 +169,6 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
                   <label className="block text-sm font-medium text-gray-900 dark:text-cyan-500">Username</label>
                   <label className="block mb-2 text-xs text-black">*optional</label>
                   <input               
-                  id="input" 
                   name='username'
                   value={loginData.username}
                   onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" required>
@@ -181,7 +178,6 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
                 <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">E-mail
                 </label>
                 <input               
-                id="input" 
                 name='email'
                 value={loginData.email}
                 onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" placeholder="nome@email.com" required>
@@ -192,7 +188,6 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
                 <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Password
                 </label>
                 <input               
-                id="input" 
                 name='password'
                 value={loginData.password}
                 type="password"
@@ -205,7 +200,7 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
                   isValid: true,
                   message: '',
                 })}}
-                className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" placeholder="***" required>
+                className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-teal-300 text-black" placeholder="***" required>
                 </input>
                 {status.isValid === false ? <p className='text-xs text-red'>{status.message}</p> : "" }
               </div>
@@ -214,7 +209,6 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
               <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Confirm password
               </label>
               <input               
-              id="input" 
               name='confirmPassword'
               type="password"
               onChange={(event)=> {
@@ -226,7 +220,7 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
                 isValid: true,
                 message: '',
                 })}}
-              className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" placeholder="***" required>
+              className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-teal-300 text-black" placeholder="***" required>
               </input>
               {status.isValid === false ? <p className='text-xs text-red'>{status.message}</p> : "" }
             </div>
@@ -239,7 +233,6 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
                   <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">zip code
                   </label>
                   <input               
-                  id="input" 
                   name='zip_code'
                   value={loginData.zip_code}
                   onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" placeholder="00000-000" required>
@@ -249,7 +242,6 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
                   <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Address
                   </label>
                   <input               
-                  id="input" 
                   name='address'
                   value={loginData.address}
                   onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" required>
@@ -259,7 +251,6 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
                   <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Number
                   </label>
                   <input               
-                  id="input" 
                   name='number'
                   value={loginData.number}
                   onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" required>
@@ -269,7 +260,6 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
                   <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">City
                   </label>
                   <input               
-                  id="input" 
                   name='city'
                   value={loginData.city}
                   onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" required>
@@ -279,7 +269,6 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
                   <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Country
                   </label>
                   <input               
-                  id="input" 
                   name='country'
                   value={loginData.country}
                   onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" required>
@@ -294,7 +283,6 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
                   <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Phone number
                   </label>
                   <input               
-                  id="input" 
                   name='phone_number'
                   value={loginData.phone_number}
                   onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" placeholder="(00)0000-0000" required>
@@ -304,7 +292,6 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
                   <label className="block text-sm font-medium text-gray-900 dark:text-cyan-500">Instagram</label>
                   <label className="block mb-2 text-xs text-black">*opcional</label>
                   <input               
-                  id="input" 
                   name='instagram'
                   value={loginData.instagram}
                   onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" required>
@@ -314,7 +301,6 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
                   <label className="block text-sm font-medium text-gray-900 dark:text-cyan-500">website</label>
                   <label className="block mb-2 text-xs text-black">*opcional</label>
                   <input               
-                  id="input" 
                   name='website'
                   value={loginData.website}
                   onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" required>

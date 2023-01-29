@@ -84,7 +84,7 @@ export function UserLogin (props: IUserLoginProps) {
               value={loginData.password}
               type="password"
               onChange={(event)=> handleInputChange(event)}  
-              className="md:w-full w-64 bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" placeholder="***" required>
+              className="md:w-full w-64 bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 text-black dark:focus:ring-blue-500 dark:focus:border-teal-300" placeholder="***" required>
               </input>
             </div>
 
