@@ -104,7 +104,7 @@ export const NewHeader: React.FC<IMenuProps> = ({ size= 'sm' }: IMenuProps) => {
             <span className='text-3xl text-indigo-600 mr-1 pt-2'>
               <FontAwesomeIcon className='text-xl cursor-pointer text-gray-500' icon={faCubes}/>
             </span>
-            Tattoo
+            Freelancers
           </div>
           <div onClick={()=> setOpen(!open)} className='text-3xl absolute right-8 top-6 cursor-pointer md:hidden'>
             <FontAwesomeIcon icon={open? faXmark : faBars } name={open? 'close' : 'menu'} className='text-xl cursor-pointer text-gray-500'/>
