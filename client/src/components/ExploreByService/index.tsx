@@ -20,7 +20,7 @@ interface IServiceType {
 
 
 
-export function ExploreByService ({ size= 'sm' } : IExploreByServiceProps) {
+export function ExploreByService ({ size= 'md' } : IExploreByServiceProps) {
   const [data, setData] = React.useState<IServiceType[]>()
   const [servicesToBeShown, setServicesToBeShown] = React.useState<IServiceType[]>()
   const [isLoading, setIsLoading] = React.useState<boolean>();
@@ -68,11 +68,12 @@ export function ExploreByService ({ size= 'sm' } : IExploreByServiceProps) {
   console.log("servicesToBeShown", servicesToBeShown);
 
   return (
-    <div className='mb-24 mt-22'>
+    <div className='mb-32 mt-12 sm:mb-24 sm:mt-22'>
       <div className='flex align-center justify-center flex-row mb-8'>
         <span className={clsx('text-gray-500', 
         {
           'text-md': size === 'sm',
+          'text-xl mt-16': size === 'md',
         })}>Search by Service Category</span>
       </div>
       <div className={clsx('flex align-center flex-row w-full', 

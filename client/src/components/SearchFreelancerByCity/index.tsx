@@ -10,7 +10,7 @@ export interface ISearchProps {
   size?: 'sm' | 'md' | 'lg';
 }
 
-export function SearchFreelancerByCity ({ size= 'sm' }: ISearchProps) {
+export function SearchFreelancerByCity ({ size= 'md' }: ISearchProps) {
   const [selectedCity, setSelectedCity] = React.useState("");
   const [FreelancerBySelectedCity, setFreelancerBySelectedCity] = React.useState([]);
   const navigate = useNavigate();
@@ -27,63 +27,37 @@ export function SearchFreelancerByCity ({ size= 'sm' }: ISearchProps) {
 
   
   return (
-    <div className={clsx(
-      'flex flex-wrap items-center align-center flex-center flex-col place-content-around',
-      {
-        '': size === 'sm',
-      }
-    )}>
-      <div className={clsx("w-full flex flex-wrap flex-center items-center justify-center flex-col", 
-      {
-
-      })}>
-        <p className={clsx('w-90 mb-2 flex flex-wrap flex-center items-center justify-center', 
-        {
-          'text-xl': size === 'sm',
-        })}>Find a freelancer</p>
-        <p className={clsx("text-gray-500", 
-        {
-          'text-sm w-40': size === 'sm',
-        })}>Some nice description about the plataform</p>
+    <div className='flex items-center justify-center align-center flex-center flex-col xl:flex xl:align-items xl:justify-center bg-teal-300
+    place-content-around xl:flex-col xl:place-content-around'>
+      <div className="w-full flex flex-wrap flex-center items-center justify-center flex-col">
+        <p className='text-md mb-2 flex flex-wrap flex-center items-center justify-center sm:text-2xl md:text-2xl lg:text-2xl md:mt-10'>
+          Find a freelancer</p>
+        <p className="text-gray-500 sm:text-sm sm:w-40 md:text-md md:w-60 md:mb-8">Some nice description about the plataform</p>
       </div>
       <div className='mt-6'>
         <form 
         onSubmit={handleSubmit}
-        className={clsx("w-full", 
-        {
-          'max-w-sm pl-6 pr-6': size === 'sm',
-        })}>
-          <div className={clsx("flex items-center border-b-2 border-teal-500", 
-          {
-            'mr-2 ml-2 py-2': size === 'sm',
-            'py-2': size === "lg",
-          })}>
+        className="w-72 sm:max-w-sm sm:pl-6 sm:pr-6 md:max-w-md xl:w-full">
+          <div className="flex items-center border-b-2 border-teal-500 
+          xl:w-full xl:mr-0 xl:ml-0
+          sm:mr-2 sm:ml-2 sm:py-2 md:mr-4 md:ml-4 md:py-2 md:mb-6 lg:py-2">
             <input 
             id="input" 
             name='selectedCity'
             value={selectedCity}
             onChange={(event)=> setSelectedCity((event.target.value))}
-            className={clsx("appearance-none bg-transparent w-full mr-3 py-1 px-3 focus:outline-none", 
-            {
-              'text-xs': size === 'sm',
-            })} 
+            className="xl:text-md appearance-none bg-transparent w-full py-2 px-3 sm:py-1 focus:outline-none sm:text-xs" 
             type="text" placeholder="Search by city" aria-label="Full name"/>
             <button 
             onClick={handleSubmit}
-            className={clsx("flex-shrink-0 bg-teal-500 hover:bg-teal-300 hover:border-bg-teal-300 hover:text-black hover:border-teal-300 text-white py-1 px-5 rounded", 
-            {
-              'mr-35 text-xs': size === 'sm',
-            })} type="button">
+            className="xl:text-md flex-shrink-0 bg-teal-500 hover:bg-teal-300 hover:border-bg-teal-300 hover:text-black hover:border-teal-300 text-white py-1 px-5 rounded mr-35 text-sm sm:mr-35 sm:text-xs" type="button">
               Search
             </button>
           </div>
         </form>
       </div>
-      <div className={clsx("object-cover", 
-      {
-        'h-92 w-72 mt-12 mb-24': size === 'sm',
-      })}>
-        <img src={teamImage}></img>
+      <div className="mt-12 flex align-center justify-center w-72 h-full xl:flex xl:align-center xl:justify-center xl:w-full xl:h-full object-cover sm:h-92 sm:w-72 sm:mt-12 sm:mb-24 md:h-92 md:w-70 md:mt-12 md:mb-24">
+        <img className="" src={teamImage}></img>
       </div>
     </div>
   );
