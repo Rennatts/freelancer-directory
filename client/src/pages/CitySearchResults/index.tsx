@@ -35,14 +35,7 @@ export function CitySearchResults ({name, size= 'lg'}: ICitySearchResultsProps) 
 
 
   return (
-    <div className={clsx(
-      'm-10 grid grid-cols-4 gap-4',
-      {
-        'w-16': size === 'sm',
-        'md:w-768': size === 'md',
-        'lg:w-1024': size === 'lg',
-      }
-      )}>
+    <div className='m-10 grid grid-cols-2 gap-4 xl:grid-cols-4 xl:gap-4'>
       {freelancers.map((item: Freelancer) => (
         <InfoCard key={item._id} freelancer={item}></InfoCard>
       ))}

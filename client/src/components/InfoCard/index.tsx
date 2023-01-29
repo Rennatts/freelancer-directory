@@ -13,22 +13,12 @@ export function InfoCard({freelancer, size="lg"}: Props) {
     
     return (
         <div onClick={() => navigate(`/freelancer/profile/${freelancer._id}`)} 
-        className={clsx('cursor-pointer border-2 border-teal-500 rounded-lg shadow-2xl',
-        {
-            'h-10': size === 'sm',
-            'h-40': size === 'md',
-            'h-72': size === 'lg',
-        }
-        )}>
+        className='h-36 xl:h-64 xl:w-64 cursor-pointer border-2 border-teal-500 rounded-lg shadow-2xl sm:h-10 md:h-40 lg:h-72'>
             <div className=''>
                 <div className="px-6 py-4">
-                    <h1 className={clsx('font-bold', 
-                    {
-                        'text-xl': size === 'sm',
-                        'text-sm': size === 'md',
-                        'text-md': size === 'lg',
-                    })}
-                    >{freelancer.name + freelancer.surname}</h1>
+                    <h1 className='font-bold sm:text-sm md:text-md lg:text-lg'>
+                        {`${freelancer.name} ${freelancer.surname}`}
+                    </h1>
                 </div>
             </div>
         </div>
