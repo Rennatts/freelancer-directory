@@ -100,9 +100,9 @@ export const NewHeader: React.FC<IMenuProps> = ({ size= 'sm' }: IMenuProps) => {
     return(
       <div className='w-full top-0 left-0 mb-5 bg-teal-700'>
         <div className='md:flex items-center justify-between bg-white py-4 md:px-10 px-7'>
-          <div onClick={()=> navigate('/')}  className='font-bold text-xl cursor-pointer flex items-center text-gray-800'>
-            <span className='text-3xl text-indigo-600 mr-1 pt-2'>
-              <FontAwesomeIcon className='text-xl cursor-pointer text-gray-500' icon={faCubes}/>
+          <div onClick={()=> navigate('/')}  className='font-bold text-xl cursor-pointer flex align-center items-center justify-center text-gray-800'>
+            <span className='text-3xl mr-1 pt-2'>
+              <FontAwesomeIcon className='text-2xl cursor-pointer mr-2 text-teal-700' icon={faCubes}/>
             </span>
             Freelancers
           </div>

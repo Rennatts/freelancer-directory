@@ -37,7 +37,7 @@ export function CityNotFound ({ size= 'md' }: ICityNotFoundProps) {
 
                 <button className="w-full flex-shrink-0 bg-teal-500 hover:bg-teal-300 hover:border-bg-teal-700 hover:text-black hover:border-teal-300 text-md text-white py-1 px-5 rounded" 
                 onClick={()=> navigate('/')}
-                >voltar</button>
+                >Go Back</button>
             </div>
         </div>
     );
