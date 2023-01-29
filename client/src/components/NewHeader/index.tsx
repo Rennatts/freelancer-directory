@@ -84,10 +84,10 @@ export const NewHeader: React.FC<IMenuProps> = ({ size= 'sm' }: IMenuProps) => {
 
     function NotLoggedHeader() {
       return (
-        <ul>
+        <ul className="md:flex md:flex-row justify-evenly">
           {
             NotLoggedInLinks.map((link) => (
-              <li key={link.name} className='md:ml-8 text-sm md:my-0 my-7'>
+              <li key={link.name} className='md:ml-8 text-sm md:my-0 my-7 ml-0'>
                 <Button onClick={()=> navigate(link.link)}>{link.name}</Button>
               </li>
             ))
