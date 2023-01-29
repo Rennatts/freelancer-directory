@@ -134,7 +134,7 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
         <ErrorModal mostrar={error.existError} errorMessage={error.errorMessage}/>
         <SuccessModal mostrar={success}></SuccessModal>
         <div className="w-full mt-27 mb-20">
-          <ul id="connecting_line" className='relative flex md:space-x-24 space-x-5 auto mt-5 w-full -z-1'>
+          <ul id="connecting_line" className='relative flex md:space-x-32 space-x-5 auto mt-5 w-full -z-1'>
             {
               ["Name", "Address", "Contact", "Career"].map((item, index) => (
                 <li data-title={item} className={`${currIndex >= index ? 'z-1 border-2 border-teal-500 before:text-black bg-teal-500 text-white grid rounded-full w-14 h-14 place-items-center before:content-[attr(data-title)] before:absolute before:text-xs before:-top-6 before:color-teal-500': 'bg-white z-1 border-2 border-black grid rounded-full w-14 h-14 place-items-center before:content-[attr(data-title)] before:absolute before:text-xs before:-top-6 before:color-teal-500'}`} key={item}>
