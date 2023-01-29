@@ -70,17 +70,9 @@ export function ExploreByService ({ size= 'md' } : IExploreByServiceProps) {
   return (
     <div className='mb-32 mt-12 sm:mb-24 sm:mt-22'>
       <div className='flex align-center justify-center flex-row mb-8'>
-        <span className={clsx('text-gray-500', 
-        {
-          'text-md': size === 'sm',
-          'text-xl mt-16': size === 'md',
-        })}>Search by Service Category</span>
+        <span className='text-gray-500 sm:text-md md:text-xl md:mt-16'>Search by Service Category</span>
       </div>
-      <div className={clsx('flex align-center flex-row w-full', 
-      {
-        'bg-teal-300 h-52 mb-64': size === 'sm',
-        'ml-8 mr-8': size === 'lg'
-      })}>
+      <div className='flex align-center flex-row w-full sm:h-52 sm:mb-64 lg:ml-8 lg:mr-8'>
         <button 
         onClick={handleLeftClick} 
         className='flex align-center justify-center mt-32 mr-2'>
@@ -91,10 +83,7 @@ export function ExploreByService ({ size= 'md' } : IExploreByServiceProps) {
         {servicesToBeShown?.map((item) => 
           <div 
           onClick={()=> handleServiceTypeSelection(item.value)} 
-          className={clsx("cursor-pointer hover:opacity-60 transition duration-300 ease-in-out", 
-          {
-            'bg-teal-300 h-52 mb-64 w-12 ml-1': size === 'sm',
-          })}
+          className="cursor-pointer hover:opacity-60 transition duration-300 ease-in-out sm:bg-teal-300 sm:h-52 sm:mb-64 sm:w-12 sm:ml-1"
           key={item.value}>
             <img className="w-full h-full" src={item.url} alt="img"/>
             <div className='flex align-center justify-center w-full bg-gray-100'>

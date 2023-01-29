@@ -27,18 +27,19 @@ export function SearchFreelancerByCity ({ size= 'md' }: ISearchProps) {
 
   
   return (
-    <div className='flex items-center justify-center align-center flex-center flex-col xl:flex xl:align-items xl:justify-center bg-teal-300
-    place-content-around xl:flex-col xl:place-content-around'>
+    <div className='flex items-center justify-center align-center flex-center flex-col
+    xl:flex xl:align-items xl:justify-center 
+    xl:flex-col'>
       <div className="w-full flex flex-wrap flex-center items-center justify-center flex-col">
         <p className='text-md mb-2 flex flex-wrap flex-center items-center justify-center sm:text-2xl md:text-2xl lg:text-2xl md:mt-10'>
           Find a freelancer</p>
         <p className="text-gray-500 sm:text-sm sm:w-40 md:text-md md:w-60 md:mb-8">Some nice description about the plataform</p>
       </div>
-      <div className='mt-6'>
+      <div className='mt-12'>
         <form 
         onSubmit={handleSubmit}
         className="w-72 sm:max-w-sm sm:pl-6 sm:pr-6 md:max-w-md xl:w-full">
-          <div className="flex items-center border-b-2 border-teal-500 
+          <div className="flex items-center border-b-2 border-teal-500
           xl:w-full xl:mr-0 xl:ml-0
           sm:mr-2 sm:ml-2 sm:py-2 md:mr-4 md:ml-4 md:py-2 md:mb-6 lg:py-2">
             <input 
@@ -46,11 +47,11 @@ export function SearchFreelancerByCity ({ size= 'md' }: ISearchProps) {
             name='selectedCity'
             value={selectedCity}
             onChange={(event)=> setSelectedCity((event.target.value))}
-            className="xl:text-md appearance-none bg-transparent w-full py-2 px-3 sm:py-1 focus:outline-none sm:text-xs" 
+            className="xl:text-md appearance-none bg-transparent w-full py-2 px-1 sm:py-1 focus:outline-none sm:text-xs" 
             type="text" placeholder="Search by city" aria-label="Full name"/>
             <button 
             onClick={handleSubmit}
-            className="xl:text-md flex-shrink-0 bg-teal-500 hover:bg-teal-300 hover:border-bg-teal-300 hover:text-black hover:border-teal-300 text-white py-1 px-5 rounded mr-35 text-sm sm:mr-35 sm:text-xs" type="button">
+            className="xl:text-md flex-shrink-0 bg-teal-500 hover:bg-teal-300 hover:border-bg-teal-300 hover:text-black hover:border-teal-300 text-white py-1 px-5 rounded text-sm sm:mr-35 sm:text-xs" type="button">
               Search
             </button>
           </div>
