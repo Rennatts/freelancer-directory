@@ -46,7 +46,7 @@
 .box_02{
     position: relative;
     top: 44px;
-    right: 44px;
+    right: 0px;
     box-shadow:  -5px -5px 6px rgba(58, 36, 36, 0.1), 2px 20px 30px rgba(0,0,0,1);
 }
 
@@ -58,13 +58,13 @@
 .box_03{
     position: relative;
     top: -370px;
-    right: -24%;
+    right: -32%;
     box-shadow:  -5px -5px 6px rgba(58, 36, 36, 0.1), 2px 20px 30px rgba(0,0,0,1);
 }
 
 .photo03 {
-    height: 400px;
-    width: 400px;
+    height: 300px;
+    width: 300px;
 }
 
 .description {
@@ -76,6 +76,70 @@
     text-align: center;
     letter-spacing: 3px; 
 }
+
+
+
+@media only screen and (max-width: 420px) {
+    .photo_box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 5% 5%;
+        height: 400px;
+        padding-bottom: 15%;
+        /* ff 3.6+ */
+        background: #a83269;
+    }
+
+    .box_01{
+        position: relative;
+        top: 120px;
+        right: 1%;
+        box-shadow:  -5px -5px 6px rgba(58, 36, 36, 0.1), 2px 20px 30px rgba(0,0,0,1);
+    }
+
+
+    .photo01 {
+        height: 140px;
+        width: 150px;
+    }
+
+    .box_02{
+        position: relative;
+        top: 50px;
+        right: 92px;
+        box-shadow:  -5px -5px 6px rgba(58, 36, 36, 0.1), 2px 20px 30px rgba(0,0,0,1);
+    }
+
+    .photo02 {
+        height: 80px;
+        width: 100px;
+    }
+
+    .box_03{
+        position: relative;
+        top: -115px;
+        right: -28%;
+        box-shadow:  -5px -5px 6px rgba(58, 36, 36, 0.1), 2px 20px 30px rgba(0,0,0,1);
+    }
+
+    .photo03 {
+        height: 10px;
+        width: 10px;
+    }
+
+    .description {
+        position: relative;
+        top: -10px;
+        color: white;
+        font-size: 16px;
+        width: 80%;
+        letter-spacing: 1px; 
+    }
+
+}
+
 
 
 @media only screen and (max-width: 640px) {
@@ -105,33 +169,33 @@
 
     .box_01{
         position: relative;
-        top: 100px;
+        top: 120px;
         right: 1%;
         box-shadow:  -5px -5px 6px rgba(58, 36, 36, 0.1), 2px 20px 30px rgba(0,0,0,1);
     }
 
 
     .photo01 {
-        height: 150px;
+        height: 140px;
         width: 150px;
     }
 
     .box_02{
         position: relative;
-        top: 30px;
+        top: 50px;
         right: 92px;
         box-shadow:  -5px -5px 6px rgba(58, 36, 36, 0.1), 2px 20px 30px rgba(0,0,0,1);
     }
 
     .photo02 {
-        height: 100px;
+        height: 80px;
         width: 100px;
     }
 
     .box_03{
         position: relative;
-        top: -170px;
-        right: -33%;
+        top: -115px;
+        right: -28%;
         box-shadow:  -5px -5px 6px rgba(58, 36, 36, 0.1), 2px 20px 30px rgba(0,0,0,1);
     }
 
@@ -142,10 +206,86 @@
 
     .description {
         position: relative;
-        top: -20px;
+        top: -10px;
         color: white;
         font-size: 16px;
         width: 80%;
+        letter-spacing: 1px; 
+    }
+
+}
+
+
+
+@media only screen and (max-width: 726px) {
+    .photo_box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 5% 5%;
+        height: 400px;
+        padding-bottom: 15%;
+        /* ff 3.6+ */
+        background:-moz-radial-gradient(ellipse at 50% 50%, rgba(49, 196, 191, 1) 0%, rgba(33, 131, 128, 1) 78%, rgba(33, 131, 128, 1) 100%);
+
+        /* safari 5.1+,chrome 10+ */
+        background:-webkit-radial-gradient(ellipse at 50% 50%, rgba(49, 196, 191, 1) 0%, rgba(33, 131, 128, 1) 78%, rgba(33, 131, 128, 1) 100%);
+
+        /* opera 11.10+ */
+        background:-o-radial-gradient(ellipse at 50% 50%, rgba(49, 196, 191, 1) 0%, rgba(33, 131, 128, 1) 78%, rgba(33, 131, 128, 1) 100%);
+
+        /* ie 10+ */
+        background:-ms-radial-gradient(ellipse at 50% 50%, rgba(49, 196, 191, 1) 0%, rgba(33, 131, 128, 1) 78%, rgba(33, 131, 128, 1) 100%);
+
+        /* global 92%+ browsers support */
+        background:radial-gradient(ellipse at 50% 50%, rgba(49, 196, 191, 1) 0%, rgba(33, 131, 128, 1) 78%, rgba(33, 131, 128, 1) 100%);
+    }
+
+    .box_01{
+        position: relative;
+        top: 150px;
+        right: 1%;
+        box-shadow:  -5px -5px 6px rgba(58, 36, 36, 0.1), 2px 20px 30px rgba(0,0,0,1);
+    }
+
+
+    .photo01 {
+        height: 200px;
+        width: 250px;
+    }
+
+    .box_02{
+        position: relative;
+        top: 18px;
+        right: 190px;
+        box-shadow:  -5px -5px 6px rgba(58, 36, 36, 0.1), 2px 20px 30px rgba(0,0,0,1);
+    }
+
+    .photo02 {
+        height: 120px;
+        width: 160px;
+    }
+
+    .box_03{
+        position: relative;
+        top: -190px;
+        right: -25%;
+        box-shadow:  -5px -5px 6px rgba(58, 36, 36, 0.1), 2px 20px 30px rgba(0,0,0,1);
+    }
+
+    .photo03 {
+        height: 120px;
+        width: 120px;
+    }
+
+    .description {
+        position: relative;
+        top: -5px;
+        color: white;
+        font-size: 16px;
+        width: 80%;
+        letter-spacing: 1px; 
     }
 
 }
