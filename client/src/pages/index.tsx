@@ -1,3 +1,8 @@
+import Pricing from './Pricing';
+
+export { Pricing };
+
+
 export { FreelancerLogin } from './Auth/FreelancerLogin'
 export { FreelancerRegister } from './Auth/FreelancerRegister'
 export { UserLogin } from './Auth/UserLogin';
