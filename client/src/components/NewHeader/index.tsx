@@ -22,9 +22,9 @@ export const NewHeader: React.FC<IMenuProps> = ({ size= 'sm' }: IMenuProps) => {
     let [open, setOpen] = useState<boolean>(false)
 
     let links = [
-      {name: "OI", link:"/oi"},
-      {name: "OLA", link: "/ola"},
-      {name: "ABOUT US", link: "/hello"},
+      {name: "EXPLORE", link:"/explore"},
+      {name: "PRICING", link: "/pricing"},
+      {name: "ABOUT US", link: "/about_us"},
     ];
 
     let FreelancerLinks = [
@@ -113,7 +113,7 @@ export const NewHeader: React.FC<IMenuProps> = ({ size= 'sm' }: IMenuProps) => {
           md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? 'top-20 bg-gray-100 z-[1]' : 'top-[-490px] md:opacity-100 opacity-0'}`}>
             {
               links.map((link) => (
-                <li key={link.name} className='md:ml-8 text-sm md:my-0 my-7'>
+                <li key={link.name} className='md:ml-8 text-sm md:my-0 my-7 hover:text-teal-700 hover:underline hover:decoration-teal-700'>
                   <a href={link.link} className='text-gray-800 hover:text-gray-400 duration-500'>{link.name}</a>
                 </li>
               ))

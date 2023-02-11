@@ -82,13 +82,13 @@ export const Header: React.FC<IMenuProps> = (props: IMenuProps) => {
             <nav>
                 <ul className='cursor-pointer flex justify-evenly align-center flex-row text-md ml-10'>
                     <li className='px-4 hover:text-teal-500 hover:underline underline-offset-8'>
-                       <NavLink to="/oi">oi</NavLink>
+                       <NavLink to="/oi">How it works</NavLink>
                     </li>
                     <li className='px-4 hover:text-teal-500 hover:underline underline-offset-8'>
-                        <NavLink to="/ola">ola</NavLink>
+                        <NavLink to="/ola">About us</NavLink>
                     </li>
                     <li className='px-4 hover:text-teal-500 hover:underline underline-offset-8'>
-                        <NavLink to="/hello">About us</NavLink>
+                        <NavLink to="/hello">Prices</NavLink>
                     </li>
                     <li className='px-4 hover:text-teal-500 hover:underline underline-offset-8'>
                         <NavLink to="/hello">Q&A</NavLink>

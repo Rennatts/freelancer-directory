@@ -5,7 +5,7 @@ export { ReviewModal } from './ReviewModal';
 export { SuccessModal } from './SuccessModal';
 export { CityNotFound } from './CityNotFound';
 export { Description } from './Description';
-export { ExploreByService } from './ExploreByServiceTwo';
+export { ExploreByService } from './ExploreByService';
 export { Footer } from './Footer';
 export { ReviewList } from './ReviewsList';
 export { SearchFreelancerByCity } from './SearchFreelancerByCity';
