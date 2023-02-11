@@ -148,44 +148,44 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
           {currIndex === 0 ? (
             <div className="mb-6">
               <div className="flex items-start flex-col mb-6">
-                  <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Nome
+                  <label className="block mb-2 text-sm font-medium text-gray-900">Nome
                   </label>
                   <input               
                   name='name'
                   value={loginData.name}
-                  onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" required>
+                  onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5" required>
                   </input>
               </div>
               <div className="flex items-start flex-col mb-6">
-                  <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Surname
+                  <label className="block mb-2 text-sm font-medium text-gray-900">Surname
                   </label>
                   <input               
                   name='surname'
                   value={loginData.surname}
-                  onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" required>
+                  onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5" required>
                   </input>
               </div>
               <div className="flex items-start flex-col mb-6">
-                  <label className="block text-sm font-medium text-gray-900 dark:text-cyan-500">Username</label>
+                  <label className="block text-sm font-medium text-gray-900">Username</label>
                   <label className="block mb-2 text-xs text-black">*optional</label>
                   <input               
                   name='username'
                   value={loginData.username}
-                  onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" required>
+                  onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 " required>
                   </input>
               </div>
               <div className="flex items-start flex-col mb-6">
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">E-mail
+                <label className="block mb-2 text-sm font-medium text-gray-900">E-mail
                 </label>
                 <input               
                 name='email'
                 value={loginData.email}
-                onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" placeholder="nome@email.com" required>
+                onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5" placeholder="nome@email.com" required>
                 </input>
               </div>
   
               <div className="flex items-start flex-col mb-6">
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Password
+                <label className="block mb-2 text-sm font-medium text-gray-900">Password
                 </label>
                 <input               
                 name='password'
@@ -200,13 +200,13 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
                   isValid: true,
                   message: '',
                 })}}
-                className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-teal-300 text-black" placeholder="***" required>
+                className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5" placeholder="***" required>
                 </input>
                 {status.isValid === false ? <p className='text-xs text-red'>{status.message}</p> : "" }
               </div>
   
               <div className="flex items-start flex-col mb-6">
-              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Confirm password
+              <label className="block mb-2 text-sm font-medium text-gray-900">Confirm password
               </label>
               <input               
               name='confirmPassword'
@@ -220,7 +220,7 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
                 isValid: true,
                 message: '',
                 })}}
-              className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-teal-300 text-black" placeholder="***" required>
+              className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5" placeholder="***" required>
               </input>
               {status.isValid === false ? <p className='text-xs text-red'>{status.message}</p> : "" }
             </div>
@@ -230,48 +230,48 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
           {currIndex === 1 ? (
             <div className="mb-6">
               <div className="flex items-start flex-col mb-6">
-                  <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">zip code
+                  <label className="block mb-2 text-sm font-medium text-gray-900">zip code
                   </label>
                   <input               
                   name='zip_code'
                   value={loginData.zip_code}
-                  onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" placeholder="00000-000" required>
+                  onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5" placeholder="00000-000" required>
                   </input>
               </div>
               <div className="flex items-start flex-col mb-6">
-                  <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Address
+                  <label className="block mb-2 text-sm font-medium text-gray-900">Address
                   </label>
                   <input               
                   name='address'
                   value={loginData.address}
-                  onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" required>
+                  onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5" required>
                   </input>
               </div>
               <div className="flex items-start flex-col mb-6">
-                  <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Number
+                  <label className="block mb-2 text-sm font-medium text-gray-900">Number
                   </label>
                   <input               
                   name='number'
                   value={loginData.number}
-                  onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" required>
+                  onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5" required>
                   </input>
               </div>
               <div className="flex items-start flex-col mb-6">
-                  <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">City
+                  <label className="block mb-2 text-sm font-medium text-gray-900">City
                   </label>
                   <input               
                   name='city'
                   value={loginData.city}
-                  onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" required>
+                  onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5" required>
                   </input>
               </div>
               <div className="flex items-start flex-col mb-6">
-                  <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Country
+                  <label className="block mb-2 text-sm font-medium text-gray-900">Country
                   </label>
                   <input               
                   name='country'
                   value={loginData.country}
-                  onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" required>
+                  onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5" required>
                   </input>
               </div>
             </div>
@@ -280,30 +280,30 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
           {currIndex === 2 ? (
             <div className="mb-6">
               <div className="flex items-start flex-col mb-6">
-                  <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Phone number
+                  <label className="block mb-2 text-sm font-medium text-gray-900">Phone number
                   </label>
                   <input               
                   name='phone_number'
                   value={loginData.phone_number}
-                  onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" placeholder="(00)0000-0000" required>
+                  onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5" placeholder="(00)0000-0000" required>
                   </input>
               </div>
               <div className="flex items-start flex-col mb-6">
-                  <label className="block text-sm font-medium text-gray-900 dark:text-cyan-500">Instagram</label>
+                  <label className="block text-sm font-medium text-gray-900">Instagram</label>
                   <label className="block mb-2 text-xs text-black">*opcional</label>
                   <input               
                   name='instagram'
                   value={loginData.instagram}
-                  onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" required>
+                  onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5" required>
                   </input>
               </div>
               <div className="flex items-start flex-col mb-6">
-                  <label className="block text-sm font-medium text-gray-900 dark:text-cyan-500">website</label>
+                  <label className="block text-sm font-medium text-gray-900">website</label>
                   <label className="block mb-2 text-xs text-black">*opcional</label>
                   <input               
                   name='website'
                   value={loginData.website}
-                  onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" required>
+                  onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5" required>
                   </input>
               </div>
             </div>
@@ -313,27 +313,27 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
           {currIndex === 3 ? (
             <div className="mb-6">
               <div className="flex items-start flex-col mb-6">
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Service Type</label>
+                <label className="block mb-2 text-sm font-medium text-gray-900 ">Service Type</label>
                 <div className='grid grid-rows-2 grid-flow-col gap-6'>
                   {serviceType.map((item)=> (
                     <div className="flex w-full flex-row items-center" key={item.value}>
-                      <input id="checked-checkbox" type="checkbox" name="style" value={item.value} onChange={(event)=> handleInputChange(event)} className="w-4 h-4 text-teal-500 bg-gray-100 rounded border-gray-300 focus:ring-teal-500 dark:focus:ring-teal-500 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
-                      <label className="ml-2 text-sm font-medium text-black dark:text-black">{item.value}</label>
+                      <input id="checked-checkbox" type="checkbox" name="style" value={item.value} onChange={(event)=> handleInputChange(event)} className="w-4 h-4 text-teal-500 bg-gray-100 rounded border-gray-300 focus:ring-teal-500 focus:ring-2"/>
+                      <label className="ml-2 text-sm font-medium text-black ">{item.value}</label>
                     </div>
                   ))}
                 </div>
               </div>
               <div className="flex w-max mb-6 flex-col">
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Categoria</label>
+                <label className="block mb-2 text-sm font-medium text-gray-900">Categoria</label>
                 {category.map((item:any) => (
                   <div className="flex items-center" key={item.value}>
-                    <input id="default-radio-1" type="radio" name="category" value={item.value} onChange={(event)=> handleInputChange(event)} className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                    <input id="default-radio-1" type="radio" name="category" value={item.value} onChange={(event)=> handleInputChange(event)} className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"/>
                     <label className="ml-2 text-sm font-medium text-black">{item.label}</label>
                   </div>
                 ))}
               </div>
               <div className="flex items-start flex-col mb-6">
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Years of experience</label>
+                <label className="block mb-2 text-sm font-medium text-gray-900">Years of experience</label>
                 <div className="relative inline-block text-left mb-8">
                   <div className="absolute -right-30 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button">
                     <div className="py-1" role="none">

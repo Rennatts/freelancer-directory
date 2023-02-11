@@ -73,23 +73,23 @@ export function FreelancerLogin (props: IFreelancerLoginProps) {
         <form>
           <div className="mb-6">
             <div className="flex items-start flex-col mb-6">
-              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">E-mail
+              <label className="block mb-2 text-sm font-medium text-gray-900">E-mail
               </label>
               <input               
               name='email'
               value={loginData.email}
-              onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" placeholder="nome@email.com" required>
+              onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5" placeholder="nome@email.com" required>
               </input>
             </div>
 
             <div className="flex items-start flex-col mb-6">
-              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Senha
+              <label className="block mb-2 text-sm font-medium text-gray-900">Senha
               </label>
               <input               
               name='password'
               value={loginData.password}
               type="password"
-              onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 text-black dark:focus:ring-blue-500 dark:focus:border-teal-300" placeholder="***" required>
+              onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 text-black" placeholder="***" required>
               </input>
             </div>
 
@@ -101,7 +101,7 @@ export function FreelancerLogin (props: IFreelancerLoginProps) {
             </button>
 
             <div onClick={()=> navigate(`/users/register`)} className="flex items-end flex-col mb-6 text-xs mt-6">
-              Do not have an account? <p className='cursor-pointer dark:text-teal-500 hover:dark:text-teal-300 hover:text-cyan-300 text-'>Register here</p>
+              Do not have an account? <p className='cursor-pointer hover:text-cyan-300 text-'>Register here</p>
             </div>
           </div>
         </form>
