@@ -33,7 +33,10 @@ export function SearchFreelancerByCity ({ size= 'md' }: ISearchProps) {
       <div className="w-full flex flex-wrap flex-center items-center justify-center flex-col">
         <p className='text-md mb-2 flex flex-wrap flex-center items-center justify-center sm:text-2xl md:text-2xl lg:text-2xl md:mt-10'>
           Find a freelancer</p>
-        <p className="text-gray-500 sm:text-sm sm:w-40 md:text-md md:w-60 md:mb-8">Some nice description about the plataform</p>
+        <p className="text-gray-500 sm:text-sm md:text-md md:w-1/3 md:mb-8 text-center md:tracking-wide md:leading-9">
+          Find your next star freelancer with ease. Browse portfolios, compare prices, and connect with top talents.
+          <p className="break-normal ">Start your project today!</p>
+        </p>
       </div>
       <div className='mt-12'>
         <form 

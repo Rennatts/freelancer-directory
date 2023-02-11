@@ -4,10 +4,9 @@ import { useNavigate } from 'react-router-dom';
 
 type Props = {
     freelancer: Freelancer;
-    size?: 'sm' | 'md' | 'lg';
 }
 
-export function InfoCard({freelancer, size="lg"}: Props) {
+export function InfoCard({freelancer}: Props) {
     const navigate = useNavigate();
     console.log("freelancerww", freelancer)
     

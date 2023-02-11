@@ -23,7 +23,7 @@ export function Description (props: IDescriptionProps) {
         <img className='photo03' src={photo03} alt="photo03"></img>
       </div>
       <div className='description'>
-        <p>Find freelancers, make work contract, keep track of the work together, keep the communication on track</p>
+        <p>Easily source top-notch freelancers, craft well-defined work agreements, track progress collaboratively, and ensure smooth communication throughout your project</p>
       </div>
     </div>
   );

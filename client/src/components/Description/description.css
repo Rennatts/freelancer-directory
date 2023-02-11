@@ -72,7 +72,9 @@
     top: -200px;
     color: white;
     font-size: 22px;
-    width: 30%;
+    width: 60%;
+    text-align: center;
+    letter-spacing: 3px; 
 }
 
 
