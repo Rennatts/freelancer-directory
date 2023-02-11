@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext, useState } from 'react';
 import { faCubes, faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { Button } from '../Button';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { isAuthenticated, signout } from '../../auth';
 import { UserType } from '../../enum/UserType';
 import { UserContext } from '../../UserContext';
@@ -61,7 +61,7 @@ export const NewHeader: React.FC<IMenuProps> = ({ size= 'sm' }: IMenuProps) => {
               </li>
             ))
           }
-         <Button onClick={()=> signout(()=> navigate('/'))} >Sign out</Button>
+         <Button width="1/2" onClick={()=> {signout(()=> navigate('/')); setOpen(false)}} >Sign out</Button>
         </ul>
       );
     }
@@ -77,7 +77,7 @@ export const NewHeader: React.FC<IMenuProps> = ({ size= 'sm' }: IMenuProps) => {
               </li>
             ))
           }
-          <Button onClick={()=> signout(()=> navigate('/'))} >Sign out</Button>
+          <Button width="1/2" onClick={()=> signout(()=> {navigate('/'); setOpen(false)})} >Sign out</Button>
         </ul>
       );
     }
@@ -88,7 +88,7 @@ export const NewHeader: React.FC<IMenuProps> = ({ size= 'sm' }: IMenuProps) => {
           {
             NotLoggedInLinks.map((link) => (
               <li key={link.name} className='md:ml-8 text-sm md:my-0 my-7 ml-0'>
-                <Button onClick={()=> navigate(link.link)}>{link.name}</Button>
+                <Button onClick={()=> {navigate(link.link); setOpen(false)}}>{link.name}</Button>
               </li>
             ))
           }

@@ -4,13 +4,11 @@ import './search.css';
 import {useNavigate } from "react-router-dom";
 import teamImage from './../../images/creative_team_re.svg';
 import axios from 'axios';
-import clsx from 'clsx';
 
 export interface ISearchProps {
-  size?: 'sm' | 'md' | 'lg';
 }
 
-export function SearchFreelancerByCity ({ size= 'md' }: ISearchProps) {
+export function SearchFreelancerByCity ({}: ISearchProps) {
   const [selectedCity, setSelectedCity] = React.useState("");
   const [FreelancerBySelectedCity, setFreelancerBySelectedCity] = React.useState([]);
   const navigate = useNavigate();

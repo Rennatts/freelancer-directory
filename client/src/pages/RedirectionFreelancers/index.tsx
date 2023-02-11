@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useNavigate } from "react-router-dom";
+import { Button } from '../../components';
 
 
 export interface IRedirectionFreelancersProps {
@@ -22,25 +23,21 @@ export function RedirectionFreelancers (props: IRedirectionFreelancersProps) {
   return (
     <div className='flex items-center flex-center flex-col place-content-around p-20'>
       <div>
-        <div className='flex flex-center items-center justify-center'>
+        <div className='flex flex-center items-center justify-center text-center'>
           <h2 className='p-9 text-xl underline underline-offset-8 decoration-teal-500'>Welcome freelancer</h2>
         </div>
         <form>
           <div className="mb-6">
             <div className="flex flex-center items-center flex-col mb-6 space-y-4">
-                <div className="w-full">
-                    <p>Already have an account?</p>
-                    <button onClick={()=> navigate(`/freelancers/login`)}  className="w-full flex-shrink-0 bg-teal-500 hover:bg-teal-300 hover:border-bg-teal-300 hover:text-black hover:border-teal-300 text-md text-white py-1 px-5 rounded shadow-2xl" type="button">
-                    Login
-                    </button>
+                <div className="w-full text-center text-md">
+                    <p>Already a member?</p>
+                    <Button onClick={()=> navigate(`/freelancers/login`)}>Login</Button>
                 </div>
-                <div className="w-full">                
-                    <p>Do not have an account? </p>
-                    <button onClick={()=> navigate(`/freelancers/register`)}  className="w-full flex-shrink-0 border-2 border-teal-700 hover:text-white hover:bg-teal-300 hover:border-teal-300 text-black text-md py-1 px-5 rounded shadow-2xl" type="button">
-                    Register here
-                    </button>
+                <div className="w-full text-center text-md pt-8">                
+                    <p>Create an account! </p>
+                    <Button onClick={()=> navigate(`/freelancers/register`)} >Register here</Button>
                 </div>
-                <div className="w-full">                
+                <div className="w-full text-center">                
                     <p>or by social media</p>
                   <div className="flex justify-center mt-8 space-x-6">
                     <a href="#" className="text-gray-400 hover:text-gray-500">
