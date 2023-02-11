@@ -10,3 +10,4 @@ export { Home } from './Home';
 export { RedirectionFreelancers } from './RedirectionFreelancers';
 export { ServiceSearchResults } from './ServiceSearchResults';
 export { UserProfile } from './User/UserProfile'
+export { AboutUsPage } from './AboutUs';

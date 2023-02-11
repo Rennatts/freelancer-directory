@@ -17,6 +17,7 @@ import {
     UserLogin, 
     UserProfile, 
     UserRegister,
+    AboutUsPage
 } from '../pages';
 
 
@@ -42,6 +43,7 @@ function MainRouter(){
                             <Route path="/freelancers/register" element={<FreelancerRegister/>}/>
                             <Route path="/freelancers" element={<RedirectionFreelancers/>}/>
                             <Route path="/freelancers/login" element={<FreelancerLogin/>}/>
+                            <Route path="/about_us" element={<AboutUsPage/>}/>
                             <Route path="/freelancer/profile/edit/:freelancerId" element={<EditFreelancerProfile/>}/>
                             {/* <Route
                                 path="/oi"
