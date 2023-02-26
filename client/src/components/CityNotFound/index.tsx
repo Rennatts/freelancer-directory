@@ -31,7 +31,7 @@ export function CityNotFound ({ size= 'md' }: ICityNotFoundProps) {
                 </h1>
                 <IconContext.Provider value={{ color: "#218380", className: "global-class-name" }}>
                     <div className='flex justify-center py-10'>
-                      <FaSadTear size={30}></FaSadTear>
+                        <FaSadTear size={30}></FaSadTear>
                     </div>
                 </IconContext.Provider>
 

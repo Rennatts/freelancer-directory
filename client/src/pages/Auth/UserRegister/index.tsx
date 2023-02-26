@@ -68,13 +68,18 @@ export function UserRegister (props: IUserLoginProps) {
     setLoginData({...loginData, [event.target.name]: event.target.value});
   }
 
+  const handleErrorChange = (newError: Error) => {
+    setError(newError);
+  };
+
+
   return (
     <div className='flex items-center flex-center flex-col place-content-around p-20'>
       <div className='md:pr-64 md:pl-64 md:w-full w-64'>
         <div className='flex flex-center items-center justify-center'>
           <h2 className='p-9 text-xl underline underline-offset-8 decoration-teal-500'>Register here</h2>
         </div>
-        <ErrorModal mostrar={error.existError} errorMessage={error.errorMessage}></ErrorModal>
+        <ErrorModal error={error} onHandleErrorChange={handleErrorChange}></ErrorModal>
         <SuccessModal mostrar={success}></SuccessModal>
         <form onSubmit={handleSubmit}>
           <div className="mb-6">

@@ -10,6 +10,8 @@ import { handleErrorMessage } from '../../../utils/errorMessage';
 export interface IFreelancerLoginProps {
 }
 
+
+
 interface Error {
   existError: boolean,
   errorMessage: any;
@@ -30,6 +32,10 @@ export function FreelancerLogin (props: IFreelancerLoginProps) {
     email: "",
     password: "",
   })
+
+  const handleErrorChange = (newError: Error) => {
+    setError(newError);
+  };
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -69,7 +75,7 @@ export function FreelancerLogin (props: IFreelancerLoginProps) {
         <div className='flex flex-center items-center justify-center'>
           <h2 className='p-9 text-xl underline underline-offset-8 decoration-teal-500'>Login</h2>
         </div>
-        <ErrorModal mostrar={error.existError} errorMessage={error.errorMessage}/>
+        <ErrorModal error={error} onHandleErrorChange={handleErrorChange}/>
         <form>
           <div className="mb-6">
             <div className="flex items-start flex-col mb-6">

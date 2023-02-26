@@ -123,6 +123,10 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
     }
     return <SaveButton/>;
   }
+
+  const handleErrorChange = (newError: Error) => {
+    setError(newError);
+  };
   
 
   return (
@@ -131,7 +135,7 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
         <div className='flex flex-center items-center justify-center'>
           <h2 className='p-9 text-xl underline underline-offset-8 decoration-teal-500'>Register here</h2>
         </div>
-        <ErrorModal mostrar={error.existError} errorMessage={error.errorMessage}/>
+        <ErrorModal error={error} onHandleErrorChange={handleErrorChange}/>
         <SuccessModal mostrar={success}></SuccessModal>
         <div className="w-full mt-27 mb-20">
           <ul id="connecting_line" className='relative flex md:space-x-32 space-x-5 auto mt-5 w-full -z-1'>
