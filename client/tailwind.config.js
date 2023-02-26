@@ -4,6 +4,10 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   mode: 'jit',
+  purge: [
+    './src/**/*.html',
+    './src/**/*.tsx',
+  ],
   theme: {
     screens: {
       'sm': '640px',
