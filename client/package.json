@@ -40,7 +40,7 @@
     "start": "PORT=4000 react-scripts --openssl-legacy-provider start",
     "build": "react-scripts build",
     "test": "jest --watchAll",
-    "eject": "react-scripts eject",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
