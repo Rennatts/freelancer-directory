@@ -53,24 +53,25 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
     member_role: "NOT_MEMBER",
   })
 
-  console.log("loginData", loginData)
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-
-    axios
-    .post(`http://localhost:3000/api/auth/signup_freelancer`, loginData)
-    .then((res) => {
-      if(res.status === 201){
-        setSuccess(true)
-        console.log(res.data)
+  
+    try {
+      const res = await axios.post(`http://localhost:3000/api/auth/signup_freelancer`, loginData);
+  
+      if(res.status !== 201){
+        setError({errorMessage: handleErrorMessage(res.data), existError: true})
+      } else {
+        setSuccess(true);
         saveUserToLocalStorage(res.data);
         setTimeout(() => {
-          navigate(`/freelancer/profile/edit/${res.data.id}`)
-        }, 2000)
-      }
-    })
-    .catch((err) => {setError({errorMessage: handleErrorMessage(err.response.data.message), existError: true})});
+          navigate(`/`)
+        }, 3000)
+      }  
+    } catch (err: any) { 
+      setError({errorMessage: handleErrorMessage(err.response.data.message), existError: true});
+    }  
   };
 
 
@@ -199,15 +200,20 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
                 name='password'
                 value={loginData.password}
                 type="password"
-                onChange={(event)=> {
-                handleInputChange(event);
-                event.target.value !== loginData.password && confirmPassword !== "" ? setStatus({
-                  isValid: false,
-                  message: 'Passwords do not match',
-                }): setStatus({
-                  isValid: true,
-                  message: '',
-                })}}
+                onChange={(event) => {
+                  handleInputChange(event);
+                  if (event.target.value !== loginData.password && confirmPassword !== "") {
+                    setStatus({
+                      isValid: false,
+                      message: 'Passwords do not match',
+                    });
+                  } else {
+                    setStatus({
+                      isValid: true,
+                      message: '',
+                    }); 
+                  }  
+                }} 
                 className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5" placeholder="***" required>
                 </input>
                 {status.isValid === false ? <p className='text-xs text-red'>{status.message}</p> : "" }
@@ -219,15 +225,13 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
               <input               
               name='confirmPassword'
               type="password"
-              onChange={(event)=> {
-              setConfirmPassword(event.target.value);
-              event.target.value !== loginData.password? setStatus({
-                  isValid: false,
-                  message: 'The passwords are not the same',
-              }): setStatus({
-                isValid: true,
-                message: '',
-                })}}
+              onChange={(event) => {
+                setConfirmPassword(event.target.value);
+                setStatus({
+                  isValid: event.target.value === loginData.password,
+                  message: event.target.value === loginData.password ? '' : 'The passwords are not the same',
+                });
+              }}
               className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5" placeholder="***" required>
               </input>
               {status.isValid === false ? <p className='text-xs text-red'>{status.message}</p> : "" }

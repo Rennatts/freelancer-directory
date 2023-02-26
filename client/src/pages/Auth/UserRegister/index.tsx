@@ -116,15 +116,20 @@ export function UserRegister (props: IUserLoginProps) {
               name='password'
               value={loginData.password}
               type="password"
-              onChange={(event)=> {
-              handleInputChange(event);
-              event.target.value !== loginData.password && confirmPassword !== "" ? setStatus({
-                isValid: false,
-                message: 'Passwords do not match',
-              }): setStatus({
-                isValid: true,
-                message: '',
-              })}}
+              onChange={(event) => {
+                handleInputChange(event);
+                if (event.target.value !== loginData.password && confirmPassword !== "") {
+                  setStatus({
+                    isValid: false,
+                    message: 'Passwords do not match',
+                  });
+                } else {
+                  setStatus({
+                    isValid: true,
+                    message: '',
+                  }); 
+                }  
+              }} 
               className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 text-black" placeholder="***" required>
               </input>
               {status.isValid === false ? <p className='text-xs text-red'>{status.message}</p> : "" }
