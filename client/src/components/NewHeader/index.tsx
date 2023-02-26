@@ -116,8 +116,8 @@ export const NewHeader: React.FC<IMenuProps> = ({ size= 'sm' }: IMenuProps) => {
                 </li>
               ))
             }
+            {RenderProfilePath(isAuthenticated().userType)}
           </ul>
-          {RenderProfilePath(isAuthenticated().userType)}
         </div>
       </div>
     );

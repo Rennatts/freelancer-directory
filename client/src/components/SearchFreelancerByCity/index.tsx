@@ -10,10 +10,9 @@ export interface ISearchProps {
 
 export function SearchFreelancerByCity ({}: ISearchProps) {
   const [selectedCity, setSelectedCity] = React.useState("");
-  const [FreelancerBySelectedCity, setFreelancerBySelectedCity] = React.useState([]);
   const navigate = useNavigate();
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = () => {
     const fetchPositions = async () => {
       const response: any = await axios(`http://localhost:3000/api/freelancer/find_by_city/${selectedCity}`);
 
@@ -25,11 +24,9 @@ export function SearchFreelancerByCity ({}: ISearchProps) {
 
   
   return (
-    <div className='flex items-center justify-center align-center flex-center flex-col
-    xl:flex xl:align-items xl:justify-center 
-    xl:flex-col'>
-      <div className="w-full flex flex-wrap flex-center items-center justify-center flex-col">
-        <p className='text-md mb-2 flex flex-wrap flex-center items-center justify-center sm:text-2xl md:text-2xl lg:text-2xl md:mt-10'>
+    <div className='flex flex-wrap items-center justify-center align-center flex-center flex-col xl:flex xl:align-items xl:justify-center xl:flex-col'>
+      <div className="flex flex-wrap flex-center items-center justify-center flex-col w-full ">
+        <p className='flex flex-wrap flex-center items-center justify-center text-md mb-2 sm:text-2xl md:text-2xl lg:text-2xl md:mt-10'>
           Find a freelancer</p>
         <p className="text-gray-500 sm:text-sm md:text-md md:w-1/3 md:mb-8 text-center md:tracking-wide md:leading-9">
           Find your next star freelancer with ease. Browse portfolios, compare prices, and connect with top talents.
@@ -58,7 +55,7 @@ export function SearchFreelancerByCity ({}: ISearchProps) {
           </div>
         </form>
       </div>
-      <div className="mt-12 flex align-center justify-center w-72 h-full xl:flex xl:align-center xl:justify-center xl:w-full xl:h-full object-cover sm:h-92 sm:w-72 sm:mt-12 sm:mb-24 md:h-92 md:w-70 md:mt-12 md:mb-24">
+      <div className="flex align-center justify-center mt-12 w-72 h-full xl:flex xl:align-center xl:justify-center xl:w-full xl:h-full object-cover sm:h-92 sm:w-72 sm:mt-12 sm:mb-24 md:h-92 md:w-70 md:mt-12 md:mb-24">
         <img className="" src={teamImage}></img>
       </div>
     </div>
