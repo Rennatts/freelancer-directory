@@ -36,31 +36,44 @@ export function UserRegister (props: IUserLoginProps) {
     password: "",
   })
 
+  // const handleSubmit = async (e: any) => {
+  //   e.preventDefault();
+
+  //   axios
+  //   .post(`http://localhost:3000/api/auth/signup_user`, loginData)
+  //   .then((res) => {
+  //     console.log("res", res)
+  //     if(res.status === 201){
+  //       setSuccess(true)
+  //       saveUserToLocalStorage(res.data);
+  //       setTimeout(() => {
+  //         navigate(`/`)
+  //       }, 4000)
+  //     }
+  //   })
+  //   .catch((err) => {setError({errorMessage: handleErrorMessage(err.response.data.message), existError: true})});
+  // };
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+  
+    try {
+      const res = await axios.post(`http://localhost:3000/api/auth/signup_user`, loginData);
 
-    // await userRegisterSchema.isValid(loginData)
-    // .then((valid) => {
-    //   setStatus({
-    //     isValid: valid,
-    //     message: 'Erro no formulário, revise os campos por favor',
-    //   });
-    //   return valid
-    // });
-
-    axios
-    .post(`http://localhost:3000/api/auth/signup_user`, loginData)
-    .then((res) => {
       console.log("res", res)
-      if(res.status === 201){
-        setSuccess(true)
+  
+      if(res.status !== 201){
+        setError({errorMessage: handleErrorMessage(res.data), existError: true})
+      } else {
         saveUserToLocalStorage(res.data);
         setTimeout(() => {
           navigate(`/`)
-        }, 4000)
-      }
-    })
-    .catch((err) => {setError({errorMessage: handleErrorMessage(err.response.data.message), existError: true})});
+        }, 1000)
+      }  
+    } catch (err: any) { 
+      console.log("err", err)
+      setError({errorMessage: handleErrorMessage(err.response.data.message), existError: true});
+    }  
   };
 
 

@@ -37,32 +37,36 @@ export function FreelancerLogin (props: IFreelancerLoginProps) {
     setError(newError);
   };
 
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+  
+    try {
+      const res = await axios.post(`http://localhost:3000/api/auth/login_freelancer`, loginData);
 
-    axios
-    .post(`http://localhost:3000/api/auth/login_freelancer`, loginData)
-    .then((res) => {
-      if(res.status !== 200){
+      console.log("res", res)
+  
+      if(res.status !== 201){
         setError({errorMessage: handleErrorMessage(res.data), existError: true})
-      }
-      if(res.status === 201){
+      } else {
         saveUserToLocalStorage(res.data);
         setTimeout(() => {
           navigate(`/`)
         }, 1000)
-      }
-    })
-    .catch((err) => {setError({errorMessage: handleErrorMessage(err.response.data.message), existError: true})});
+      }  
+    } catch (err: any) { 
+      console.log("err", err)
+      setError({errorMessage: handleErrorMessage(err.response.data.message), existError: true});
+    }  
   };
 
 
   useEffect(()=> {
-    if(error.existError === true){
+    if(error.existError){
       setLoginData({email: "", password: ""}) 
       setError({...error, existError: true})
     }
-  },[error])
+  },[error.existError])
 
 
   function handleInputChange(event: any) {

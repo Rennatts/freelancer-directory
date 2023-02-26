@@ -29,26 +29,51 @@ export function UserLogin (props: IUserLoginProps) {
     password: "",
   })
 
+  React.useEffect(()=> {
+    if(error.existError){
+      setLoginData({email: "", password: ""})
+    }
+  },[error.existError])
+
+  // const handleSubmit = async (e: any) => {
+  //   e.preventDefault();
+
+  //   axios
+  //   .post(`http://localhost:3000/api/auth/login_user`, loginData)
+  //   .then((res) => {
+  //     if(res.status !== 201){
+  //       setError({errorMessage: handleErrorMessage(res.data), existError: true})
+  //     }
+  //     if(res.status === 201){
+  //       saveUserToLocalStorage(res.data);
+  //       setTimeout(() => {
+  //         navigate(`/`)
+  //       }, 1000)
+  //     }
+  //   })
+  //   .catch((err) => {console.log("err", err.response.data.message); setError({errorMessage: handleErrorMessage(err.response.data.message), existError: true})});
+  // };
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    console.log("loginData", loginData)
-
-    axios
-    .post(`http://localhost:3000/api/auth/login_user`, loginData)
-    .then((res) => {
-      console.log("res", res)
-      if(res.status !== 201){
-        setError({errorMessage: handleErrorMessage(res.data), existError: true})
-      }
+  
+    try {
+      const res = await axios.post(`http://localhost:3000/api/auth/login_user`, loginData);
+  
       if(res.status === 201){
+        setError({errorMessage: handleErrorMessage(res.data), existError: true})
+      } else {
         saveUserToLocalStorage(res.data);
         setTimeout(() => {
           navigate(`/`)
         }, 1000)
-      }
-    })
-    .catch((err) => {console.log("err", err.response.data.message); setError({errorMessage: handleErrorMessage(err.response.data.message), existError: true})});
+      }  
+    } catch (err: any) { 
+      setError({errorMessage: handleErrorMessage(err.response.data.message), existError: true});
+    }  
   };
+
+
 
 
   function handleInputChange(event: any) {

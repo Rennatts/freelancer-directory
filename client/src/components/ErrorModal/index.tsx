@@ -22,11 +22,6 @@ export const ErrorModal = ({onHandleErrorChange, error}: IErrorModalProps) => {
     onHandleErrorChange(newError);
   };
 
-  const [ status, setStatus ] = React.useState({
-    isValid: false,
-    message: "",
-  })
-
   console.log("error", error)
 
   const navigate = useNavigate();
