@@ -10,13 +10,9 @@ interface IMenuProps {
 }
 
 
-
 export const Header: React.FC<IMenuProps> = (props: IMenuProps) => {
     const context = useContext(UserContext);
     const navigate = useNavigate()
-
-    console.log("context", context)
-    console.log("isAuthenticated", isAuthenticated())
 
     function FreelancerHeader() {
         return (
@@ -61,18 +57,16 @@ export const Header: React.FC<IMenuProps> = (props: IMenuProps) => {
         )
     }
 
-
-    
-    
     function RenderProfilePath(userType: UserType): any {
-        if (userType === UserType.FREELANCER) {
-        return <FreelancerHeader />;
+        switch (userType) {
+            case UserType.FREELANCER: 
+                return <FreelancerHeader />;
+            case UserType.USER: 
+                return <UserHeader />;
+            default: 
+                return <NotLoggedHeader/>;
         }
-        if (userType === UserType.USER) {
-        return <UserHeader />;
-        }
-        return <NotLoggedHeader/>;
-    }
+    }   
 
     return(
         <div className="flex items-center flex-center flex-row py-7 w-full place-content-around">
@@ -82,7 +76,7 @@ export const Header: React.FC<IMenuProps> = (props: IMenuProps) => {
             <nav>
                 <ul className='cursor-pointer flex justify-evenly align-center flex-row text-md ml-10'>
                     <li className='px-4 hover:text-teal-500 hover:underline underline-offset-8'>
-                       <NavLink to="/oi">How it works</NavLink>
+                        <NavLink to="/oi">How it works</NavLink>
                     </li>
                     <li className='px-4 hover:text-teal-500 hover:underline underline-offset-8'>
                         <NavLink to="/ola">About us</NavLink>

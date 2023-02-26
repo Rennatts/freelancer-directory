@@ -29,16 +29,25 @@ export function ExploreByService ({ size= 'md' } : IExploreByServiceProps) {
     }
   },[isLoading])
 
+
   function handleServiceTypeSelection(event: string){
-
     const fetchPositions = async () => {
-      setIsLoading(true);
-      const response: any = await axios(`http://localhost:3000/api/freelancer/find_by_service/${event}`);
+      try {
+        setIsLoading(true);
+        const response: any = await axios(`http://localhost:3000/api/freelancer/find_by_service/${event}`);
 
-      response.data.length === 0 ? navigate(`/service/service_not_found`,  { state: event }) : navigate(`/service/${event}`);
+        if (response.data.length === 0) { 
+          navigate(`/service/service_not_found`,  { state: event }); 
+        } else { 
+          navigate(`/service/${event}`); 
+        }
 
+      } catch (error) {
+        console.log('Error fetching positions', error); 
+      }
     };
-    fetchPositions();
+
+    fetchPositions();   
   }
 
   return (
@@ -54,7 +63,7 @@ export function ExploreByService ({ size= 'md' } : IExploreByServiceProps) {
           key={item.value}>
             <img className="w-full h-full" src={item.url} alt="img"/>
             <div className='flex align-center justify-center w-full bg-gray-100'>
-               <p className='uppercase'>{item.label}</p>
+              <p className='uppercase'>{item.label}</p>
             </div>
           </div>
         )}

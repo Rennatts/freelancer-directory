@@ -41,14 +41,15 @@ export const NewHeader: React.FC<IMenuProps> = ({ size= 'sm' }: IMenuProps) => {
     ];
 
     function RenderProfilePath(userType: UserType): any {
-      if (userType === UserType.FREELANCER) {
-      return <FreelancerHeader />;
+      switch (userType) {
+          case UserType.FREELANCER: 
+              return <FreelancerHeader />;
+          case UserType.USER: 
+              return <UserHeader />;
+          default: 
+              return <NotLoggedHeader/>;
       }
-      if (userType === UserType.USER) {
-      return <UserHeader />;
-      }
-      return <NotLoggedHeader/>;
-    }
+    }   
 
     function FreelancerHeader() {
       return (
