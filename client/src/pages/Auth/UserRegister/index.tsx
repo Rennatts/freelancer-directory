@@ -36,42 +36,23 @@ export function UserRegister (props: IUserLoginProps) {
     password: "",
   })
 
-  // const handleSubmit = async (e: any) => {
-  //   e.preventDefault();
-
-  //   axios
-  //   .post(`http://localhost:3000/api/auth/signup_user`, loginData)
-  //   .then((res) => {
-  //     console.log("res", res)
-  //     if(res.status === 201){
-  //       setSuccess(true)
-  //       saveUserToLocalStorage(res.data);
-  //       setTimeout(() => {
-  //         navigate(`/`)
-  //       }, 4000)
-  //     }
-  //   })
-  //   .catch((err) => {setError({errorMessage: handleErrorMessage(err.response.data.message), existError: true})});
-  // };
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
   
     try {
       const res = await axios.post(`http://localhost:3000/api/auth/signup_user`, loginData);
-
-      console.log("res", res)
   
       if(res.status !== 201){
         setError({errorMessage: handleErrorMessage(res.data), existError: true})
       } else {
+        setSuccess(true);
         saveUserToLocalStorage(res.data);
         setTimeout(() => {
           navigate(`/`)
-        }, 1000)
+        }, 3000)
       }  
     } catch (err: any) { 
-      console.log("err", err)
       setError({errorMessage: handleErrorMessage(err.response.data.message), existError: true});
     }  
   };
@@ -85,6 +66,10 @@ export function UserRegister (props: IUserLoginProps) {
     setError(newError);
   };
 
+  const handleSuccessStatusChange = (newSuccessStatus: boolean) => {
+    setSuccess(newSuccessStatus);
+  };
+
 
   return (
     <div className='flex items-center flex-center flex-col place-content-around p-20'>
@@ -93,7 +78,7 @@ export function UserRegister (props: IUserLoginProps) {
           <h2 className='p-9 text-xl underline underline-offset-8 decoration-teal-500'>Register here</h2>
         </div>
         <ErrorModal error={error} onHandleErrorChange={handleErrorChange}></ErrorModal>
-        <SuccessModal mostrar={success}></SuccessModal>
+        <SuccessModal showSuccessModal={success} onHandleSuccessStatusChange={handleSuccessStatusChange}></SuccessModal>
         <form onSubmit={handleSubmit}>
           <div className="mb-6">
             <div className="flex items-start flex-col mb-6">

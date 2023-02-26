@@ -7,7 +7,6 @@ export function handleErrorMessage(status: string | number) {
     const keyActionMap: ErrorCategory = { 
       "Unauthorized": 'user not registered',
       "wrong password, try again": "wrong password, try again",
-      "email not registered": "e-mail not registered",
       "e-mail not registered": "e-mail not registered",
       "Forbidden": "wrong password, try again"
     }

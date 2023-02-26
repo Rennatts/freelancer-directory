@@ -127,6 +127,10 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
   const handleErrorChange = (newError: Error) => {
     setError(newError);
   };
+
+  const handleSuccessStatusChange = (newSuccessStatus: boolean) => {
+    setSuccess(newSuccessStatus);
+  };
   
 
   return (
@@ -136,7 +140,7 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
           <h2 className='p-9 text-xl underline underline-offset-8 decoration-teal-500'>Register here</h2>
         </div>
         <ErrorModal error={error} onHandleErrorChange={handleErrorChange}/>
-        <SuccessModal mostrar={success}></SuccessModal>
+        <SuccessModal showSuccessModal={success} onHandleSuccessStatusChange={handleSuccessStatusChange}></SuccessModal>
         <div className="w-full mt-27 mb-20">
           <ul id="connecting_line" className='relative flex md:space-x-32 space-x-5 auto mt-5 w-full -z-1'>
             {

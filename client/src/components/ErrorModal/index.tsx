@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
 import { MdError } from "react-icons/md";
 
 interface Error {
   existError: boolean,
-  errorMessage: any;
+  errorMessage: string;
 }
 
 interface IErrorModalProps {
@@ -21,10 +20,6 @@ export const ErrorModal = ({onHandleErrorChange, error}: IErrorModalProps) => {
     };
     onHandleErrorChange(newError);
   };
-
-  console.log("error", error)
-
-  const navigate = useNavigate();
 
   return (
     <>

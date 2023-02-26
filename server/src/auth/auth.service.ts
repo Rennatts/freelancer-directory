@@ -63,7 +63,7 @@ export class AuthService {
         //if user does not exist '!!' transform the answer into a boolean
         const doesUserExists = !!user;
 
-        if(!doesUserExists) throw new HttpException('email not registered', HttpStatus.FORBIDDEN);
+        if(!doesUserExists) throw new HttpException('e-mail not registered', HttpStatus.FORBIDDEN);
         
         const doesPasswordMatch = await  this.doesPasswordMatch(password, user.password);
 
