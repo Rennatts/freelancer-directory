@@ -5,13 +5,13 @@ Freelancer Directory is a web platform where freelancers can create profiles, sh
 
 
 ## HOW TO RUN
-#Features
--Browse and search freelancers by service type and location.
--View freelancer profiles with their bio, portfolio, ratings, and reviews.
--Register and login as a freelancer or a client.
--Edit your profile and manage your services.
+##Features
+- Browse and search freelancers by service type and location.
+- View freelancer profiles with their bio, portfolio, ratings, and reviews.
+- Register and login as a freelancer or a client.
+- Edit your profile and manage your services.
 
-#Technologies
+##Technologies
 Backend
 NestJS
 MongoDB
@@ -26,7 +26,7 @@ React Router
 Styled Components
 
 
-#Getting Started
+##Getting Started
 To get started with this project, follow these steps:
 
 Clone the repository: git clone https://github.com/your_username/your_repository.git.
