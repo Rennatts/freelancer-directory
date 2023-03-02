@@ -5,14 +5,13 @@ Freelancer Directory is a web platform where freelancers can create profiles, sh
 
 
 ## HOW TO RUN
-Features
-Browse and search freelancers by name, skills, location, and other criteria.
-View freelancer profiles with their bio, portfolio, ratings, and reviews.
-Contact freelancers through a messaging system.
-Register and login as a freelancer or a client.
-Edit your profile and manage your services and bookings.
-Admin dashboard to manage users, categories, and bookings.
-Technologies
+#Features
+-Browse and search freelancers by service type and location.
+-View freelancer profiles with their bio, portfolio, ratings, and reviews.
+-Register and login as a freelancer or a client.
+-Edit your profile and manage your services.
+
+#Technologies
 Backend
 NestJS
 MongoDB
@@ -25,7 +24,9 @@ Axios
 Easy Peasy
 React Router
 Styled Components
-Getting Started
+
+
+#Getting Started
 To get started with this project, follow these steps:
 
 Clone the repository: git clone https://github.com/your_username/your_repository.git.
@@ -34,5 +35,6 @@ Create a .env file and set the environment variables according to the .env.examp
 Start the backend server: npm run start:server.
 Start the frontend server: npm run start:client.
 Open your browser and navigate to http://localhost:3000.
+
 ### To see the swagges
 http://localhost:3000/api
