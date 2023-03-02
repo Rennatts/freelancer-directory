@@ -20,7 +20,6 @@ Freelancer Directory is a web platform where freelancers can create profiles, sh
 
 
 ##Getting Started
-To get started with this project, follow these steps:
 
 1. Clone the repository: git clone https://github.com/your_username/your_repository.git.
 2. Install the dependencies: npm install.
