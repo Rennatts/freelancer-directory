@@ -1,43 +1,38 @@
 ## freelancer-directory
-A full-stack freelancer directory 
-
-
-## DATABASE
-MONGODB
-
-## BACK-END
-NESTJS
-
-## FRONT-END
-REACT
-
-## STYLE
-TailwindCss
-
-## STATE MANAGEMENT
-Redux Tooltip
+Description
+Freelancer Directory is a web platform where freelancers can create profiles, showcase their skills and work experience, and find job opportunities. Employers can search for freelancers based on their skills and experience, and contact them directly through the platform.
 
 
 
 ## HOW TO RUN
+Features
+Browse and search freelancers by name, skills, location, and other criteria.
+View freelancer profiles with their bio, portfolio, ratings, and reviews.
+Contact freelancers through a messaging system.
+Register and login as a freelancer or a client.
+Edit your profile and manage your services and bookings.
+Admin dashboard to manage users, categories, and bookings.
+Technologies
+Backend
+NestJS
+MongoDB
+JWT
+Passport
+Frontend
+React
+TailwindCSS
+Axios
+Easy Peasy
+React Router
+Styled Components
+Getting Started
+To get started with this project, follow these steps:
 
-1- Run the server
-
-```
-cd server
-npm install
-
-npm run start:dev
-```
-2- Run the client
-
-
-```
-cd client
-npm install
-
-npm start
-```
-
+Clone the repository: git clone https://github.com/your_username/your_repository.git.
+Install the dependencies: npm install.
+Create a .env file and set the environment variables according to the .env.example file.
+Start the backend server: npm run start:server.
+Start the frontend server: npm run start:client.
+Open your browser and navigate to http://localhost:3000.
 ### To see the swagges
 http://localhost:3000/api
