@@ -12,18 +12,18 @@ Freelancer Directory is a web platform where freelancers can create profiles, sh
 - Edit your profile and manage your services.
 
 ##Technologies
-Backend
-NestJS
-MongoDB
-JWT
-Passport
-Frontend
-React
-TailwindCSS
-Axios
-Easy Peasy
-React Router
-Styled Components
+- Backend
+- NestJS
+- MongoDB
+- JWT
+- Passport
+- Frontend
+- React
+- TailwindCSS
+- Axios
+- Easy Peasy
+- React Router
+- Styled Components
 
 
 ##Getting Started
