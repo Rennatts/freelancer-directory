@@ -46,13 +46,18 @@ export function EditFreelancerProfile ({ size= 'lg'}: IEditFreelancerProfileProp
           city: response.data.city,
           country: response.data.country,
         });
-      
-        setSelectedServices((prevValues) => [...prevValues, response.data.service_type]);  
       };
 
       fetchPositions();
 
-    }, []);
+      if (userData !== undefined) {
+        setSelectedServices(userData?.service_type);
+      }  
+
+    }, [isLoading]);
+    console.log("userData", userData)
+
+    console.log("selectedServices", selectedServices)
 
 
     const handleSubmit = (e: any) => {
@@ -79,6 +84,7 @@ export function EditFreelancerProfile ({ size= 'lg'}: IEditFreelancerProfileProp
     function handleInputChange(event: any) {
       setUserData({...userData, [event.target.name]: event.target.value, service_type: selectedServices});
     }
+    
 
 
     const handleServiceTypeBlur = (event: any) => {
@@ -87,6 +93,18 @@ export function EditFreelancerProfile ({ size= 'lg'}: IEditFreelancerProfileProp
         setUserData({...userData, service_type: newSelectedServices});
         return newSelectedServices;
       });
+    };
+
+    const handleChange = (event: any) => {
+      const { value, checked } = event.target;
+
+      setSelectedServices((prevSelected) => {
+        if (checked) {
+          return [...prevSelected, value];
+        } else {
+          return selectedServices.filter((item) => item !== value);
+        }
+      }); 
     };
 
 
@@ -119,7 +137,7 @@ export function EditFreelancerProfile ({ size= 'lg'}: IEditFreelancerProfileProp
           <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Service Type</label>
           <div className='grid grid-rows-4 grid-flow-col gap-10'>
             {serviceType.map((item)=> {
-                const isChecked = userData.service_type.includes(item.label)
+                const isChecked = selectedServices?.includes(item.label) && userData?.service_type.includes(item.label)
 
               return (
                 <div className="flex w-full flex-row items-center" key={item.value}>
@@ -130,7 +148,8 @@ export function EditFreelancerProfile ({ size= 'lg'}: IEditFreelancerProfileProp
                   name="service_type" 
                   value={item.label} 
                   onBlur={handleServiceTypeBlur}     
-                  className="w-4 h-4 text-teal-500 bg-gray-100 rounded border-gray-300 focus:ring-teal-500 dark:focus:ring-teal-500 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                  onChange={handleChange}
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                   <label className="ml-2 text-sm font-medium text-black">{item.label}</label>
                 </div>
               )

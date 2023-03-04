@@ -67,8 +67,9 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
       } else {
         setSuccess(true);
         saveUserToLocalStorage(res.data);
+        console.log("eeeeeee", res.data)
         setTimeout(() => {
-          navigate(`/`)
+          navigate(`/freelancer/profile/${res.data._id}`)
         }, 3000)
       }  
     } catch (err: any) { 
@@ -139,7 +140,7 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
 
   const handleServiceTypeBlur = (event: any) => {
     setSelectedServices((prevSelectedServices) => {
-      const newSelectedServices = [...prevSelectedServices, event.target.label];
+      const newSelectedServices = [...prevSelectedServices, event.target.value];
       setLoginData({...loginData, service_type: newSelectedServices});
       return newSelectedServices;
     });
@@ -344,7 +345,7 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
                       <input id="checked-checkbox" type="checkbox" name="style" value={item.label} 
                       onBlur={handleServiceTypeBlur}
                       className="w-4 h-4 text-teal-500 bg-gray-100 rounded border-gray-300 focus:ring-teal-500 focus:ring-2"/>
-                      <label className="ml-2 text-sm font-medium text-black ">{item.label}</label>
+                      <label className="ml-2 text-sm font-medium text-black">{item.label}</label>
                     </div>
                   ))}
                 </div>
