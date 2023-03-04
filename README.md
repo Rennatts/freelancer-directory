@@ -1,4 +1,4 @@
-# freelancer-directory
+# Freelancer Directory
 ## Description
 Freelancer Directory is a web platform where freelancers can create profiles, showcase their skills and work experience, and find job opportunities. Employers can search for freelancers based on their skills and experience, and contact them directly through the platform.
 
