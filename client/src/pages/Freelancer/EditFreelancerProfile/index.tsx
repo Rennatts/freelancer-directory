@@ -74,15 +74,6 @@ export function EditFreelancerProfile ({ size= 'lg'}: IEditFreelancerProfileProp
     };
 
     function handleInputChange(event: any) {
-      // console.log("11111", event.target.value)
-      // if (event.target.name === "service_type") {
-      //   const prevState = [...selectedServices];
-      //   setSelectedServices([prevState, event.target.value]);
-      //   console.log("qqqq", prevState);
-      // }
-
-      // console.log("====", selectedServices)
-    
       setUserData({...userData, [event.target.name]: event.target.value, service_type: selectedServices});
     }
 
