@@ -46,12 +46,12 @@ export function EditFreelancerProfile ({ size= 'lg'}: IEditFreelancerProfileProp
           city: response.data.city,
           country: response.data.country,
         });
+
+        setSelectedServices(response.data.service_type);
       };
 
-      fetchPositions();
-
       if (userData !== undefined) {
-        setSelectedServices(userData?.service_type);
+        fetchPositions();
       }  
 
     }, [isLoading]);
@@ -87,22 +87,18 @@ export function EditFreelancerProfile ({ size= 'lg'}: IEditFreelancerProfileProp
     
 
 
-    const handleServiceTypeBlur = (event: any) => {
-      setSelectedServices((prevSelectedServices) => {
-        const newSelectedServices = [...prevSelectedServices, event.target.value];
-        setUserData({...userData, service_type: newSelectedServices});
-        return newSelectedServices;
-      });
-    };
-
     const handleChange = (event: any) => {
       const { value, checked } = event.target;
 
       setSelectedServices((prevSelected) => {
         if (checked) {
-          return [...prevSelected, value];
+          const newSelectedServices = [...prevSelected, value];
+          setUserData({...userData, service_type: newSelectedServices});
+          return newSelectedServices;
         } else {
-          return selectedServices.filter((item) => item !== value);
+          const newSelectedServices = selectedServices.filter((item) => item !== value);
+          setUserData({...userData, service_type: newSelectedServices});
+          return newSelectedServices;
         }
       }); 
     };
@@ -137,7 +133,7 @@ export function EditFreelancerProfile ({ size= 'lg'}: IEditFreelancerProfileProp
           <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Service Type</label>
           <div className='grid grid-rows-4 grid-flow-col gap-10'>
             {serviceType.map((item)=> {
-                const isChecked = selectedServices?.includes(item.label) && userData?.service_type.includes(item.label)
+                const isChecked = selectedServices?.includes(item.label);
 
               return (
                 <div className="flex w-full flex-row items-center" key={item.value}>
@@ -147,8 +143,7 @@ export function EditFreelancerProfile ({ size= 'lg'}: IEditFreelancerProfileProp
                   type="checkbox" 
                   name="service_type" 
                   value={item.label} 
-                  onBlur={handleServiceTypeBlur}     
-                  onChange={handleChange}
+                  onChange={handleChange}     
                   className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                   <label className="ml-2 text-sm font-medium text-black">{item.label}</label>
                 </div>
