@@ -25,7 +25,7 @@ Freelancer Directory is a web platform where freelancers can create profiles, sh
 2. Install the dependencies: 
 ```bash 
 npm install
-```.
+```
 3. Create a .env file and set the environment variables according to the .env.example file.
 4. Start the backend server:
 ```bash 
