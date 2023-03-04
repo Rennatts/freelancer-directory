@@ -12,11 +12,10 @@ import { UserContext } from '../../UserContext';
 import { AllReviewsPerFreelancer } from '../../Interfaces/NewReview';
 
 export interface IReviewListProps {
-    size?: 'sm' | 'md' | 'lg';
 }
 
 
-export function ReviewList ({ size= 'lg',}: IReviewListProps) {
+export function ReviewList ({ }: IReviewListProps) {
     const [reviews, setReviews] = React.useState<AllReviewsPerFreelancer>();
     let { freelancerId } = useParams() as any;
     const [isLoading, setIsLoading] = React.useState(false);
@@ -37,7 +36,7 @@ export function ReviewList ({ size= 'lg',}: IReviewListProps) {
             setIsLoading(false)
         }
 
-    }, [reviews]);
+    }, []);
 
     console.log("reviews", reviews)
   

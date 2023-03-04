@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot, faUserPen, faSquarePen } from "@fortawesome/free-solid-svg-icons";
 import StarRatingComponent from 'react-star-rating-component';
 import { ReviewList, ReviewModal } from './../../../components';
+import { AllReviewsPerFreelancer } from '../../../Interfaces/NewReview';
 
 export interface ITFreelancerProfileProps {
   size?: 'sm' | 'md' | 'lg';
@@ -21,6 +22,8 @@ export function FreelancerProfile ({ size= 'lg'}: ITFreelancerProfileProps) {
     const [rating, setRating] = React.useState<number>(0);
     const [openModal, setOpenModal] = React.useState<boolean>(false);
     const [error, setError] = React.useState<boolean>(false);
+    const [reviews, setReviews] = React.useState<AllReviewsPerFreelancer>();
+    const [isLoading, setIsLoading] = React.useState(false);
     let { freelancerId } = useParams() as any;
     const navigate = useNavigate();
     const context = React.useContext(UserContext);
@@ -45,7 +48,18 @@ export function FreelancerProfile ({ size= 'lg'}: ITFreelancerProfileProps) {
             fetchAvgRating();
         }
 
-    }, [freelancer]);
+        const fetchReviews = async () => {
+            setIsLoading(true);
+            await axios(`http://localhost:3000/api/freelancer/reviews/${freelancerId}`)
+            .then((response) => setReviews(response.data))
+        };
+
+        if(!reviews){
+            fetchReviews(); 
+            setIsLoading(false)
+        }
+
+    }, [reviews]);
 
     function onStarClick(e: any) {
         const ratingData = {
@@ -124,9 +138,20 @@ export function FreelancerProfile ({ size= 'lg'}: ITFreelancerProfileProps) {
                     </div>
                 )}
                 <ReviewModal show={openModal} userId={context?.id}></ReviewModal>
-                <ReviewList></ReviewList>
+                <div className="border-t mt-10">
+                    <div className='flex align-center justify-center'>
+                        <span className='mt-12 text-md text-teal-500'>Reviews</span>
+                    </div>
+                    <div className="flex items-start flex-start flex-col">
+                        {reviews?.reviews.map((item) => 
+                            <div key={item._id} className='w-full flex flex-col justify-items-start mt-8 mb-8'>
+                                <p>{item?.reviewText}</p> 
+                                <p>{item?.postedBy.name}</p>
+                            </div>
+                        )}
+                    </div>
+                </div>
             </div>
         </>
-
     );
 }

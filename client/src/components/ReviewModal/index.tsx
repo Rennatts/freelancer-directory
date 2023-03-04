@@ -64,7 +64,7 @@ export const ReviewModal = ({show, userId}: IReviewModalProps) => {
     .catch(() => setError(true));
 
     setShowModal(false)
-    //window.location.reload();
+    window.location.reload();
 
   }
 
