@@ -1,5 +1,5 @@
-## freelancer-directory
-Description
+# freelancer-directory
+## Description
 Freelancer Directory is a web platform where freelancers can create profiles, showcase their skills and work experience, and find job opportunities. Employers can search for freelancers based on their skills and experience, and contact them directly through the platform.
 
 
@@ -22,10 +22,19 @@ Freelancer Directory is a web platform where freelancers can create profiles, sh
 ##Getting Started
 
 1. Clone the repository: git clone https://github.com/your_username/your_repository.git.
-2. Install the dependencies: npm install.
+2. Install the dependencies: 
+```bash 
+npm install
+```.
 3. Create a .env file and set the environment variables according to the .env.example file.
-4. Start the backend server: npm run start:server.
-5. Start the frontend server: npm run start:client.
+4. Start the backend server:
+```bash 
+npm run start:dev
+```
+5. Start the frontend server:
+```bash 
+npm start
+```
 6. Open your browser and navigate to http://localhost:3000.
 
 ### To see the swagger
