@@ -107,6 +107,8 @@ export class AuthService {
 
     async validateFreelancer(email: string, password: string): Promise<LoginReturn | HttpException> {
         const user = await this.FreelancerService.findByEmail(email);
+
+        console.log("------", user)
         //if user does not exist '!!' transform the answer into a boolean
         const doesUserExists = !!user;
 

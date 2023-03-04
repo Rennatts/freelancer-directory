@@ -74,13 +74,19 @@ export function EditFreelancerProfile ({ size= 'lg'}: IEditFreelancerProfileProp
     };
 
     function handleInputChange(event: any) {
-      console.log("event.target.value", event.target.value)
-      if(event.target.name === "service_type"){
-        setSelectedServices([...selectedServices, event.target.value]);
-      }
-      
+      // console.log("11111", event.target.value)
+      // if (event.target.name === "service_type") {
+      //   const prevState = [...selectedServices];
+      //   setSelectedServices([prevState, event.target.value]);
+      //   console.log("qqqq", prevState);
+      // }
+
+      // console.log("====", selectedServices)
+    
       setUserData({...userData, [event.target.name]: event.target.value, service_type: selectedServices});
     }
+
+    console.log("selected", selectedServices)
 
 
     return (
@@ -111,7 +117,15 @@ export function EditFreelancerProfile ({ size= 'lg'}: IEditFreelancerProfileProp
           <div className='grid grid-rows-4 grid-flow-col gap-10'>
             {serviceType.map((item)=> (
               <div className="flex w-full flex-row items-center" key={item.value}>
-                <input id="checked-checkbox" type="checkbox" name="service_type" value={item.label} onBlur={(event)=> handleInputChange(event)} className="w-4 h-4 text-teal-500 bg-gray-100 rounded border-gray-300 focus:ring-teal-500 dark:focus:ring-teal-500 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                <input id="checked-checkbox" type="checkbox" name="service_type" value={item.label} 
+                onBlur={(event) => {
+                  setSelectedServices((prevSelectedServices) => {
+                    const newSelectedServices = [...prevSelectedServices, event.target.value];
+                    setUserData({...userData, service_type: newSelectedServices});
+                    return newSelectedServices;
+                  });
+                }}
+                className="w-4 h-4 text-teal-500 bg-gray-100 rounded border-gray-300 focus:ring-teal-500 dark:focus:ring-teal-500 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                 <label className="ml-2 text-sm font-medium text-black dark:text-black">{item.label}</label>
               </div>
             ))}

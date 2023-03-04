@@ -43,6 +43,7 @@ export class AuthController {
     // @HttpCode(HttpStatus.FORBIDDEN)
     // @HttpCode(HttpStatus.OK)
     loginFreelancer(@Body() freelancer: ExistingUserDTO): Promise<LoginReturn | HttpException> {
+        console.log("===", this.authService.loginFreelancer(freelancer))
         return this.authService.loginFreelancer(freelancer);
     }
 }
