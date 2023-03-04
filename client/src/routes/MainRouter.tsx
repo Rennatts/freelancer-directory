@@ -5,7 +5,7 @@ import { UserContext } from '../UserContext';
 import ProtectedRoute from '../auth/ProtectedRoute';
 import { ServiceNotFound } from '../components/ServiceNotFound';
 import { 
-    CitySearchResults, 
+    SearchResults, 
     EditFreelancerProfile, 
     ErrorPage, 
     FreelancerLogin, 
@@ -32,7 +32,8 @@ function MainRouter(){
                     <NewHeader/>
                         <Routes>
                             <Route path="/" element={<Home/>}/>
-                            <Route path="/city/:selectedCity" element={<CitySearchResults/>}/>
+                            <Route path="/city/:selectedCity" element={<SearchResults/>}/>
+                            <Route path="/freelancers/all" element={<SearchResults/>}/>
                             <Route path="/city/city_not_found" element={<CityNotFound/>}/>
                             <Route path="/service/service_not_found" element={<ServiceNotFound/>}/>
                             <Route path="/service/:selectedService" element={<ServiceSearchResults/>}/>

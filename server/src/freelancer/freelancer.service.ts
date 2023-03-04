@@ -7,12 +7,14 @@ import { FreelancerDetails } from './interfaces/freelancer.interface';
 import { Freelancer} from './freelancer.schema';
 import { UpdateFrelancersDTO } from './dtos/updateFreelancer_dto';
 import { Review } from './dtos/Review.interface';
+import { UserDocument } from 'src/user/user.schema';
 
 
 @Injectable()
 export class FreelancerService {
     constructor(
-        @InjectModel('Freelancer') private readonly freelancerModel: Model<Freelancer>
+        @InjectModel('Freelancer') private readonly freelancerModel: Model<Freelancer>,
+        @InjectModel('User') private readonly userModel: Model<UserDocument>
     ){}
 
 
@@ -133,6 +135,7 @@ export class FreelancerService {
     }
 
     async createReview(id: string, review: createReviewDTO,): Promise<any>  {
+
         let newReview = {
             reviewText: review.reviewText, 
             postedBy: review.userId,

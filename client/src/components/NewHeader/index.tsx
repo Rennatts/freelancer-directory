@@ -22,7 +22,7 @@ export const NewHeader: React.FC<IMenuProps> = ({ size= 'sm' }: IMenuProps) => {
     let [open, setOpen] = useState<boolean>(false)
 
     let links = [
-      {name: "EXPLORE", link:"/explore"},
+      {name: "EXPLORE", link:"/freelancers/all"},
       {name: "PRICING", link: "/pricing"},
       {name: "ABOUT US", link: "/about_us"},
     ];

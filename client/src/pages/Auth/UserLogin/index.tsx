@@ -59,8 +59,9 @@ export function UserLogin (props: IUserLoginProps) {
   
     try {
       const res = await axios.post(`http://localhost:3000/api/auth/login_user`, loginData);
+      console.log("res", res)
   
-      if(res.status === 201){
+      if(res.status !== 201){
         setError({errorMessage: handleErrorMessage(res.data), existError: true})
       } else {
         saveUserToLocalStorage(res.data);

@@ -53,15 +53,18 @@ export const ReviewModal = ({show, userId}: IReviewModalProps) => {
     }
 
     axios.put(`http://localhost:3000/api/freelancer/review/${freelancerId}`, newReview)
-    .then((res) => {
+    .then(res => {
+      console.log("res", res)
       if(res.status === 200){
-        setSuccess(true)
+        setSuccess(true);
+      } else {
+        setError(true);
       }
     })
-    .catch((err) => setError(true));
+    .catch(() => setError(true));
 
     setShowModal(false)
-    window.location.reload();
+    //window.location.reload();
 
   }
 

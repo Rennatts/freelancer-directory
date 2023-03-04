@@ -84,6 +84,7 @@ export const FreelancerSchema = new mongoose.Schema(
         ref: "User",
       },
     }],
+    
     member_role: {
       type: String,
       enum: ["MEMBER", "NOT_MEMBER",],

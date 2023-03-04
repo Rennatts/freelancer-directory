@@ -3,17 +3,16 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 import { Freelancer } from '../../Interfaces/Freelancer';
-import { clsx } from 'clsx';
 import { InfoCard } from '../../components';
 
-export interface ICitySearchResultsProps {
+export interface ISearchResultsProps {
   name?: string;
   size?: 'sm' | 'md' | 'lg';
 }
 
 
 
-export function CitySearchResults ({name, size= 'lg'}: ICitySearchResultsProps) {
+export function SearchResults ({name, size= 'lg'}: ISearchResultsProps) {
   const [freelancers, setFreelancers] = React.useState<Freelancer[]>([]);
   const [error, setError] = React.useState();
   const [isLoading, setIsLoading] = React.useState(false);
@@ -25,9 +24,14 @@ export function CitySearchResults ({name, size= 'lg'}: ICitySearchResultsProps) 
   React.useEffect(() => {
     const fetchPositions = async () => {
       setIsLoading(true);
-      const response: any = await axios(`http://localhost:3000/api/freelancer/find_by_city/${selectedCity}`);
-      setFreelancers(response.data);
 
+      if(selectedCity !== undefined){
+        const response: any = await axios(`http://localhost:3000/api/freelancer/find_by_city/${selectedCity}`);
+        setFreelancers(response.data);
+      }else {
+        const response: any = await axios(`http://localhost:3000/api/freelancer`);
+        setFreelancers(response.data);
+      }
     };
     fetchPositions();
     setIsLoading(false)
