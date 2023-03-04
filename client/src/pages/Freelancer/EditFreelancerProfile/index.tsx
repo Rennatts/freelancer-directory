@@ -55,9 +55,6 @@ export function EditFreelancerProfile ({ size= 'lg'}: IEditFreelancerProfileProp
       }  
 
     }, [isLoading]);
-    console.log("userData", userData)
-
-    console.log("selectedServices", selectedServices)
 
 
     const handleSubmit = (e: any) => {

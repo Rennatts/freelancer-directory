@@ -1,8 +1,8 @@
-import { Usertype } from "../enum/userTypes";
+import { UserType } from "../enum/userTypes";
 
 export class LoginReturn {
     token: string;
     name: string;
     id: string;
-    userType: Usertype;
+    userType: UserType;
 }

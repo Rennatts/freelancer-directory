@@ -7,7 +7,7 @@ import { ExistingUserDTO } from 'src/user/dtos/existingUser_dto';
 import { JwtService } from '@nestjs/jwt';
 import { NewFreelancersDTO } from 'src/Freelancer/dtos/newFreelancer_dto';
 import { LoginFreelancerDTO } from 'src/Freelancer/dtos/loginFreelancer_dto';
-import { Usertype } from './enum/userTypes';
+import { UserType } from './enum/userTypes';
 import { LoginReturn } from './interfaces/loginReturn.interface';
 import { UserService } from 'src/user/user.service';
 import { FreelancerService } from 'src/freelancer/freelancer.service';
@@ -44,7 +44,7 @@ export class AuthService {
             newUser
         })
 
-        return {token: jwt, id: newUser._id, name: newUser.name, userType: Usertype.user};
+        return {token: jwt, id: newUser._id, name: newUser.name, userType: UserType.user};
     }
 
     async loginUser(user: ExistingUserDTO,): Promise<LoginReturn  | string> {
@@ -58,7 +58,6 @@ export class AuthService {
     }
 
     async validateUser(email: string, password: string): Promise<LoginReturn | string> {
-        console.log("ekmail", email)
         const user = await this.userService.findByEmail(email);
         //if user does not exist '!!' transform the answer into a boolean
         const doesUserExists = !!user;
@@ -75,7 +74,7 @@ export class AuthService {
 
         const nameToBeShown = user.username || user.name;
 
-        return {token: jwt, name: nameToBeShown, id: user._id, userType: Usertype.user};
+        return {token: jwt, name: nameToBeShown, id: user._id, userType: UserType.user};
     }
 
 
@@ -96,7 +95,7 @@ export class AuthService {
             newFreelancer
         })
 
-        return {token: jwt, id: newFreelancer._id, name: newFreelancer.name, userType: Usertype.Freelancer};
+        return {token: jwt, id: newFreelancer._id, name: newFreelancer.name, userType: UserType.Freelancer};
     }
 
     async loginFreelancer(user: LoginFreelancerDTO,): Promise<LoginReturn | HttpException> {
@@ -122,7 +121,7 @@ export class AuthService {
             user
         })
 
-        return {token: jwt, name: user.name, id: user._id, userType: Usertype.Freelancer};
+        return {token: jwt, name: user.name, id: user._id, userType: UserType.Freelancer};
     }
     
 }

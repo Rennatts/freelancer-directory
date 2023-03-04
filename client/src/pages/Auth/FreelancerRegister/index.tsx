@@ -67,9 +67,8 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
       } else {
         setSuccess(true);
         saveUserToLocalStorage(res.data);
-        console.log("eeeeeee", res.data)
         setTimeout(() => {
-          navigate(`/freelancer/profile/${res.data._id}`)
+          navigate(`/freelancer/profile/${res.data.id}`)
         }, 3000)
       }  
     } catch (err: any) { 
@@ -136,7 +135,6 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
     setSuccess(newSuccessStatus);
   };
 
-  console.log("loginData", loginData)
 
   const handleServiceTypeBlur = (event: any) => {
     setSelectedServices((prevSelectedServices) => {
