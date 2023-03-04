@@ -34,7 +34,8 @@ export function EditFreelancerProfile ({ size= 'lg'}: IEditFreelancerProfileProp
     React.useEffect(() => {
       const fetchPositions = async () => {
         setIsLoading(true);
-        await axios(`http://localhost:3000/api/freelancer/${freelancerId}`).then((response) => 
+        const response = await axios(`http://localhost:3000/api/freelancer/${freelancerId}`);
+      
         setUserData({
           job_title: response.data.job_title, 
           description: response.data.description, 
@@ -44,7 +45,9 @@ export function EditFreelancerProfile ({ size= 'lg'}: IEditFreelancerProfileProp
           number:response.data.number,
           city: response.data.city,
           country: response.data.country,
-        }))
+        });
+      
+        setSelectedServices((prevValues) => [...prevValues, response.data.service_type]);  
       };
 
       fetchPositions();
@@ -77,11 +80,8 @@ export function EditFreelancerProfile ({ size= 'lg'}: IEditFreelancerProfileProp
       setUserData({...userData, [event.target.name]: event.target.value, service_type: selectedServices});
     }
 
-    console.log("selected", selectedServices)
-
 
     const handleServiceTypeBlur = (event: any) => {
-      console.log("event.target.label", event.target.value)
       setSelectedServices((prevSelectedServices) => {
         const newSelectedServices = [...prevSelectedServices, event.target.value];
         setUserData({...userData, service_type: newSelectedServices});
@@ -100,7 +100,8 @@ export function EditFreelancerProfile ({ size= 'lg'}: IEditFreelancerProfileProp
             id="input" 
             name='job_title'
             value={userData.job_title}
-            onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" required>
+            onChange={(event)=> handleInputChange(event)}  
+            className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5  dark:focus:border-teal-300" required>
             </input>
         </div>
         <div className="flex items-start flex-col mb-6">
@@ -110,20 +111,30 @@ export function EditFreelancerProfile ({ size= 'lg'}: IEditFreelancerProfileProp
             id="input" 
             name='description'
             value={userData.description}
-            onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" required>
+            onChange={(event)=> handleInputChange(event)}  
+            className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5" required>
             </textarea>
         </div>
         <div className="flex items-start flex-col mb-6">
           <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">Service Type</label>
           <div className='grid grid-rows-4 grid-flow-col gap-10'>
-            {serviceType.map((item)=> (
-              <div className="flex w-full flex-row items-center" key={item.value}>
-                <input id="checked-checkbox" type="checkbox" name="service_type" value={item.label} 
-                onBlur={handleServiceTypeBlur}
-                className="w-4 h-4 text-teal-500 bg-gray-100 rounded border-gray-300 focus:ring-teal-500 dark:focus:ring-teal-500 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
-                <label className="ml-2 text-sm font-medium text-black dark:text-black">{item.label}</label>
-              </div>
-            ))}
+            {serviceType.map((item)=> {
+                const isChecked = userData.service_type.includes(item.label)
+
+              return (
+                <div className="flex w-full flex-row items-center" key={item.value}>
+                  <input 
+                  id={`checkbox-${item.value}`} 
+                  checked={isChecked} 
+                  type="checkbox" 
+                  name="service_type" 
+                  value={item.label} 
+                  onBlur={handleServiceTypeBlur}     
+                  className="w-4 h-4 text-teal-500 bg-gray-100 rounded border-gray-300 focus:ring-teal-500 dark:focus:ring-teal-500 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                  <label className="ml-2 text-sm font-medium text-black">{item.label}</label>
+                </div>
+              )
+            })}
           </div>
         </div>
         <div className="mb-6 mt-8">
@@ -135,7 +146,8 @@ export function EditFreelancerProfile ({ size= 'lg'}: IEditFreelancerProfileProp
               id="input" 
               name='zip_code'
               value={userData.zip_code}
-              onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" placeholder="00000-000" required>
+              onChange={(event)=> handleInputChange(event)}  
+              className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" placeholder="00000-000" required>
               </input>
           </div>
           <div className="flex items-start flex-col mb-6">
@@ -145,7 +157,8 @@ export function EditFreelancerProfile ({ size= 'lg'}: IEditFreelancerProfileProp
               id="input" 
               name='address'
               value={userData.address}
-              onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" required>
+              onChange={(event)=> handleInputChange(event)}  
+              className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" required>
               </input>
           </div>
           <div className="flex items-start flex-col mb-6">
@@ -155,7 +168,8 @@ export function EditFreelancerProfile ({ size= 'lg'}: IEditFreelancerProfileProp
               id="input" 
               name='number'
               value={userData.number}
-              onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" required>
+              onChange={(event)=> handleInputChange(event)}  
+              className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" required>
               </input>
           </div>
           <div className="flex items-start flex-col mb-6">
@@ -165,7 +179,8 @@ export function EditFreelancerProfile ({ size= 'lg'}: IEditFreelancerProfileProp
               id="input" 
               name='city'
               value={userData.city}
-              onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" required>
+              onChange={(event)=> handleInputChange(event)}  
+              className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" required>
               </input>
           </div>
           <div className="flex items-start flex-col mb-6">
@@ -175,7 +190,8 @@ export function EditFreelancerProfile ({ size= 'lg'}: IEditFreelancerProfileProp
               id="input" 
               name='country'
               value={userData.country}
-              onChange={(event)=> handleInputChange(event)}  className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" required>
+              onChange={(event)=> handleInputChange(event)}  
+              className="bg-gray-50 border bg-transparent border-teal-500 text-gray-900 text-sm rounded-lg focus:ring-teal-300 focus:border-teal-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-300" required>
               </input>
           </div>
         </div>
