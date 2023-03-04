@@ -80,6 +80,16 @@ export function EditFreelancerProfile ({ size= 'lg'}: IEditFreelancerProfileProp
     console.log("selected", selectedServices)
 
 
+    const handleServiceTypeBlur = (event: any) => {
+      console.log("event.target.label", event.target.value)
+      setSelectedServices((prevSelectedServices) => {
+        const newSelectedServices = [...prevSelectedServices, event.target.value];
+        setUserData({...userData, service_type: newSelectedServices});
+        return newSelectedServices;
+      });
+    };
+
+
     return (
     <div className='flex items-center flex-center flex-col place-content-around p-20'>
       <h1>Complete with the information to be shown in your profile</h1>
@@ -109,13 +119,7 @@ export function EditFreelancerProfile ({ size= 'lg'}: IEditFreelancerProfileProp
             {serviceType.map((item)=> (
               <div className="flex w-full flex-row items-center" key={item.value}>
                 <input id="checked-checkbox" type="checkbox" name="service_type" value={item.label} 
-                onBlur={(event) => {
-                  setSelectedServices((prevSelectedServices) => {
-                    const newSelectedServices = [...prevSelectedServices, event.target.value];
-                    setUserData({...userData, service_type: newSelectedServices});
-                    return newSelectedServices;
-                  });
-                }}
+                onBlur={handleServiceTypeBlur}
                 className="w-4 h-4 text-teal-500 bg-gray-100 rounded border-gray-300 focus:ring-teal-500 dark:focus:ring-teal-500 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                 <label className="ml-2 text-sm font-medium text-black dark:text-black">{item.label}</label>
               </div>

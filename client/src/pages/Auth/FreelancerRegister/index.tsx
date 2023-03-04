@@ -31,6 +31,7 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
     isValid: false,
     message: "",
   })
+  const [selectedServices, setSelectedServices] = React.useState<string[]>([]);
 
   const navigate = useNavigate();
   const [ loginData, setLoginData ] = React.useState({
@@ -50,6 +51,7 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
     website: "",
     experience: "",
     category: "",
+    service_type: [""],
     member_role: "NOT_MEMBER",
   })
 
@@ -131,6 +133,16 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
 
   const handleSuccessStatusChange = (newSuccessStatus: boolean) => {
     setSuccess(newSuccessStatus);
+  };
+
+  console.log("loginData", loginData)
+
+  const handleServiceTypeBlur = (event: any) => {
+    setSelectedServices((prevSelectedServices) => {
+      const newSelectedServices = [...prevSelectedServices, event.target.label];
+      setLoginData({...loginData, service_type: newSelectedServices});
+      return newSelectedServices;
+    });
   };
   
 
@@ -329,8 +341,10 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
                 <div className='grid grid-rows-2 grid-flow-col gap-6'>
                   {serviceType.map((item)=> (
                     <div className="flex w-full flex-row items-center" key={item.value}>
-                      <input id="checked-checkbox" type="checkbox" name="style" value={item.value} onChange={(event)=> handleInputChange(event)} className="w-4 h-4 text-teal-500 bg-gray-100 rounded border-gray-300 focus:ring-teal-500 focus:ring-2"/>
-                      <label className="ml-2 text-sm font-medium text-black ">{item.value}</label>
+                      <input id="checked-checkbox" type="checkbox" name="style" value={item.label} 
+                      onBlur={handleServiceTypeBlur}
+                      className="w-4 h-4 text-teal-500 bg-gray-100 rounded border-gray-300 focus:ring-teal-500 focus:ring-2"/>
+                      <label className="ml-2 text-sm font-medium text-black ">{item.label}</label>
                     </div>
                   ))}
                 </div>

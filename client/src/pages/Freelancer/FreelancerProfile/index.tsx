@@ -95,9 +95,9 @@ export function FreelancerProfile ({ size= 'lg'}: ITFreelancerProfileProps) {
                     <div className='w-full flex align-center justify-center mt-8 mb-8'>
                         <h1>{freelancer?.description}</h1> 
                     </div>
-                    <ul className='grid grid-cols-4 gap-4 mb-8'>
+                    <ul className='grid grid-cols-4 gap-4 mb-8 w-full'>
                         {freelancer?.service_type?.map((item: any)=> 
-                        <li className="pl-2 pb-1 pt-1 pr-2 rounded bg-teal-500 text-white flex align-center justify-center items-center">
+                        <li className="pl-2 pb-1 pt-1 pr-2 h-13 rounded bg-teal-500 text-white flex align-center justify-center items-center">
                             <p className=''>{item}</p>
                         </li>)}
                     </ul>
