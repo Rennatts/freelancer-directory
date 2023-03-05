@@ -44,6 +44,8 @@ export const isAuthenticated = () => {
 
 export const signout = (next) => {
 
+    console.log("localStorage", localStorage)
+
     if(typeof window !== "undefined"){
         localStorage.removeItem("jwt")
     } 
@@ -52,6 +54,8 @@ export const signout = (next) => {
     return axios.get(`http://localhost:3000/api/auth/logout_user`)
     .then(res => {
         console.log("res", res)
+        localStorage.removeItem("jwt")
+        console.log("localStorage", localStorage)
     })
     .catch(err => console.log("err", err))
 

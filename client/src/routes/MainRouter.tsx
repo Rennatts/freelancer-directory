@@ -1,5 +1,5 @@
 import {Route, BrowserRouter as Router, Routes} from 'react-router-dom';
-import { CityNotFound, Footer, Header, NewHeader } from './../components';
+import { CityNotFound, Footer,  NewHeader } from './../components';
 import { isAuthenticated } from '../auth';
 import { UserContext } from '../UserContext';
 import ProtectedRoute from '../auth/ProtectedRoute';

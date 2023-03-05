@@ -8,16 +8,16 @@ import ProfilePhoto from './../../../images/profilePhoto.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot, faUserPen, faSquarePen } from "@fortawesome/free-solid-svg-icons";
 import StarRatingComponent from 'react-star-rating-component';
-import { ReviewList, ReviewModal } from './../../../components';
+import { ReviewModal } from './../../../components';
 import { AllReviewsPerFreelancer } from '../../../Interfaces/NewReview';
+import { isAuthenticated } from '../../../auth';
 
 export interface ITFreelancerProfileProps {
-  size?: 'sm' | 'md' | 'lg';
 }
 
 
 
-export function FreelancerProfile ({ size= 'lg'}: ITFreelancerProfileProps) {
+export function FreelancerProfile ({ }: ITFreelancerProfileProps) {
     const [freelancer, setFreelancer] = React.useState<Freelancer>();
     const [rating, setRating] = React.useState<number>(0);
     const [openModal, setOpenModal] = React.useState<boolean>(false);
@@ -108,7 +108,7 @@ export function FreelancerProfile ({ size= 'lg'}: ITFreelancerProfileProps) {
                     </div>
                 </div>
 
-                {context?.id === freelancer?._id ? 
+                {isAuthenticated().id === freelancerId ? 
                 (
                     <div className='mt-12 w-full flex justify-items-end'>
                         <button onClick={() => navigate(`/freelancer/profile/edit/${freelancer?._id}`)} className="text-gray-50 background-transparent font-bold uppercase px-3 py-1 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">

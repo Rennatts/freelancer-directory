@@ -10,16 +10,17 @@ import { UserContext } from '../../UserContext';
 
 
 interface IMenuProps {
-    size?: 'sm' | 'md' | 'lg';
 }
 
 
 
-export const NewHeader: React.FC<IMenuProps> = ({ size= 'sm' }: IMenuProps) => {
+export const NewHeader: React.FC<IMenuProps> = ({ }: IMenuProps) => {
     const [openNavBar, setOpenNavBar] = useState<boolean>(true)
     const context = useContext(UserContext);
     const navigate = useNavigate()
     let [open, setOpen] = useState<boolean>(false)
+
+    console.log("header context", context)
 
     let links = [
       {name: "EXPLORE", link:"/freelancers/all"},

@@ -67,8 +67,10 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
       } else {
         setSuccess(true);
         saveUserToLocalStorage(res.data);
+        console.log("localStorage register", localStorage)
         setTimeout(() => {
           navigate(`/freelancer/profile/${res.data.id}`)
+          //navigate(`/`)
         }, 3000)
       }  
     } catch (err: any) { 
