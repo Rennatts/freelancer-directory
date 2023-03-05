@@ -43,7 +43,6 @@ export function FreelancerLogin (props: IFreelancerLoginProps) {
   
     try {
       const res = await axios.post(`http://localhost:3000/api/auth/login_freelancer`, loginData);
-
       console.log("res", res)
   
       if(res.status !== 201){

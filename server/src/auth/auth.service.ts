@@ -35,7 +35,6 @@ export class AuthService {
 
         const existingUser = await this.userService.findByEmail(user.email);
         //if(existingUser) throw new HttpException('e-mail already registered', HttpStatus.NOT_ACCEPTABLE);
-        if(existingUser) throw new HttpException('e-mail already registered', HttpStatus.NOT_ACCEPTABLE);
 
         const hashedPassword = await this.hashPassword(password);
 
@@ -63,11 +62,15 @@ export class AuthService {
         //if user does not exist '!!' transform the answer into a boolean
         const doesUserExists = !!user;
 
-        if(!doesUserExists) throw new HttpException('e-mail not registered', HttpStatus.FORBIDDEN);
+        if(!doesUserExists) {
+            throw new HttpException('e-mail not registered', HttpStatus.FORBIDDEN);
+        }
         
         const doesPasswordMatch = await  this.doesPasswordMatch(password, user.password);
 
-        if(!doesPasswordMatch) return 'wrong password, try again';
+        if(!doesPasswordMatch) {
+            throw new HttpException('wrong password, try again', HttpStatus.UNAUTHORIZED);
+        }
 
         const jwt = await this.jwtService.signAsync({
             user
@@ -108,21 +111,21 @@ export class AuthService {
     async validateFreelancer(email: string, password: string): Promise<LoginReturn | HttpException> {
         const user = await this.FreelancerService.findByEmail(email);
 
-        console.log("------", user)
-        //if user does not exist '!!' transform the answer into a boolean
-        const doesUserExists = !!user;
+        if(!user) {
+            throw new HttpException('e-mail not registered', HttpStatus.NOT_ACCEPTABLE);
+        }
 
-        if(!doesUserExists) throw new HttpException('e-mail not registered', HttpStatus.NOT_ACCEPTABLE);
-        
         const doesPasswordMatch = await  this.doesPasswordMatch(password, user.password);
 
-        if(!doesPasswordMatch) throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);
+        if(!doesPasswordMatch) {
+            throw new HttpException('wrong password, try again', HttpStatus.UNAUTHORIZED);
+        }
 
         const jwt = await this.jwtService.signAsync({
             user
-        })
+        });
 
         return {token: jwt, name: user.name, id: user._id, userType: UserType.Freelancer};
     }
-    
+        
 }

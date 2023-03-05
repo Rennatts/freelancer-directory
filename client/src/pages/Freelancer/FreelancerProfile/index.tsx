@@ -23,68 +23,44 @@ export function FreelancerProfile ({ size= 'lg'}: ITFreelancerProfileProps) {
     const [openModal, setOpenModal] = React.useState<boolean>(false);
     const [error, setError] = React.useState<boolean>(false);
     const [reviews, setReviews] = React.useState<AllReviewsPerFreelancer>();
-    const [isLoading, setIsLoading] = React.useState(false);
     const [isReviewSubmitted, setIsReviewSubmitted] = React.useState(false);
     let { freelancerId } = useParams() as any;
     const navigate = useNavigate();
     const context = React.useContext(UserContext);
 
-    //console.log("freelancer", freelancer)
-  
-
     React.useEffect(() => {
-        const fetchPositions = async () => {
-          await axios(`http://localhost:3000/api/freelancer/${freelancerId}`)
-          .then((response) => setFreelancer(response.data))
+        const fetchData = async () => {
+            const [freelancerData, ratingData, reviewsData] = await Promise.all([
+                axios(`http://localhost:3000/api/freelancer/${freelancerId}`),
+                axios(`http://localhost:3000/api/freelancer/avg_score/${freelancerId}`),
+                axios(`http://localhost:3000/api/freelancer/reviews/${freelancerId}`),
+            ]);
+            setFreelancer(freelancerData.data);
+            setRating(ratingData.data.averageScore);
+            setReviews(reviewsData.data);
         };
 
-        const fetchAvgRating = async () => {
-            await axios(`http://localhost:3000/api/freelancer/avg_score/${freelancerId}`)
-            .then((response) => setRating(response.data.averageScore))
-        };
-
-
-        if(!freelancer){
-            fetchPositions(); 
-            fetchAvgRating();
+        if (!freelancer || !reviews || isReviewSubmitted) {
+            fetchData();
         }
+    }, [freelancerId, isReviewSubmitted, freelancer, reviews]);
+    
 
-        const fetchReviews = async () => {
-            setIsLoading(true);
-            await axios(`http://localhost:3000/api/freelancer/reviews/${freelancerId}`)
-            .then((response) => setReviews(response.data))
-        };
-
-        if(!reviews || isReviewSubmitted){
-            fetchReviews(); 
-            setIsLoading(false)
-        }
-
-        if(isReviewSubmitted){
-            fetchReviews(); 
-            setIsLoading(false)
-            setIsReviewSubmitted(!isReviewSubmitted)
-        }
-
-        console.log("isReviewSubmitted", isReviewSubmitted)
-
-    }, [isReviewSubmitted]);
-
-    function onStarClick(e: any) {
+    async function onStarClick(e: string) {
         const ratingData = {
             userId: context?.id,
             score: e
         }
 
-        axios.put(`http://localhost:3000/api/review/${freelancerId}`, ratingData)
-        .then((res) => {
-            if(res.status === 200){
-                setTimeout(() => {
-                    setOpenModal(false)
-                }, 1000)
-            }
-        })
-        .catch((err) => setError(true));
+        try {
+            const res = await axios.put(`http://localhost:3000/api/review/${freelancerId}`, ratingData);
+    
+            if (res.status === 200) {
+                setTimeout(() => setOpenModal(false), 1000);
+            } 
+        } catch (err) {
+            setError(true); 
+        }  
     }
 
 
@@ -119,10 +95,10 @@ export function FreelancerProfile ({ size= 'lg'}: ITFreelancerProfileProps) {
                         <h1>{freelancer?.description}</h1> 
                     </div>
                     <ul className='grid grid-cols-4 gap-4 mb-8 w-full'>
-                        {freelancer?.service_type?.map((item: any)=> 
-                        <li className="pl-2 pb-1 pt-1 pr-2 h-13 rounded bg-teal-500 text-white flex align-center justify-center items-center">
+                        {freelancer?.service_type?.map((item: any)=> (
+                        <li key={item} className="pl-2 pb-1 pt-1 pr-2 h-13 rounded bg-teal-500 text-white flex align-center justify-center items-center">
                             <p className=''>{item}</p>
-                        </li>)}
+                        </li>))}
                     </ul>
                     <div>
                         <p>Contact Info</p>
@@ -152,12 +128,12 @@ export function FreelancerProfile ({ size= 'lg'}: ITFreelancerProfileProps) {
                         <span className='mt-12 text-md text-teal-500'>Reviews</span>
                     </div>
                     <div className="flex items-start flex-start flex-col">
-                        {reviews?.reviews.map((item) => 
-                            <div key={item._id} className='w-full flex flex-col justify-items-start mt-8 mb-8'>
-                                <p>{item?.reviewText}</p> 
-                                <p>{item?.postedBy.name}</p>
-                            </div>
-                        )}
+                    {reviews?.reviews.map(item => (
+                        <div key={item._id} className="w-full flex flex-col justify-items-start mt-8 mb-8">
+                            <p>{item?.reviewText}</p>
+                            <p>{item?.postedBy.name}</p>
+                        </div>
+                    ))}
                     </div>
                 </div>
             </div>
