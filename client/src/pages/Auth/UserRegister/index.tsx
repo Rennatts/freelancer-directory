@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import * as React from 'react';
 import { useNavigate } from "react-router-dom";
 import { saveUserToLocalStorage } from '../../../auth';
@@ -37,25 +37,63 @@ export function UserRegister (props: IUserLoginProps) {
   })
 
 
+  // const handleSubmit = async (e: any) => {
+  //   e.preventDefault();
+
+  //   if(loginData.password !== confirmPassword) {
+  //     setError({ existError: true, errorMessage: "the passwords do not match"}) 
+
+  //   } else {
+
+  //     try {
+  //       const res = await axios.post(`http://localhost:3000/api/auth/signup_user`, loginData);
+    
+  //       if(res.status !== 201){
+  //         setError({errorMessage: handleErrorMessage(res.data), existError: true})
+  //       } else {
+  //         setSuccess(true);
+  //         saveUserToLocalStorage(res.data);
+  //         setTimeout(() => {
+  //           navigate(`/`)
+  //         }, 3000)
+  //       }
+  //     } catch (error) {
+  //       setError({existError: true, errorMessage: error?.response?.data?.message || 'An error occurred'})
+  //     }
+  //   }
+  // };
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+  
+    if(loginData.password !== confirmPassword) {
+      setError({ existError: true, errorMessage: "the passwords do not match"});
+      return;
+    }
   
     try {
       const res = await axios.post(`http://localhost:3000/api/auth/signup_user`, loginData);
   
       if(res.status !== 201){
-        setError({errorMessage: handleErrorMessage(res.data), existError: true})
-      } else {
-        setSuccess(true);
-        saveUserToLocalStorage(res.data);
-        setTimeout(() => {
-          navigate(`/`)
-        }, 3000)
-      }  
-    } catch (err: any) { 
-      setError({errorMessage: handleErrorMessage(err.response.data.message), existError: true});
-    }  
-  };
+        setError({errorMessage: handleErrorMessage(res.data), existError: true});
+        return;
+      }
+  
+      setSuccess(true);
+      saveUserToLocalStorage(res.data);
+  
+      setTimeout(() => {
+        navigate(`/`);
+      }, 3000);
+  
+    } catch (error: any) {
+      setError({
+        existError: true, 
+        errorMessage: error?.response?.data?.message || 'An error occurred'
+      }); 
+    } 	
+
+  }
 
 
   function handleInputChange(event: any) {

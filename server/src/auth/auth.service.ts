@@ -34,6 +34,7 @@ export class AuthService {
         const { name, surname, email, password } = user;
 
         const existingUser = await this.userService.findByEmail(user.email);
+        //if(existingUser) throw new HttpException('e-mail already registered', HttpStatus.NOT_ACCEPTABLE);
         if(existingUser) throw new HttpException('e-mail already registered', HttpStatus.NOT_ACCEPTABLE);
 
         const hashedPassword = await this.hashPassword(password);

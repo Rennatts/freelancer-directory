@@ -82,9 +82,16 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
     setLoginData({...loginData, [event.target.name]: event.target.value});
   }
 
+  function checkIfPasswordMatch() {
+    loginData.password !== confirmPassword ? 
+    setError({ existError: true, errorMessage: "the passwords do not match"}) : 
+    setCurrentIndex(currIndex + 1)
+  }
+
   function NextButton() {
     return (
-      <button onClick={() => setCurrentIndex(currIndex + 1)} className="w-full flex-shrink-0 bg-teal-500 hover:bg-teal-300 hover:border-bg-teal-300 hover:text-black hover:border-teal-300 text-md text-white py-1 px-5 rounded" type="button">
+      <button onClick={checkIfPasswordMatch} 
+        className="w-full flex-shrink-0 bg-teal-500 hover:bg-teal-300 hover:border-bg-teal-300 hover:text-black hover:border-teal-300 text-md text-white py-1 px-5 rounded" type="button">
         Next
       </button>
     );

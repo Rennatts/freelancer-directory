@@ -20,8 +20,6 @@ export const SuccessModal = ({showSuccessModal, onHandleSuccessStatusChange}: IS
     onHandleSuccessStatusChange(newSuccessStatus);
   };
 
-  console.log("showSuccessModal", showSuccessModal)
-
 
   return (
     <>
