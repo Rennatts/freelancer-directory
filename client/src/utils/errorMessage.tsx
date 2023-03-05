@@ -8,7 +8,8 @@ export function handleErrorMessage(status: string | number) {
       "Unauthorized": 'user not registered',
       "wrong password, try again": "wrong password, try again",
       "e-mail not registered": "e-mail not registered",
-      "Forbidden": "wrong password, try again"
+      "Forbidden": "wrong password, try again",
+      "e-mail already registered": "e-mail already registered"
     }
     return keyActionMap[status]
 }

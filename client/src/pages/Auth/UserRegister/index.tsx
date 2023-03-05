@@ -36,33 +36,6 @@ export function UserRegister (props: IUserLoginProps) {
     password: "",
   })
 
-
-  // const handleSubmit = async (e: any) => {
-  //   e.preventDefault();
-
-  //   if(loginData.password !== confirmPassword) {
-  //     setError({ existError: true, errorMessage: "the passwords do not match"}) 
-
-  //   } else {
-
-  //     try {
-  //       const res = await axios.post(`http://localhost:3000/api/auth/signup_user`, loginData);
-    
-  //       if(res.status !== 201){
-  //         setError({errorMessage: handleErrorMessage(res.data), existError: true})
-  //       } else {
-  //         setSuccess(true);
-  //         saveUserToLocalStorage(res.data);
-  //         setTimeout(() => {
-  //           navigate(`/`)
-  //         }, 3000)
-  //       }
-  //     } catch (error) {
-  //       setError({existError: true, errorMessage: error?.response?.data?.message || 'An error occurred'})
-  //     }
-  //   }
-  // };
-
   const handleSubmit = async (e: any) => {
     e.preventDefault();
   
@@ -192,7 +165,6 @@ export function UserRegister (props: IUserLoginProps) {
               </input>
               {status.isValid === false ? <p className='text-xs text-red'>{status.message}</p> : "" }
             </div>
-
 
             <button onClick={handleSubmit} className="w-full flex-shrink-0 bg-teal-500 hover:bg-teal-300 hover:border-bg-teal-300 hover:text-black hover:border-teal-300 text-md text-white py-1 px-5 rounded" type="button">
               Save
