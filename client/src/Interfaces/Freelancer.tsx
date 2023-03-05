@@ -9,6 +9,7 @@ export interface Freelancer {
     profile_photo?: string;
     reviews?: Reviews[];
     city: String;
+    country: String;
     zip_code: String;
     member_role: String;
     description?: String;

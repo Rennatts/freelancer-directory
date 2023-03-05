@@ -12,14 +12,16 @@ export class FreelancerDetails {
     rating?: Rating[];
     reviews?: CreateReview[];
     city: String;
+    address: String;
+    country: String;
     zip_code: String;
     number: String;
     member_role: String;
-    description?: String;
     service_type?: String[];
     instagram?: String;
     website?: String;
     job_title?: String;
+    description?: String;
     createdAt: Date;
     updatedAt: Date;
 }
