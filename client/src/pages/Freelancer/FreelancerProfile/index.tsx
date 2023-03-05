@@ -24,11 +24,12 @@ export function FreelancerProfile ({ size= 'lg'}: ITFreelancerProfileProps) {
     const [error, setError] = React.useState<boolean>(false);
     const [reviews, setReviews] = React.useState<AllReviewsPerFreelancer>();
     const [isLoading, setIsLoading] = React.useState(false);
+    const [isReviewSubmitted, setIsReviewSubmitted] = React.useState(false);
     let { freelancerId } = useParams() as any;
     const navigate = useNavigate();
     const context = React.useContext(UserContext);
 
-    console.log("freelancer", freelancer)
+    //console.log("freelancer", freelancer)
   
 
     React.useEffect(() => {
@@ -54,12 +55,20 @@ export function FreelancerProfile ({ size= 'lg'}: ITFreelancerProfileProps) {
             .then((response) => setReviews(response.data))
         };
 
-        if(!reviews){
+        if(!reviews || isReviewSubmitted){
             fetchReviews(); 
             setIsLoading(false)
         }
 
-    }, [reviews]);
+        if(isReviewSubmitted){
+            fetchReviews(); 
+            setIsLoading(false)
+            setIsReviewSubmitted(!isReviewSubmitted)
+        }
+
+        console.log("isReviewSubmitted", isReviewSubmitted)
+
+    }, [isReviewSubmitted]);
 
     function onStarClick(e: any) {
         const ratingData = {
@@ -69,11 +78,11 @@ export function FreelancerProfile ({ size= 'lg'}: ITFreelancerProfileProps) {
 
         axios.put(`http://localhost:3000/api/review/${freelancerId}`, ratingData)
         .then((res) => {
-          if(res.status === 200){
-            setTimeout(() => {
-                setOpenModal(false)
-            }, 1000)
-          }
+            if(res.status === 200){
+                setTimeout(() => {
+                    setOpenModal(false)
+                }, 1000)
+            }
         })
         .catch((err) => setError(true));
     }
@@ -132,12 +141,12 @@ export function FreelancerProfile ({ size= 'lg'}: ITFreelancerProfileProps) {
                     </div>
                 ): (
                     <div className='mt-12 w-full flex justify-items-end'>
-                        <button onClick={()=> setOpenModal(true)} className="text-gray-500 background-transparent font-bold uppercase px-3 py-1 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+                        <button onClick={()=> setOpenModal(!openModal)} className="text-gray-500 background-transparent font-bold uppercase px-3 py-1 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
                         <FontAwesomeIcon className="mr-2" icon={faSquarePen} />Create Review
                         </button>
                     </div>
                 )}
-                <ReviewModal show={openModal} userId={context?.id}></ReviewModal>
+                <ReviewModal setOpenModal={setOpenModal} openModal={openModal} userId={context?.id} setIsReviewSubmitted={setIsReviewSubmitted}></ReviewModal>
                 <div className="border-t mt-10">
                     <div className='flex align-center justify-center'>
                         <span className='mt-12 text-md text-teal-500'>Reviews</span>

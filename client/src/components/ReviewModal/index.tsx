@@ -8,13 +8,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 interface IReviewModalProps {
-  show: boolean,
+  openModal: boolean,
   userId?: string;
+  setIsReviewSubmitted: (value: boolean)=> void;
+  setOpenModal: (value: boolean)=> void;
 }
 
 
-export const ReviewModal = ({show, userId}: IReviewModalProps) => {
-  const [showModal, setShowModal] = useState(false);
+export const ReviewModal = ({openModal, userId, setOpenModal, setIsReviewSubmitted}: IReviewModalProps) => {
+  //const [showModal, setShowModal] = useState(false);
   const [rating, setRating] = React.useState<number>(0);
   const [success, setSuccess] = React.useState<boolean>(false);
   const [error, setError] = React.useState<boolean>(false);
@@ -27,10 +29,10 @@ export const ReviewModal = ({show, userId}: IReviewModalProps) => {
   const navigate = useNavigate();
 
   useEffect(()=> {
-    if(show){
-      setShowModal(show)
+    if(openModal){
+      setOpenModal(openModal)
     }
-  },[show])
+  },[openModal])
 
 
   function handleReviewSubmit(){
@@ -54,29 +56,30 @@ export const ReviewModal = ({show, userId}: IReviewModalProps) => {
 
     axios.put(`http://localhost:3000/api/freelancer/review/${freelancerId}`, newReview)
     .then(res => {
-      console.log("res", res)
       if(res.status === 200){
         setSuccess(true);
+        setIsReviewSubmitted(true);
+        setRating(0);
+        setReviewText("");
       } else {
         setError(true);
       }
     })
     .catch(() => setError(true));
 
-    setShowModal(false)
-    window.location.reload();
-
+    setOpenModal(!openModal)
+    //window.location.reload();
   }
 
   return (
     <>
-      {showModal ? (
+      {openModal ? (
         <>
             <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
                 <div className="relative w-auto my-6 mx-auto max-w-3xl">
                     <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                         <div className="flex justify-between p-5 border-b border-solid border-gray-300 rounded-t flex-col">
-                          <div className="cursor-pointer" onClick={() => setShowModal(false)}>
+                          <div className="cursor-pointer" onClick={() => setOpenModal(!openModal)}>
                             <FontAwesomeIcon icon={faXmark}></FontAwesomeIcon>
                           </div>
                             <div className="w-full mt-27 mb-20 flex flex-col items-center flex-center mt-6">
