@@ -18,7 +18,8 @@ import {
     UserProfile, 
     UserRegister,
     AboutUsPage,
-    Pricing
+    Pricing,
+    EditUserProfile
 } from '../pages';
 
 
@@ -48,6 +49,7 @@ function MainRouter(){
                             <Route path="/about_us" element={<AboutUsPage/>}/>
                             <Route path="/pricing" element={<Pricing/>}/>
                             <Route path="/freelancer/profile/edit/:freelancerId" element={<EditFreelancerProfile/>}/>
+                            <Route path="/user/profile/edit/:userId" element={<EditUserProfile/>}/>
                             {/* <Route
                                 path="/oi"
                                 element={

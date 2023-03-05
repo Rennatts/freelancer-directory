@@ -68,10 +68,10 @@ export const NewHeader: React.FC<IMenuProps> = ({ size= 'sm' }: IMenuProps) => {
 
     function UserHeader() {
       return (
-        <ul className='md:flex md:flex-row justify-evenly'>
+        <ul className='md:flex md:flex-row justify-evenly items-center'>
           {
             UserLinks.map((link) => (
-              <li key={link.name} className='md:ml-8 text-sm md:my-0 my-7'>
+              <li key={link.name} className='md:ml-8 text-sm md:my-0 mr-6'>
                 <a href={link.link} className='text-gray-800 hover:text-gray-400 duration-500'>{link.name}</a>
               </li>
             ))

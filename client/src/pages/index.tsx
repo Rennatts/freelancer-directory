@@ -10,6 +10,7 @@ export { UserRegister } from './Auth/UserRegister';
 export { SearchResults } from './SearchResults'
 export { ErrorPage } from './ErrorPage';  
 export { EditFreelancerProfile } from './Freelancer/EditFreelancerProfile';
+export { EditUserProfile } from './User/EditUserProfile';
 export { FreelancerProfile } from './Freelancer/FreelancerProfile/';
 export { Home } from './Home';
 export { RedirectionFreelancers } from './RedirectionFreelancers';
