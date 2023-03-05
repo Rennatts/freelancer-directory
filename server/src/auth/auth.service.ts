@@ -34,7 +34,10 @@ export class AuthService {
         const { name, surname, email, password } = user;
 
         const existingUser = await this.userService.findByEmail(user.email);
-        //if(existingUser) throw new HttpException('e-mail already registered', HttpStatus.NOT_ACCEPTABLE);
+
+        if (existingUser) {
+            throw new HttpException('User already exists.', HttpStatus.CONFLICT);
+        }
 
         const hashedPassword = await this.hashPassword(password);
 
@@ -59,10 +62,8 @@ export class AuthService {
 
     async validateUser(email: string, password: string): Promise<LoginReturn | string> {
         const user = await this.userService.findByEmail(email);
-        //if user does not exist '!!' transform the answer into a boolean
-        const doesUserExists = !!user;
 
-        if(!doesUserExists) {
+        if(!user) {
             throw new HttpException('e-mail not registered', HttpStatus.FORBIDDEN);
         }
         
@@ -83,9 +84,9 @@ export class AuthService {
 
 
     async registerFreelancer(freelancer: NewFreelancersDTO): Promise<LoginReturn | HttpException> {
-        const { password } = freelancer;
+        const { email, password } = freelancer;
 
-        const existingFreelancer = await this.FreelancerService.findByEmail(freelancer.email)
+        const existingFreelancer = await this.FreelancerService.findByEmail(email)
 
         if(existingFreelancer) throw new HttpException('e-mail already registered', HttpStatus.NOT_ACCEPTABLE);
 
