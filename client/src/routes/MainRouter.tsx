@@ -21,14 +21,31 @@ import {
     Pricing,
     EditUserProfile
 } from '../pages';
+import { useState } from 'react';
 
 
 function MainRouter(){
     console.log("JWT",  isAuthenticated());
+
+    const [userData, setUserData] = useState({
+        name: isAuthenticated().name,
+        userType: isAuthenticated().userType,
+        id: isAuthenticated().id,
+        token: isAuthenticated().token,
+    });
+    
+    const clearUserData = () => {
+        setUserData({
+            name: null,
+            userType: null,
+            id: null,
+            token: null,
+        });
+    };
    
     return (
         <div>
-            <UserContext.Provider value={{name: isAuthenticated().name, userType:isAuthenticated().userType, id: isAuthenticated().id, token: isAuthenticated().token}}>
+            <UserContext.Provider value={{ ...userData, clearUserData }}>
                 <Router>
                     <NewHeader/>
                         <Routes>

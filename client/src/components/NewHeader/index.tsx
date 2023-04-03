@@ -4,7 +4,7 @@ import React, { useContext, useState } from 'react';
 import { faCubes, faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { Button } from '../Button';
 import { useNavigate } from 'react-router-dom';
-import { isAuthenticated, signout } from '../../auth';
+import { isAuthenticated, useSignout } from '../../auth';
 import { UserType } from '../../enum/UserType';
 import { UserContext } from '../../UserContext';
 
@@ -41,6 +41,15 @@ export const NewHeader: React.FC<IMenuProps> = ({ }: IMenuProps) => {
       {name: "For Freelancers", link: "/freelancers"},
     ];
 
+    const signout = useSignout();
+  
+    const handleSignout = () => {
+      signout(() => {
+        navigate('/');
+        setOpen(false);
+      });
+    };
+
     function RenderProfilePath(userType: UserType): any {
       switch (userType) {
           case UserType.FREELANCER: 
@@ -66,6 +75,7 @@ export const NewHeader: React.FC<IMenuProps> = ({ }: IMenuProps) => {
         </ul>
       );
     }
+  
 
     function UserHeader() {
       return (
@@ -77,7 +87,7 @@ export const NewHeader: React.FC<IMenuProps> = ({ }: IMenuProps) => {
               </li>
             ))
           }
-          <Button width="1/2" onClick={()=> signout(()=> {navigate('/'); setOpen(false)})} >Sign out</Button>
+          <Button width="1/2"  onClick={handleSignout}>Sign out</Button>
         </ul>
       );
     }

@@ -5,6 +5,7 @@ interface Context {
     id: string;
     userType: string;
     token: string;
+    clearUserData: () => void;
 }
 
 

@@ -1,4 +1,6 @@
 import axios from "axios";
+import { UserContext } from './../UserContext';
+import { useContext } from 'react';
 
 export const saveUserToLocalStorage = (jwt) => {
     localStorage.setItem("jwt", JSON.stringify(jwt));
@@ -42,23 +44,48 @@ export const isAuthenticated = () => {
 
 
 
-export const signout = (next) => {
+// export const signout = (next) => {
 
-    console.log("localStorage", localStorage)
+//     console.log("localStorage", localStorage)
 
-    if(typeof window !== "undefined"){
-        localStorage.removeItem("jwt")
-    } 
-    next()
+//     if(typeof window !== "undefined"){
+//         localStorage.removeItem("jwt")
+//     } 
+//     next()
 
-    return axios.get(`http://localhost:3000/api/auth/logout_user`)
-    .then(res => {
-        console.log("res", res)
-        localStorage.removeItem("jwt")
-        console.log("localStorage", localStorage)
-    })
-    .catch(err => console.log("err", err))
+//     return axios.get(`http://localhost:3000/api/auth/logout_user`)
+//     .then(res => {
+//         console.log("res", res)
+//         localStorage.removeItem("jwt")
+//         console.log("localStorage", localStorage)
+//     })
+//     .catch(err => console.log("err", err))
 
+// };
+
+
+
+export const useSignout = () => {
+    const { clearUserData } = useContext(UserContext);
+  
+    const signout = (next) => {
+      console.log('localStorage', localStorage);
+  
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem('jwt');
+      }
+      next();
+  
+      return axios
+        .get(`http://localhost:3000/api/auth/logout_user`)
+        .then((res) => {
+          console.log('res', res);
+          localStorage.removeItem('jwt');
+          clearUserData(); // Call the function to clear user data from the context provider
+          console.log('localStorage', localStorage);
+        })
+        .catch((err) => console.log('err', err));
+    };
+  
+    return signout;
 };
-
-
