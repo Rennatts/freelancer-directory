@@ -24,6 +24,7 @@ export function FreelancerProfile ({ }: ITFreelancerProfileProps) {
     const [error, setError] = React.useState<boolean>(false);
     const [reviews, setReviews] = React.useState<AllReviewsPerFreelancer>();
     const [isReviewSubmitted, setIsReviewSubmitted] = React.useState(false);
+    const [updateReviews, setUpdateReviews] = React.useState(false);
     let { freelancerId } = useParams() as any;
     const navigate = useNavigate();
     const context = React.useContext(UserContext);
@@ -39,17 +40,25 @@ export function FreelancerProfile ({ }: ITFreelancerProfileProps) {
             setRating(ratingData.data.averageScore);
             setReviews(reviewsData.data);
         };
-
-        if (!freelancer || !reviews || isReviewSubmitted) {
+    
+        if (!freelancer || !reviews || isReviewSubmitted || updateReviews) {
             fetchData();
+            if (isReviewSubmitted) {
+                setIsReviewSubmitted(false);
+            }
+            if (updateReviews) {
+                setUpdateReviews(false);
+            }
         }
-    }, [freelancerId, isReviewSubmitted, freelancer, reviews]);
+    
+    }, [freelancerId, isReviewSubmitted, updateReviews]);
+    
     
 
 
-    console.log("=======", reviews)
+    // console.log("=======", reviews)
 
-    console.log("ssssssssss", isAuthenticated())
+    // console.log("ssssssssss", isAuthenticated())
 
 
     return (
@@ -116,7 +125,13 @@ export function FreelancerProfile ({ }: ITFreelancerProfileProps) {
                     )
                 }
 
-                <ReviewModal setOpenModal={setOpenModal} openModal={openModal} userId={context?.id} setIsReviewSubmitted={setIsReviewSubmitted}></ReviewModal>
+                <ReviewModal 
+                    setOpenModal={setOpenModal} 
+                    openModal={openModal} 
+                    userId={context?.id} 
+                    setIsReviewSubmitted={setIsReviewSubmitted}
+                    setUpdateReviews={setUpdateReviews}
+                ></ReviewModal>
                 <div className="border-t mt-10">
                     <div className='flex align-center justify-center'>
                         <span className='mt-12 text-md text-teal-500'>Reviews</span>

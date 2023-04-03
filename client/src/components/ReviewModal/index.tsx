@@ -12,10 +12,11 @@ interface IReviewModalProps {
   userId?: string;
   setIsReviewSubmitted: (value: boolean)=> void;
   setOpenModal: (value: boolean)=> void;
+  setUpdateReviews: (value: boolean)=> void;
 }
 
 
-export const ReviewModal = ({openModal, userId, setOpenModal, setIsReviewSubmitted}: IReviewModalProps) => {
+export const ReviewModal = ({openModal, userId, setOpenModal, setIsReviewSubmitted, setUpdateReviews}: IReviewModalProps) => {
   //const [showModal, setShowModal] = useState(false);
   const [rating, setRating] = React.useState<number>(0);
   const [success, setSuccess] = React.useState<boolean>(false);
@@ -23,10 +24,6 @@ export const ReviewModal = ({openModal, userId, setOpenModal, setIsReviewSubmitt
   const [ reviewText, setReviewText ] = React.useState<string>()
 
   let { freelancerId } = useParams() as any;
-
-  const context = React.useContext(UserContext);
-
-  const navigate = useNavigate();
 
   useEffect(()=> {
     if(openModal){
@@ -61,6 +58,7 @@ export const ReviewModal = ({openModal, userId, setOpenModal, setIsReviewSubmitt
         setIsReviewSubmitted(true);
         setRating(0);
         setReviewText("");
+        setUpdateReviews(true);
       } else {
         setError(true);
       }
@@ -68,7 +66,6 @@ export const ReviewModal = ({openModal, userId, setOpenModal, setIsReviewSubmitt
     .catch(() => setError(true));
 
     setOpenModal(!openModal)
-    //window.location.reload();
   }
 
   return (
