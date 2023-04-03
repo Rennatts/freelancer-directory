@@ -38,8 +38,6 @@ export function FreelancerProfile ({ }: ITFreelancerProfileProps) {
             setFreelancer(freelancerData.data);
             setRating(ratingData.data.averageScore);
             setReviews(reviewsData.data);
-
-            console.log("1111111", reviewsData.data)
         };
 
         if (!freelancer || !reviews || isReviewSubmitted) {
@@ -48,22 +46,6 @@ export function FreelancerProfile ({ }: ITFreelancerProfileProps) {
     }, [freelancerId, isReviewSubmitted, freelancer, reviews]);
     
 
-    async function onStarClick(e: string) {
-        const ratingData = {
-            userId: context?.id,
-            score: e
-        }
-
-        try {
-            const res = await axios.put(`http://localhost:3000/api/review/${freelancerId}`, ratingData);
-    
-            if (res.status === 200) {
-                setTimeout(() => setOpenModal(false), 1000);
-            } 
-        } catch (err) {
-            setError(true); 
-        }  
-    }
 
     console.log("=======", reviews)
 
@@ -91,7 +73,6 @@ export function FreelancerProfile ({ }: ITFreelancerProfileProps) {
                             name="rate1" 
                             starCount={5}
                             value={rating}
-                            onStarClick={(e: any)=> onStarClick(e)}
                             />
                         </div>
                         {rating? (<span>Average score {rating.toFixed(2)}</span>): null }
@@ -117,9 +98,6 @@ export function FreelancerProfile ({ }: ITFreelancerProfileProps) {
                 {
                     !isAuthenticated() ? (
                         <div className='mt-12 w-full flex justify-items-end'>
-                        {/* <button onClick={() => navigate('/sign-in')} className="text-gray-500 background-transparent font-bold uppercase px-3 py-1 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
-                            <FontAwesomeIcon className="mr-2" icon={faSignInAlt} />Sign In
-                        </button> */}
                         </div>
                     ) : (
                         isAuthenticated().id === freelancerId ? (
@@ -147,7 +125,7 @@ export function FreelancerProfile ({ }: ITFreelancerProfileProps) {
                     {reviews?.reviews.map(item => (
                         <div key={item._id} className="w-full flex flex-col justify-items-start mt-8 mb-8">
                             <p>{item?.reviewText}</p>
-                            {/* <p>{item?.postedBy.name}</p> */}
+                            <p>{item?.postedBy.userId.name}</p>
                         </div>
                     ))}
                     </div>

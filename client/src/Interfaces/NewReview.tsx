@@ -11,7 +11,9 @@ interface NewReviews {
 }
 
 interface userData{
-    _id: string;
-    name: string;
-    surname: string;
+    userId: {
+        _id: string;
+        name: string;
+        surname: string;
+    }
 }
