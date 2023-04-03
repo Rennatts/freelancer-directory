@@ -38,6 +38,8 @@ export function FreelancerProfile ({ }: ITFreelancerProfileProps) {
             setFreelancer(freelancerData.data);
             setRating(ratingData.data.averageScore);
             setReviews(reviewsData.data);
+
+            console.log("1111111", reviewsData.data)
         };
 
         if (!freelancer || !reviews || isReviewSubmitted) {
@@ -62,6 +64,10 @@ export function FreelancerProfile ({ }: ITFreelancerProfileProps) {
             setError(true); 
         }  
     }
+
+    console.log("=======", reviews)
+
+    console.log("ssssssssss", isAuthenticated())
 
 
     return (
@@ -108,20 +114,30 @@ export function FreelancerProfile ({ }: ITFreelancerProfileProps) {
                     </div>
                 </div>
 
-                {isAuthenticated().id === freelancerId ? 
-                (
-                    <div className='mt-12 w-full flex justify-items-end'>
-                        <button onClick={() => navigate(`/freelancer/profile/edit/${freelancer?._id}`)} className="text-gray-50 background-transparent font-bold uppercase px-3 py-1 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
-                        <FontAwesomeIcon className="mr-2" icon={faUserPen} />Edit Profile
-                        </button>
-                    </div>
-                ): (
-                    <div className='mt-12 w-full flex justify-items-end'>
-                        <button onClick={()=> setOpenModal(!openModal)} className="text-gray-500 background-transparent font-bold uppercase px-3 py-1 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
-                        <FontAwesomeIcon className="mr-2" icon={faSquarePen} />Create Review
-                        </button>
-                    </div>
-                )}
+                {
+                    !isAuthenticated() ? (
+                        <div className='mt-12 w-full flex justify-items-end'>
+                        {/* <button onClick={() => navigate('/sign-in')} className="text-gray-500 background-transparent font-bold uppercase px-3 py-1 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+                            <FontAwesomeIcon className="mr-2" icon={faSignInAlt} />Sign In
+                        </button> */}
+                        </div>
+                    ) : (
+                        isAuthenticated().id === freelancerId ? (
+                        <div className='mt-12 w-full flex justify-items-end'>
+                            <button onClick={() => navigate(`/freelancer/profile/edit/${freelancer?._id}`)} className="text-gray-50 background-transparent font-bold uppercase px-3 py-1 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+                            <FontAwesomeIcon className="mr-2" icon={faUserPen} />Edit Profile
+                            </button>
+                        </div>
+                        ) : (
+                        <div className='mt-12 w-full flex justify-items-end'>
+                            <button onClick={()=> setOpenModal(!openModal)} className="text-gray-500 background-transparent font-bold uppercase px-3 py-1 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+                            <FontAwesomeIcon className="mr-2" icon={faSquarePen} />Create Review
+                            </button>
+                        </div>
+                        )
+                    )
+                }
+
                 <ReviewModal setOpenModal={setOpenModal} openModal={openModal} userId={context?.id} setIsReviewSubmitted={setIsReviewSubmitted}></ReviewModal>
                 <div className="border-t mt-10">
                     <div className='flex align-center justify-center'>
@@ -131,7 +147,7 @@ export function FreelancerProfile ({ }: ITFreelancerProfileProps) {
                     {reviews?.reviews.map(item => (
                         <div key={item._id} className="w-full flex flex-col justify-items-start mt-8 mb-8">
                             <p>{item?.reviewText}</p>
-                            <p>{item?.postedBy.name}</p>
+                            {/* <p>{item?.postedBy.name}</p> */}
                         </div>
                     ))}
                     </div>

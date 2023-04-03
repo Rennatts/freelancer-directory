@@ -1,4 +1,4 @@
-import { HttpException, Injectable } from '@nestjs/common';
+import { HttpException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model} from 'mongoose';
 import { createReviewDTO } from './dtos/createReview_dto';
@@ -73,13 +73,15 @@ export class FreelancerService {
         return FreelancersSelectedDetails;
     }
 
+
+
     async getAllTheReviews(id: string, res: any) {
         const allReviews = [];
-
+    
         this.freelancerModel.findById(id)
         .select("_id reviews")
-        .populate('reviews.postedBy', "_id name surname")
-        .sort({ created: -1 })
+        .populate('reviews.postedBy.userId', "_id name surname")
+        .sort({ 'reviews.createdAt': -1 })
         .exec((err, reviews)=> {
             if(err) {
                 return res.status(400).json({
@@ -89,6 +91,10 @@ export class FreelancerService {
             res.json(reviews);
         });
     }
+
+    
+    
+    
 
     async delete(id: string): Promise<boolean | string> {
         const FreelancerFound = await this.freelancerModel.findById(id);
@@ -134,11 +140,20 @@ export class FreelancerService {
         );
     }
 
-    async createReview(id: string, review: createReviewDTO,): Promise<any>  {
+    async createReview(id: string, review: createReviewDTO): Promise<any> {
+        const user = await this.userModel.findById(review.userId).exec();
+    
+        if (!user) {
+            throw new NotFoundException('User not found');
+        }
 
+    
         let newReview = {
-            reviewText: review.reviewText, 
-            postedBy: review.userId,
+            reviewText: review.reviewText,
+            postedBy: {
+                userId: user._id,
+                name: user.name,
+            },
         };
     
         this.freelancerModel.findByIdAndUpdate(
@@ -147,14 +162,15 @@ export class FreelancerService {
             {new: true}
         )
         .sort({ createdAt: -1 })
-        .exec((err,result) => {
-            if(err){
+        .exec((err, result) => {
+            if (err) {
                 return err;
             } else {
                 return result;
             }
         });
     }
+    
 
     async createRating(id: string, rating: any): Promise<any>  {
 
@@ -181,6 +197,11 @@ export class FreelancerService {
     async getAvgScore(id: string): Promise<any> {
         const tattooArtist = await this.freelancerModel.findById(id);
 
+
+        if (!tattooArtist || !tattooArtist.rating || tattooArtist.rating.length === 0) {
+            return { "averageScore": 0 };
+        }
+
         let arrayOfScores = [];
 
         tattooArtist.rating.forEach((item) =>  arrayOfScores.push(item.score));
@@ -189,6 +210,7 @@ export class FreelancerService {
 
         return {"averageScore": averageScore};
     }
+
 
 
 

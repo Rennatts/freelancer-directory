@@ -76,15 +76,16 @@ export const FreelancerSchema = new mongoose.Schema(
       },
     }],
     reviews: [{
-      reviewText: String, 
+      reviewText: String,
       score: Number,
       createdAt: {type: Date, default: Date.now},
       postedBy: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
+        userId: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User",
+        },
       },
     }],
-    
     member_role: {
       type: String,
       enum: ["MEMBER", "NOT_MEMBER",],
