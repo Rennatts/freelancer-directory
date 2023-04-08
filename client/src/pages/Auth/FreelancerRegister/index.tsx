@@ -155,15 +155,15 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
   
 
   return (
-    <div className='flex items-center flex-center flex-col place-content-around p-20'>
-      <div className='md:pr-64 md:pl-64 md:w-full w-64'>
+    <div className='flex items-center flex-center flex-col place-content-around p-20 ml-32 mr-32 2xl:ml-80 2xl:mr-80'>
+      <div className='md:pr-64 md:pl-64 md:w-full'>
         <div className='flex flex-center items-center justify-center'>
           <h2 className='p-9 text-xl underline underline-offset-8 decoration-teal-500'>Register here</h2>
         </div>
         <ErrorModal error={error} onHandleErrorChange={handleErrorChange}/>
         <SuccessModal showSuccessModal={success} onHandleSuccessStatusChange={handleSuccessStatusChange}></SuccessModal>
         <div className="w-full mt-27 mb-20">
-          <ul id="connecting_line" className='relative flex md:space-x-32 space-x-5 auto mt-5 w-full -z-1'>
+          <ul id="connecting_line" className='relative flex md:space-x-24 2xl:space-x-32 space-x-5 auto mt-5 w-full -z-1'>
             {
               ["Name", "Address", "Contact", "Career"].map((item, index) => (
                 <li data-title={item} className={`${currIndex >= index ? 'z-1 border-2 border-teal-500 before:text-black bg-teal-500 text-white grid rounded-full w-14 h-14 place-items-center before:content-[attr(data-title)] before:absolute before:text-xs before:-top-6 before:color-teal-500': 'bg-white z-1 border-2 border-black grid rounded-full w-14 h-14 place-items-center before:content-[attr(data-title)] before:absolute before:text-xs before:-top-6 before:color-teal-500'}`} key={item}>
