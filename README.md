@@ -18,6 +18,10 @@ Freelancer Directory is a web platform where freelancers can create profiles, sh
 - Axios
 - Styled Components
 
+## Preview
+![Alt Text](./client/src/images/freelancer.gif)
+
+
 
 ##Getting Started
 
