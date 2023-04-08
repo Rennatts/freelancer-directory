@@ -33,39 +33,51 @@ export const ReviewModal = ({openModal, userId, setOpenModal, setIsReviewSubmitt
 
 
   function handleReviewSubmit(){
-    const ratingData = {
-      userId: userId,
-      score: rating,
+
+    if(rating && reviewText){
+
+      const ratingData = {
+        userId: userId,
+        score: rating,
+      }
+  
+      axios.put(`http://localhost:3000/api/freelancer/rating/${freelancerId}`, ratingData)
+      .then((res) => {
+
+        console.log("res", res)
+        if(res.status === 200){
+          setIsReviewSubmitted(true);
+          setRating(0);
+          setReviewText("");
+          setSuccess(true)
+          setUpdateReviews(true);
+        }
+      })
+      .catch((err) => setError(true));
+
+
+      const newReview = {
+        reviewText: reviewText,
+        userId: userId,
+      }
+  
+      axios.put(`http://localhost:3000/api/freelancer/review/${freelancerId}`, newReview)
+      .then(res => {
+        if(res.status === 200){
+          setSuccess(true);
+          setIsReviewSubmitted(true);
+          setRating(0);
+          setReviewText("");
+          setUpdateReviews(true);
+          setOpenModal(!openModal)
+        } else {
+          setError(true);
+        }
+      })
+      .catch(() => setError(true));
     }
 
-    axios.put(`http://localhost:3000/api/freelancer/rating/${freelancerId}`, ratingData)
-    .then((res) => {
-      if(res.status === 200){
-        setSuccess(true)
-      }
-    })
-    .catch((err) => setError(true));
 
-    const newReview = {
-      reviewText: reviewText,
-      userId: userId,
-    }
-
-    axios.put(`http://localhost:3000/api/freelancer/review/${freelancerId}`, newReview)
-    .then(res => {
-      if(res.status === 200){
-        setSuccess(true);
-        setIsReviewSubmitted(true);
-        setRating(0);
-        setReviewText("");
-        setUpdateReviews(true);
-      } else {
-        setError(true);
-      }
-    })
-    .catch(() => setError(true));
-
-    setOpenModal(!openModal)
   }
 
   return (

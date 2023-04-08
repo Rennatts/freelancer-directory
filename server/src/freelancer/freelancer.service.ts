@@ -1,6 +1,6 @@
 import { HttpException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model} from 'mongoose';
+import { Model, Types} from 'mongoose';
 import { createReviewDTO } from './dtos/createReview_dto';
 import { NewFreelancersDTO } from './dtos/newFreelancer_dto';
 import { FreelancerDetails } from './interfaces/freelancer.interface';
@@ -193,12 +193,12 @@ export class FreelancerService {
             }
         });
     }
+    async getAvgScore(id: string): Promise<any> {       
 
-    async getAvgScore(id: string): Promise<any> {
         const tattooArtist = await this.freelancerModel.findById(id);
 
 
-        if (!tattooArtist || !tattooArtist.rating || tattooArtist.rating.length === 0) {
+        if (tattooArtist.rating.length === 0) {
             return { "averageScore": 0 };
         }
 

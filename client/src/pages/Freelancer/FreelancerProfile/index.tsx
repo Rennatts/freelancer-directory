@@ -6,7 +6,7 @@ import Moment from 'react-moment';
 import { UserContext } from '../../../UserContext';
 import ProfilePhoto from './../../../images/profilePhoto.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLocationDot, faUserPen, faSquarePen } from "@fortawesome/free-solid-svg-icons";
+import { faLocationDot, faUserPen, faSquarePen, faTrash} from "@fortawesome/free-solid-svg-icons";
 import StarRatingComponent from 'react-star-rating-component';
 import { ReviewModal } from './../../../components';
 import { AllReviewsPerFreelancer } from '../../../Interfaces/NewReview';
@@ -54,11 +54,6 @@ export function FreelancerProfile ({ }: ITFreelancerProfileProps) {
     }, [freelancerId, isReviewSubmitted, updateReviews]);
     
     
-
-
-    // console.log("=======", reviews)
-
-    // console.log("ssssssssss", isAuthenticated())
 
 
     return (
@@ -141,6 +136,10 @@ export function FreelancerProfile ({ }: ITFreelancerProfileProps) {
                         <div key={item._id} className="w-full flex flex-col justify-items-start mt-8 mb-8">
                             <p>{item?.reviewText}</p>
                             <p>{item?.postedBy.userId.name}</p>
+                            {/* {(item?.postedBy.userId._id === context?.id) && 
+                            (<div className='relative bottom-0 right-0'>
+                                <button><FontAwesomeIcon className="text-teal-500 mr-2 hover:text-teal-300" icon={faTrash}/></button>
+                            </div>)} */}
                         </div>
                     ))}
                     </div>
