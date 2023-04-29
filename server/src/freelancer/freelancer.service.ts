@@ -131,6 +131,7 @@ export class FreelancerService {
                 }},
                 {new: true},
                 function(err, user){
+                    console.log("user", user)
                     if(err) {
                         return ({error: err});
                     }else{

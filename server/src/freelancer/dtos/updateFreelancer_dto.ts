@@ -49,13 +49,13 @@ export class UpdateFrelancersDTO {
     @ApiProperty()
     description?: String;
 
+    @ApiProperty()
+    job_title?: String;
+
     reviews: createReviewDTO[];
 
     @ApiProperty()
     category: FreelancerCategory[] = [];
-
-    @ApiProperty()
-    job_title?: String;
 
     @ApiProperty()
     member_role: FreelancerMember;
