@@ -66,8 +66,11 @@ export function EditFreelancerProfile ({ size= 'lg'}: IEditFreelancerProfileProp
           }
         };
 
+        console.log("userData", userData)
+
         axios.put(`http://localhost:3000/api/freelancer/${context?.id}`, userData, config)
         .then((res) => {
+          console.log("res", res)
           if(res.status === 200){
             setSuccess(true)
             setTimeout(() => {
