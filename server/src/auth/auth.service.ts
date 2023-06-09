@@ -1,16 +1,16 @@
-import { Freelancer } from 'src/Freelancer/Freelancer.schema';
-import { BadRequestException, HttpException, HttpStatus, Injectable } from '@nestjs/common';
+
+import {  HttpException, HttpStatus, Injectable } from '@nestjs/common';
 
 import * as bcrypt from 'bcrypt';
 import { NewUserDTO } from 'src/user/dtos/newUser_dto';
 import { ExistingUserDTO } from 'src/user/dtos/existingUser_dto';
 import { JwtService } from '@nestjs/jwt';
-import { NewFreelancersDTO } from 'src/Freelancer/dtos/newFreelancer_dto';
-import { LoginFreelancerDTO } from 'src/Freelancer/dtos/loginFreelancer_dto';
 import { UserType } from './enum/userTypes';
 import { LoginReturn } from './interfaces/loginReturn.interface';
 import { UserService } from 'src/user/user.service';
 import { FreelancerService } from 'src/freelancer/freelancer.service';
+import { NewFreelancersDTO } from 'src/freelancer/dtos/newFreelancer_dto';
+import { LoginFreelancerDTO } from 'src/freelancer/dtos/loginFreelancer_dto';
 
 
 @Injectable()

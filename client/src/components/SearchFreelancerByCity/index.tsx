@@ -55,7 +55,7 @@ export function SearchFreelancerByCity ({}: ISearchProps) {
           </div>
         </form>
       </div>
-      <div className="flex align-center justify-center mt-12 w-72 h-full xl:flex xl:align-center xl:justify-center xl:w-full xl:h-full object-cover sm:h-92 sm:w-72 sm:mt-12 sm:mb-24 md:h-92 md:w-70 md:mt-12 md:mb-24">
+      <div className="flex align-center justify-center mt-12 w-72 h-full xl:flex xl:align-center xl:justify-center xl:w-72 xl:h-42 xl:mt-28 xl:mb-26 object-cover sm:h-92 sm:w-72 sm:mt-12 sm:mb-24 md:h-92 md:w-70 md:mt-12 md:mb-24">
         <img className="" src={teamImage}></img>
       </div>
     </div>

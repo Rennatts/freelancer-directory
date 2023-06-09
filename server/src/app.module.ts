@@ -13,11 +13,13 @@ import { ReviewModule } from './review/review.module';
 import { ReviewSchema } from './review/review.schema';
 import { FreelancerSchema } from './freelancer/freelancer.schema';
 import { FreelancerModule } from './freelancer/freelancer.module';
+import { ConfigModule } from '@nestjs/config';
 require('dotenv').config();
 
 @Module({
   imports: [
     //MongooseModule.forRoot('mongodb://localhost:27017/tatoo_directory'),
+    ConfigModule.forRoot(),
     MongooseModule.forRoot(process.env.MONGO_DB_CREDENTIALS),
     MongooseModule.forFeature([
       {name: 'user', schema: UserSchema},

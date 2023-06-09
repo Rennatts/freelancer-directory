@@ -2,7 +2,7 @@ import * as mongoose from "mongoose"
 import { createReviewDTO } from "./dtos/createReview_dto";
 import { ratingDTO } from "./dtos/rating_dto";
 import { FreelancerCategory } from "./interfaces/freelancerCategory_enum";
-import { FreelancerMember } from "./interfaces/FreelancerMember_enum";
+import { FreelancerMember } from "./interfaces/freelancerMember_enum";
 
 
 export const FreelancerSchema = new mongoose.Schema(

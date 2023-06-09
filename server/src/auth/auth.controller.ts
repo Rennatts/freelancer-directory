@@ -1,7 +1,6 @@
 import { Body, Controller, Get, HttpCode, HttpException, HttpStatus, Post, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiBody } from '@nestjs/swagger';
-import { NewFreelancersDTO } from 'src/Freelancer/dtos/newFreelancer_dto';
 import { ExistingUserDTO } from 'src/user/dtos/existingUser_dto';
 import { NewUserDTO } from 'src/user/dtos/newUser_dto';
 import { AuthService } from './auth.service';
@@ -9,6 +8,7 @@ import { JwtAuthGuard } from './guard/jwt-auth.guard';
 import { LocalAuthGuard } from './guard/local-auth.guard';
 import { LocalStrategy } from './guard/local.strategy';
 import { LoginReturn } from './interfaces/loginReturn.interface';
+import { NewFreelancersDTO } from 'src/freelancer/dtos/newFreelancer_dto';
 
 @Controller('auth')
 export class AuthController {

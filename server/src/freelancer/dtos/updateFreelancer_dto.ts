@@ -1,6 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { FreelancerCategory } from "../interfaces/freelancerCategory_enum";
-import { FreelancerMember } from "../interfaces/FreelancerMember_enum";
+import { FreelancerMember } from "./../interfaces/freelancerMember_enum";
 import { createReviewDTO } from "./createReview_dto";
 
 export class UpdateFrelancersDTO {

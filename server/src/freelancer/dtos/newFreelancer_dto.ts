@@ -1,7 +1,7 @@
 import { FreelancerCategory } from "../interfaces/freelancerCategory_enum";
-import { FreelancerMember } from "../interfaces/FreelancerMember_enum";
 import { IsNotEmpty } from 'class-validator';
 import { ApiProperty } from "@nestjs/swagger";
+import { FreelancerMember } from "./../interfaces/freelancerMember_enum";
 
 export class NewFreelancersDTO {
     @IsNotEmpty()

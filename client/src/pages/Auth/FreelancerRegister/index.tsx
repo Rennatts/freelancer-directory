@@ -358,7 +358,7 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
                 </div>
               </div>
               <div className="flex w-max mb-6 flex-col">
-                <label className="block mb-2 text-sm font-medium text-gray-900">Categoria</label>
+                <label className="block mb-2 text-sm font-medium text-gray-900">Category</label>
                 {category.map((item:any) => (
                   <div className="flex items-center" key={item.value}>
                     <input id="default-radio-1" type="radio" name="category" value={item.value} onChange={(event)=> handleInputChange(event)} className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"/>
@@ -369,7 +369,7 @@ export function FreelancerRegister (props: IFreelancerRegisterProps) {
               <div className="flex items-start flex-col mb-6">
                 <label className="block mb-2 text-sm font-medium text-gray-900">Years of experience</label>
                 <div className="relative inline-block text-left mb-8">
-                  <div className="absolute -right-30 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button">
+                  <div className="absolute-right-30 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button">
                     <div className="py-1" role="none">
                       <select name="experience" onChange={(event)=> handleInputChange(event)} >
                         {experience.map((item: any) => (
