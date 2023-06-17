@@ -87,15 +87,15 @@ export function UserLogin (props: IUserLoginProps) {
 
 
   return (
-    <div className='flex items-center flex-center flex-col place-content-around md:p-20'>
-      <div className='md:pr-64 md:pl-64 md:w-full w-64'>
+    <div className='flex items-center flex-center flex-col place-content-around md:w-full'>
+      <div className='md:flex md:items-center md:flex-center md:flex-col md:w-full w-64 lg:w-full'>
         <div className='flex flex-center items-center justify-center'>
           <h2 className='p-9 text-xl underline underline-offset-8 decoration-teal-500'>Login</h2>
         </div>
         <ErrorModal error={error} onHandleErrorChange={handleErrorChange}/>
-        <form className=''>
-          <div className="mb-6">
-            <div className="flex items-start flex-col mb-6">
+        <form className='md:w-96'>
+          <div className="mb-6 lg:w-96 md:w-96">
+            <div className="flex items-start flex-col mb-6 w-full">
               <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-cyan-500">E-mail
               </label>
               <input               

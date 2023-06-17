@@ -22,6 +22,7 @@ import {
     EditUserProfile
 } from '../pages';
 import { useState } from 'react';
+import { UserSocialMediaLogin } from '../pages/Auth/UserSocialMediaLogin';
 
 
 function MainRouter(){
@@ -58,7 +59,8 @@ function MainRouter(){
                             <Route path="/freelancer/profile/:freelancerId" element={<FreelancerProfile/>}/>
                             <Route path="/user/profile/:userId" element={<UserProfile/>}/>
                             <Route path="*" element={<ErrorPage/>}/>
-                            <Route path="/users/login" element={<UserLogin/>}/>
+                            {/* <Route path="/users/login" element={<UserLogin/>}/> */}
+                            <Route path="/users/login" element={<UserSocialMediaLogin/>}/>
                             <Route path="/users/register" element={<UserRegister/>}/>
                             <Route path="/freelancers/register" element={<FreelancerRegister/>}/>
                             <Route path="/freelancers" element={<RedirectionFreelancers/>}/>
