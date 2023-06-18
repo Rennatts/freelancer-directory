@@ -149,7 +149,7 @@ export function UserSocialMediaLogin (props: IUserSocialMediaLoginProps) {
                     <TwitterLoginButton />
                 </LoginSocialTwitter>
             </div>
-            <div className='xsm:flex xsm:justify-center xsm:items-center mg:w-full md:flex md:justify-center md:items-center flex justify-center items-start flex-col w-full lg:w-full sm:flex-center sm:items-center sm:flex-col xsm:flex-col xs:w-100 lg:w-100'>
+            <div className='xl:justify-start xl:items-start xsm:flex xsm:justify-center xsm:items-center mg:w-full md:flex md:justify-center md:items-center flex justify-center items-start flex-col w-full lg:w-full sm:flex-center sm:items-center sm:flex-col xsm:flex-col xs:w-100 lg:w-100'>
                 <UserLogin></UserLogin>
             </div>
         </div>
