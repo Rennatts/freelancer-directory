@@ -35,7 +35,6 @@ interface Window {
 export function UserSocialMediaLogin (props: IUserSocialMediaLoginProps) {
     const [provider, setProvider] = useState('')
     const [profile, setProfile] = useState<any>()
-    const navigate = useNavigate();
 
     console.log("provider", provider)
     console.log("profile", profile)
@@ -53,28 +52,6 @@ export function UserSocialMediaLogin (props: IUserSocialMediaLoginProps) {
     return(
         <div className='flex items-center flex-center justify-center align-center lg:flex-row md:flex-col md:items-center md:flex-center md:mt-20 sm:flex sm:flex-col sm:items-center sm:flex-center xsm:flex xsm:flex-col xsm:justify-center xsm:align-center'>          
             <div className='xsm:flex xsm:justify-center xsm:items-center flex justify-center items-end flex-col w-full lg:w-full'>
-                {/* <LoginSocialFacebook
-                    isOnlyGetToken
-                    appId='1013581282965210'
-                    onLoginStart={onLoginStart}
-                    onResolve={(response: IResolveParams) => {
-                        console.log("response", response);
-                        setProvider('facebook');
-                        setProfile(response.data);
-                        // You can save the user details in local storage like this
-                        saveUserToLocalStorage(response);
-                        // Navigate to the main page after login
-                        navigate('/');
-                    }}
-                    onReject={(reject: string | object) => {
-                        console.log("reject", reject)
-                        // Handle error - you might need to adjust handleErrorMessage function to handle string | object type
-                        //handleErrorMessage(JSON.stringify(reject));
-                    }}
-                >
-                    <FacebookLoginButton/>
-                </LoginSocialFacebook> */}
-                
                 <LoginSocialFacebook
                     className='xsm:w-1/2 sm:w-1/2 md:w-1/2 lg:w-1/2 mt-3'
                     appId={process.env.REACT_APP_FB_APP_ID || ''}
@@ -99,7 +76,7 @@ export function UserSocialMediaLogin (props: IUserSocialMediaLoginProps) {
                     className='xsm:w-1/2 sm:w-1/2 md:w-1/2 lg:w-1/2 mt-3'
                     client_id={process.env.REACT_APP_GG_APP_ID || ''}
                     onLoginStart={onLoginStart}
-                    redirect_uri={'https://localhost:4000/'}
+                    redirect_uri={'https://localhost:4000'}
                     scope="openid profile email"
                     discoveryDocs="claims_supported"
                     access_type="offline"
@@ -117,7 +94,7 @@ export function UserSocialMediaLogin (props: IUserSocialMediaLoginProps) {
                     className='xsm:w-1/2 sm:w-1/2 md:w-1/2 lg:w-1/2 mt-3'
                     client_id={process.env.REACT_APP_INSTAGRAM_APP_ID || ''}
                     client_secret={process.env.REACT_APP_INSTAGRAM_APP_SECRET || ''}
-                    redirect_uri={'https://localhost:4000/'}
+                    redirect_uri={'https://localhost:4000'}
                     onLoginStart={onLoginStart}
                     onLogoutSuccess={onLogoutSuccess}
                     onResolve={({ provider, data }: IResolveParams) => {
@@ -135,7 +112,7 @@ export function UserSocialMediaLogin (props: IUserSocialMediaLoginProps) {
                     className='xsm:w-1/2 sm:w-1/2 md:w-1/2 lg:w-1/2 mt-3'
                     client_id={process.env.REACT_APP_TWITTER_V2_APP_KEY || ''}
                     // client_secret={process.env.REACT_APP_TWITTER_V2_APP_SECRET || ''}
-                    redirect_uri={'https://localhost:4000/'}
+                    redirect_uri={'https://localhost:4000'}
                     onLoginStart={onLoginStart}
                     onLogoutSuccess={onLogoutSuccess}
                     onResolve={({ provider, data }: IResolveParams) => {
