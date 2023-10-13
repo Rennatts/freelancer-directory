@@ -1,4 +1,4 @@
-import { Description, SearchFreelancerByCity, ExploreByService } from './../../components';
+import { SearchFreelancerByCity, ExploreByService, HomeIntro } from './../../components';
 
 
 
@@ -8,7 +8,7 @@ export function Home() {
     <div className="jubotron">
       <SearchFreelancerByCity></SearchFreelancerByCity>
       <ExploreByService></ExploreByService>
-      <Description></Description>
+      <HomeIntro></HomeIntro>
     </div>
   )
 };

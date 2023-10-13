@@ -1,4 +1,4 @@
-import { Freelancer } from '../../Interfaces/Freelancer'
+import { Freelancer } from '../../pages/Interfaces/Freelancer'
 import { clsx } from 'clsx';
 import { useNavigate } from 'react-router-dom';
 

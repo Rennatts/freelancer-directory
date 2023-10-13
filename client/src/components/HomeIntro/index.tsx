@@ -1,16 +1,15 @@
-import * as React from 'react';
-import './description.css';
-import photo01 from './../../images/001.jpg';
-import photo02 from './../../images/002.jpg';
-import photo03 from './../../images/003.jpg';
+import './homeIntro.css';
+import photo01 from './../../assets/001.jpg';
+import photo02 from './../../assets/002.jpg';
+import photo03 from './../../assets/003.jpg';
 
 
-export interface IDescriptionProps {
+export interface IHomeIntroProps {
   
 }
 
 
-export function Description (props: IDescriptionProps) {
+export function HomeIntro (props: IHomeIntroProps) {
   return (
     <div className='bg-teal-700 pt-14 pl-4 pr-4 md:pt-2 md:pb-8'>
       <div className='sm:grid sm:grid-rows-3 sm:grid-flow-col sm:gap-1 sm:m-20 grid grid-rows-2 grid-flow-col gap-1'>

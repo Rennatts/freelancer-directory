@@ -1,5 +1,5 @@
 import {Route, BrowserRouter as Router, Routes} from 'react-router-dom';
-import { CityNotFound, Footer,  NewHeader } from './../components';
+import { CityNotFound, Footer,  Header } from './../components';
 import { isAuthenticated } from '../auth';
 import { UserContext } from '../UserContext';
 import ProtectedRoute from '../auth/ProtectedRoute';
@@ -48,7 +48,7 @@ function MainRouter(){
         <div>
             <UserContext.Provider value={{ ...userData, clearUserData }}>
                 <Router>
-                    <NewHeader/>
+                    <Header/>
                         <Routes>
                             <Route path="/" element={<Home/>}/>
                             <Route path="/city/:selectedCity" element={<SearchResults/>}/>
@@ -69,14 +69,6 @@ function MainRouter(){
                             <Route path="/pricing" element={<Pricing/>}/>
                             <Route path="/freelancer/profile/edit/:freelancerId" element={<EditFreelancerProfile/>}/>
                             <Route path="/user/profile/edit/:userId" element={<EditUserProfile/>}/>
-                            {/* <Route
-                                path="/oi"
-                                element={
-                                    <ProtectedRoute user={isAuthenticated()}>
-                                    <Footer/>
-                                    </ProtectedRoute>
-                                }
-                            /> */}
                             <Route element={<ProtectedRoute user={isAuthenticated()}/>}>
                                 <Route path="oi" element={<Footer/>} />
                                 <Route path="ola" element={<Footer/>} />

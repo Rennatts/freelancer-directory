@@ -5,7 +5,7 @@ import { faCubes, faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { Button } from '../Button';
 import { useNavigate } from 'react-router-dom';
 import { isAuthenticated, useSignout } from '../../auth';
-import { UserType } from '../../enum/UserType';
+import { UserType } from '../enum/UserType';
 import { UserContext } from '../../UserContext';
 
 
@@ -13,8 +13,7 @@ interface IMenuProps {
 }
 
 
-
-export const NewHeader: React.FC<IMenuProps> = ({ }: IMenuProps) => {
+export const Header: React.FC<IMenuProps> = ({ }: IMenuProps) => {
     const [openNavBar, setOpenNavBar] = useState<boolean>(true)
     const context = useContext(UserContext);
     const navigate = useNavigate()

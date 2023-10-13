@@ -2,7 +2,7 @@ import * as React from 'react';
 import './search.css';
 
 import {useNavigate } from "react-router-dom";
-import teamImage from './../../images/creative_team_re.svg';
+import teamImage from './../../assets/creative_team_re.svg';
 import axios from 'axios';
 
 export interface ISearchProps {

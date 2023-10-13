@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
-import { Freelancer } from '../../Interfaces/Freelancer';
+import { Freelancer } from '../Interfaces/Freelancer';
 import { InfoCard } from '../../components';
 
 export interface ISearchResultsProps {

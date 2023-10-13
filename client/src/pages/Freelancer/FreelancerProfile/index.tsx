@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import { Freelancer } from '../../../Interfaces/Freelancer';
+import { Freelancer } from '../../Interfaces/Freelancer';
 import Moment from 'react-moment';
 import { UserContext } from '../../../UserContext';
-import ProfilePhoto from './../../../images/profilePhoto.png'
+import ProfilePhoto from './../../../assets/profilePhoto.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot, faUserPen, faSquarePen, faTrash} from "@fortawesome/free-solid-svg-icons";
 import StarRatingComponent from 'react-star-rating-component';
 import { ReviewModal } from './../../../components';
-import { AllReviewsPerFreelancer } from '../../../Interfaces/NewReview';
+import { AllReviewsPerFreelancer } from '../../Interfaces/NewReview';
 import { isAuthenticated } from '../../../auth';
 
 export interface ITFreelancerProfileProps {

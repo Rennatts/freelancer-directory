@@ -2,7 +2,6 @@ import * as React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { UserContext } from '../../../UserContext';
-import { serviceType } from '../../../data';
 
 export interface IEditUserProfileProps {
 }
@@ -50,9 +49,6 @@ export function EditUserProfile ({}: IEditUserProfileProps ) {
 
     }, []);
 
-    console.log("userData", userData)
-
-
     const handleSubmit = (e: any) => {
         e.preventDefault();
         const config = {
@@ -74,24 +70,16 @@ export function EditUserProfile ({}: IEditUserProfileProps ) {
         .catch((err) => setError(true));
     };
 
-    function handleInputChange(event: any) {
-      if(event.target.name === "service_type"){
-        setSelectedServices([...selectedServices, event.target.value]);
-      }
-      
-      setUserData({...userData, [event.target.name]: event.target.value, service_type: selectedServices});
-    }
-
 
     return (
-    <div className='flex items-center flex-center flex-col place-content-around p-20'>
-      <h1>Complete with the information to be shown in your profile</h1>
-        <div className="mb-6 mt-8">
-
-        </div>
-        <button onClick={handleSubmit} className="flex-shrink-0 bg-teal-500 hover:bg-teal-300 hover:border-bg-teal-300 hover:text-black hover:border-teal-300 text-md text-white py-1 px-5 rounded" type="button">
-          Save
-        </button>
-    </div>
+      <div className='flex items-center flex-center flex-col place-content-around p-20'>
+        <h1>Complete with the information to be shown in your profile</h1>
+          <div className="mb-6 mt-8"></div>
+          <button 
+          onClick={handleSubmit} 
+          className="flex-shrink-0 bg-teal-500 hover:bg-teal-300 hover:border-bg-teal-300 hover:text-black hover:border-teal-300 text-md text-white py-1 px-5 rounded" type="button">
+            Save
+          </button>
+      </div>
     );
 }

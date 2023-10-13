@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-import { Freelancer } from '../../Interfaces/Freelancer';
+import { Freelancer } from '../Interfaces/Freelancer';
 import { clsx } from 'clsx';
 import { InfoCard } from '../../components';
 

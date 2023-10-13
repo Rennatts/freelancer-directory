@@ -3,10 +3,10 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import Moment from 'react-moment';
 import { UserContext } from '../../../UserContext';
-import ProfilePhoto from './../../../images/profilePhoto.png'
+import ProfilePhoto from './../../../assets/profilePhoto.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserPen, faSquarePen } from "@fortawesome/free-solid-svg-icons";
-import { User } from '../../../Interfaces/User';
+import { User } from '../../Interfaces/User';
 
 export interface IUserProfileProps {
   size?: 'sm' | 'md' | 'lg';
